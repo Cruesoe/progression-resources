@@ -8,45 +8,49 @@ Searchable, filterable list of workshop items from:
 
 [Site patch notes](CHANGELOG.md)
 
-**Steam snapshot date: 1 November 2026**
+**Steam snapshot date: 8 November 2026**
 
-**packageId from RimSort steamDB: 1012 of 1494**
+**packageId from RimSort steamDB: 1012 of 1504**
 
-**Known packageIds (RimSort + previous overlay): 1439 of 1494**
+**Known packageIds (RimSort + previous overlay): 1436 of 1504**
 
-**Unique mods: 1494** — Core 867 · Content 431 · Cosmetics 196 (3 collection pages omitted from the item list)
+**Unique mods: 1504** — Core 874 · Content 433 · Cosmetics 197 (3 collection pages omitted from the item list)
 
 This is an unofficial helper, not an official Progression site. Categories are inferred from titles and which collection an item sits in.
 
 ## This snapshot vs previous catalog
 
-### Added (8)
-- Null Tooltip & Nameless Book Fix — 3828892965
-- Noble and Psycaster Styles Morbid — 3828495663
-- Stylish Dialogs — 3827006806
-- Doppio's Doppio Hair By Doppio For Doppio Out of Doppio (Doppio Edition) — 3826778991
-- RimWorld Loading Optimizer (RLO) — 3817423183
-- ReGrowth: Boiling — 2981924439
-- Interaction Spot On Chunk  — 3827781564
-- Gerrymon's Misc Props: Market — 3825410203
+### Added (13)
+- AASB2: Underground Ore x3 — 3834396059
+- Medic Warcasket — 3835096426
+- Medieval Overhaul - Timber Keep Progress — 3834876866
+- VFE:C Addon - Double Tents [FORKED RELISTED] — 3667753684
+- [LFS] UI Rethemed - Core — 3832843406
+- [LFS] UI Rethemed - Ideology — 3834172773
+- [LFS] UI Rethemed - History — 3830774158
+- [ADOPTED] Stubbly Facial Hair — 3821528132
+- Cleaning Speed — 2748222814
+- Bulk Stonecutting - Keep Progress — 3834465412
+- [LFS] UI Rethemed - Factions — 3832850311
+- Xenotype Descriptions — 3832924427
+- RimHUD Passion Icons — 3829500081
 
-### Removed (4)
-- LusTech VWE Coilguns Retexture — 3750587891
-- ReGrowth: Boiling — 3565675704
-- LusTech Unique Weapons — 3597400817
-- RPG Dialog — 3547971440
+### Removed (3)
+- Modern Faction Menu — 3742926690
+- Modern History Menu — 3742925193
+- Cybranian - Faction Interface — 2854657718
 
 ### Renamed (7)
-- Roo's Satyr Xenotype (1.6) → Roo's Satyr Xenotype (Continued) — 3548322381
-- LusTech Modern Camo Styles (for Combat Extended) → [LM] LusTech Modern Camo Styles — 3489407179
-- Medieval Overhaul ReGrowth 2 Patch → Medieval Overhaul ReGrowth 2 Patch [DEPRECATED] — 3648522175
-- Roo's Satyr and Faun Xenotypes Expanded (1.6) → Roo's Satyr and Faun Xenotypes Expanded (Continued) — 3548973881
-- LusTech Vanilla Weapons Retexture → [LM] LusTech Vanilla Weapons Retexture — 3602372541
-- Cowboy Hats Bloatended (Retexture + Ideology) now with Bowler Hat → [LM] Cowboy Hats Bloatended — 3688414599
-- Nudge Me - Melee Pathfinding Fix → Nudge Me - Pathfinding Fix — 3665657945
+- Interaction Spot On Chunk  → Interaction Spot On X  — 3827781564
+- Roo's Minotaur Xenotype (1.6) → Roo's Minotaur Xenotype (Continued) — 3548423129
+- ReBuild: Doors and Corners - Cell Door Fix → ReBuild: Cell Door Fix — 3598547615
+- ChordedKeybinds → Chorded Keybinds — 3660259520
+- Null Tooltip & Nameless Book Fix → Neko's Compatibility Fixes — 3828892965
+- Mass Graves 1.6 → Mass Graves 1.7 — 3545739596
+- Form and Function Hairstyle → RimAesthetics: Form and Function — 3785728415
 
-### Newly unavailable (0)
-- None
+### Newly unavailable (1)
+- Beam Constructor — 3801431089
 
 ## Open the catalog
 
