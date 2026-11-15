@@ -24,6 +24,7 @@ title,workshop_id,packageId,collection_core,collection_content,collection_cosmet
 1trickPwnyta's Odyssey Patch,3578444636,odysseypatch.1trickpwnyta,1,0,0,Patches & compatibility,https://steamcommunity.com/sharedfiles/filedetails/?id=3578444636
 [1.5-1.6] Custom Xenotype Exporter Tool,3254345251,gege.customxenotypeexportertoolreupload,1,0,0,Performance & tools,https://steamcommunity.com/sharedfiles/filedetails/?id=3254345251
 [1.6] CAI 5000 - Advanced AI + Fog Of War (continued),3673768803,Krkr.rule56,1,0,0,"Combat, weapons & raids",https://steamcommunity.com/sharedfiles/filedetails/?id=3673768803
+[1.6] HALO: Rimworld Psychic Pulse Armory (Continued),3507626861,mlie.halorimworldpsychicpulsearmory,0,1,0,"Combat, weapons & raids",https://steamcommunity.com/sharedfiles/filedetails/?id=3507626861
 [1001] Unofficial Vanilla Outposts Expanded Expanded: Trading (Continued),2889112010,papercrane1001.uvoee.trading,1,0,0,Vanilla Expanded,https://steamcommunity.com/sharedfiles/filedetails/?id=2889112010
 [ADOPTED] Stubbly Facial Hair,3821528132,,0,0,1,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=3821528132
 [Alpha] Anomaly Remix: Gray Pall,3657090812,anomalyremixgraypall.1trickPwnyta,1,0,0,Alpha series,https://steamcommunity.com/sharedfiles/filedetails/?id=3657090812
@@ -37,6 +38,7 @@ title,workshop_id,packageId,collection_core,collection_content,collection_cosmet
 [CF] VRE - Saurid Better Head Parts,3539916610,cf.vresaurid,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3539916610
 [CM] Ideology DLC Texture Upscale,2603637629,cm.ideology.upscaled,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=2603637629
 [CNEIO] More Reasonable Mortars,3586669021,cn.morereasonablemortars,1,0,0,"Combat, weapons & raids",https://steamcommunity.com/sharedfiles/filedetails/?id=3586669021
+[DG]More Door Variants,3832293718,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3832293718
 [DHM]MyDogsHouse,3490848177,drilledhead.mydogshouse,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3490848177
 [DHM]Wallpenmarker,3707830801,drilledhead.Wallpenmarker,0,1,0,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=3707830801
 [DR] Build Outline（占地描边）,3796610291,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3796610291
@@ -52,10 +54,15 @@ title,workshop_id,packageId,collection_core,collection_content,collection_cosmet
 [HRK] Medieval deathrest coffin,2881104575,harkon.biotechaddon.medievaldeathrestcoffin,1,0,0,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=2881104575
 [JF] Royal Carpets,2977701969,jf.royalcarpets,0,1,0,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=2977701969
 [LC] Collector Ideology,3535706184,lc.collectorideo,0,1,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3535706184
+[LFS] UI Rethemed - Animals,3831602102,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3831602102
 [LFS] UI Rethemed - Core,3832843406,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3832843406
 [LFS] UI Rethemed - Factions,3832850311,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3832850311
 [LFS] UI Rethemed - History,3830774158,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3830774158
 [LFS] UI Rethemed - Ideology,3834172773,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3834172773
+[LFS] UI Rethemed - Main Bar,3826865706,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3826865706
+[LFS] UI Rethemed - Notifications,3827650605,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3827650605
+[LFS] UI Rethemed - Quests,3829391880,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3829391880
+[LFS] UI Rethemed - Wildlife,3828731834,,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3828731834
 [LM] Cowboy Hats Bloatended,3688414599,Lusty.CowboyHats,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=3688414599
 [LM] LusTech Modern Camo Styles,3489407179,lm.lustechcamostyles,0,0,1,"Combat, weapons & raids",https://steamcommunity.com/sharedfiles/filedetails/?id=3489407179
 [LM] LusTech Vanilla Weapons Retexture,3602372541,lusty.lustechvwr,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3602372541
@@ -150,6 +157,7 @@ Altered Carbon 2: ReSleeved,2196278117,hlx.ultratechalteredcarbon,0,1,0,Content 
 Alternate Research Projects,3332424173,mlie.alternateresearchprojects,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3332424173
 Always Position Gravship on Landing,3738322550,ferny.AlwaysPositionGravshiponLanding,1,0,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3738322550
 Always Start in Daytime,3323971974,ferny.alwaysstartindaytime,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=3323971974
+Ambience Core,3835975372,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3835975372
 Ambiguous Anomaly,3266425876,ferny.ambiguousanomaly,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3266425876
 Ammo Readout,3788225671,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3788225671
 Amnabi's Flags (Continued),2592638428,mlie.amnabisflags,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=2592638428
@@ -159,7 +167,6 @@ ANDH - Animals Nuzzling Detects Horrors,3230195082,latta.petknowstrueyou,1,0,0,A
 Animal Biosculpter,2883571601,bodilpwnz.animalbiosculpter,1,0,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=2883571601
 Animal Cages (Continued),3416360282,zal.animalcages,0,1,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=3416360282
 Animal Sarcophagus,2876565401,overpl.animalsarcophagus,1,0,0,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=2876565401
-Animal Tab,712141500,Fluffy.AnimalTab,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=712141500
 Animal Traits System,3652630316,luved.animaltraits,1,0,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=3652630316
 AnimalHarvestingSpot (Continued),1542765654,mlie.animalharvestingspot,1,0,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=1542765654
 Animals are fun! (Continued),3245454244,colossalfossil.animalsarefuncontinued,1,0,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=3245454244
@@ -195,10 +202,12 @@ Auto-Cast Specialist Commands,3459647882,linnun.autocastspecialistcommands,1,0,0
 Auto-Cut Blight - 1.6,3520167264,defi.autocutblight,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=3520167264
 Auto-Extract Genes,2882834449,nibato.autoextractgenes,1,0,0,"Genes, xenotypes & races",https://steamcommunity.com/sharedfiles/filedetails/?id=2882834449
 Auto-repair On,3312319778,lecht.autorepairon,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=3312319778
+Automatic Foraging,3687750532,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3687750532
 Automatic Night Owl,2056012179,ben.automaticnightowl,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=2056012179
 Automatic Parking,3365473553,rabiosus.vfautoparking,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=3365473553
 Ayaethean Ideology,3716726987,Ammonite616.Ayaethean,0,0,1,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3716726987
 Aztec Weapon Style Pack,2893316224,ATWSP.HalituisAmaricanus,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=2893316224
+Baby Birds Can't Fly,3836369455,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3836369455
 Back For Vengeance,3761967749,ferny.Vengeance,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3761967749
 Bad Can Be Good (Continued),2889440091,mlie.badcanbegood,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2889440091
 BallGames,2845856763,kaitorisenkou.ballgames,0,1,0,Content & overhauls,https://steamcommunity.com/sharedfiles/filedetails/?id=2845856763
@@ -273,6 +282,7 @@ Bunny Framework,3015333853,romyashi.dlwdframework,1,0,0,Frameworks & libraries,h
 Busywork,3775253009,Andromeda.Busywork,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=3775253009
 Butchery Work Scales With Body Size,3809027243,,1,0,0,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=3809027243
 Cables and Plumbing - Spliced & Wyed,3762131739,DaniAngione.Medicalpol.CablesAndPlumbing,1,0,0,"Building, production & storage",https://steamcommunity.com/sharedfiles/filedetails/?id=3762131739
+CAI 5000 Performance Fix (1.7),3827953715,,1,0,0,Performance & tools,https://steamcommunity.com/sharedfiles/filedetails/?id=3827953715
 Can I Reinstall This?,3746091680,Lensrub.CanIReinstall,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=3746091680
 Cannibal Pirates Style Expansion 1.6 (Temp),3539790957,akri.pcannibal,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=3539790957
 Capture Expansion,3787736781,ferny.CaptureExpansion,1,0,0,Content & overhauls,https://steamcommunity.com/sharedfiles/filedetails/?id=3787736781
@@ -288,6 +298,8 @@ Cats Hunt For Fun,2827497888,Mlie.CatsHuntForFun,1,0,0,Animals,https://steamcomm
 Cellcycle Acceleration,3727646270,ThCon.Cellcycleacceleration,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3727646270
 Character Development,3770112044,ferny.characterdevelopment,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3770112044
 Charmweaver: Pregnancy Precepts,3228086397,OdysseyLotus.CharmweaverPrecepts,0,1,0,"Medical, needs & hygiene",https://steamcommunity.com/sharedfiles/filedetails/?id=3228086397
+Chemfuel Retexture,3730861087,,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3730861087
+Chemfuel Retextured : For Medieval and Tribal,3454176238,,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3454176238
 Cherry Picker,3521312241,owlchemist.cherrypicker,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3521312241
 Cherry picker scroll bars,3781285156,lucius.cherryscroll,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3781285156
 Chest Hair Tattoos,3549854404,ghostie.chesthair,0,0,1,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=3549854404
@@ -363,7 +375,6 @@ Death-Sentence,3419669410,scorpio.deathsentence,1,0,0,Gameplay tweaks,https://st
 Deathrest Pauses Biological Age,2940569974,crykosity.deathrest,1,0,0,"Medical, needs & hygiene",https://steamcommunity.com/sharedfiles/filedetails/?id=2940569974
 Debt-Bound Gravship,3529144158,rer.gravshiploanscenario,0,1,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3529144158
 Deck 2,3779460145,alt4s.Deck2,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=3779460145
-Declutter UI,3649094165,sk.dmbb,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3649094165
 Deconstruct First,1567338829,fozzy107.deconstructhfirst,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=1567338829
 Decor into Props,3771248988,ferny.decorintoprops,1,0,0,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=3771248988
 Decor into Styles,3771249138,ferny.decorintostyles,1,0,0,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=3771249138
@@ -424,6 +435,7 @@ Dubs Mint Menus Recipe Right Click Open InfoCard,3151252341,runningbugs.dubsmenu
 Dubs Performance Analyzer,2038874626,dubwise.dubsperformanceanalyzer.steam,1,0,0,Content & overhauls,https://steamcommunity.com/sharedfiles/filedetails/?id=2038874626
 Dumbs' Dachshunds (Continued),3646509270,zal.dumbsdachshunds,0,1,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=3646509270
 Dune Style Pack,2993301551,dsp.halituisamaricanous,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=2993301551
+Dynamic Spacefarer Policy,3829638797,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3829638797
 EBSG Framework,3112549163,ebsg.framework,1,0,0,Frameworks & libraries,https://steamcommunity.com/sharedfiles/filedetails/?id=3112549163
 Eccentric Extras - Beach Stuff,3066838193,aelanna.eccentrictech.beachstuff,0,1,0,Content & overhauls,https://steamcommunity.com/sharedfiles/filedetails/?id=3066838193
 Echoes of the Rim,3573196843,ghastly.echoesoftherim,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3573196843
@@ -463,8 +475,6 @@ Face Down,2589144866,verniy709.facedown,1,0,0,Gameplay tweaks,https://steamcommu
 Facial Animation Performance Patch,3790129900,astryl.FacialAnimationPerformancePatch,0,0,1,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=3790129900
 Faction Display Fix,3617583630,wara.factiondisplayfix,1,0,0,"World, biomes, factions & travel",https://steamcommunity.com/sharedfiles/filedetails/?id=3617583630
 Faction Lens,3778464096,CoolNether123.FactionLens,1,0,0,"World, biomes, factions & travel",https://steamcommunity.com/sharedfiles/filedetails/?id=3778464096
-Faction Territories and Vassalage,3626725895,jaeger972.factionterritories,1,0,0,"World, biomes, factions & travel",https://steamcommunity.com/sharedfiles/filedetails/?id=3626725895
-Faction Territories FPS Fix,3768849805,lucius.ftfps,1,0,0,Patches & compatibility,https://steamcommunity.com/sharedfiles/filedetails/?id=3768849805
 Fahrenheit and Celsius,937759575,kosaro.fahrenheitandcelsius,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=937759575
 Fast Author Confirm (Continued),2008011990,mlie.fastauthorconfirm,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2008011990
 Features Gap Fix,3753339482,ferny.featuresgapfix,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3753339482
@@ -554,7 +564,6 @@ Goodwill Preview,3695225114,bluebird.goodwillpreview,1,0,0,Ideology & social,htt
 Graphic Chair Overhaul 2,2982680251,sicafe.chair.overhaul,1,0,0,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=2982680251
 Gravship Captain Set,3528780638,kilo.capvachelm,0,1,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3528780638
 Gravship Fleet,3787239201,,1,0,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3787239201
-Gravship Pilot Console Retexture,3528477422,happycam.odysseyconsoleretexture,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3528477422
 Graying Hair,2807132773,arkymn.agingvisuals,1,0,0,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=2807132773
 Grazing Area,3769685249,gguake.grazingarea,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3769685249
 Grenade Sacrifice,3756541604,Legator.GrenadeSacrifice,1,0,0,"Combat, weapons & raids",https://steamcommunity.com/sharedfiles/filedetails/?id=3756541604
@@ -566,7 +575,6 @@ Gunplay,2034896549,automatic.gunplay,1,0,0,"Combat, weapons & raids",https://ste
 Hacking Expansion,3573344880,ushanka.hackingexpansion,0,1,0,Content & overhauls,https://steamcommunity.com/sharedfiles/filedetails/?id=3573344880
 Hair Extensions,2295386535,neronix17.hairstyles,0,0,1,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=2295386535
 Hair Modding Plus (continued),2947607004,Butterfish.HairModdingPlus,1,0,0,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=2947607004
-HALO: Rimworld Psychic Pulse Armory (Continued),3507626861,mlie.halorimworldpsychicpulsearmory,0,1,0,"Combat, weapons & raids",https://steamcommunity.com/sharedfiles/filedetails/?id=3507626861
 Hamster ,2848286000,plaxen.hamster,0,1,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=2848286000
 Hamster Wheel Generator (Continued),3167447860,Solaris.HamsterWheelGenerator,0,1,0,Animals,https://steamcommunity.com/sharedfiles/filedetails/?id=3167447860
 HarbingerKin - Phytokin,3522734130,mytigio.harbingerkin,0,1,0,Content & overhauls,https://steamcommunity.com/sharedfiles/filedetails/?id=3522734130
@@ -607,6 +615,7 @@ Hunt for Me,1593245720,arandomkiwi.huntforme,1,0,0,Animals,https://steamcommunit
 Hunter Mechanoid,3018267953,pal5k.huntermechanoid,0,1,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3018267953
 Hussar Cloning Platform,3663529617,zoarak.hussarplat,0,1,0,"Genes, xenotypes & races",https://steamcommunity.com/sharedfiles/filedetails/?id=3663529617
 Hussar Weapon Aptitude Remake,3151089982,cedaro.hwar,1,0,0,"Combat, weapons & raids",https://steamcommunity.com/sharedfiles/filedetails/?id=3151089982
+I Can Sit On This Throne,3836624677,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3836624677
 I Cant Fix That,2780971535,mlie.icantfixthat,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2780971535
 I Clearly Have Enough! (Continued),2023661266,mlie.iclearlyhaveenough,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=2023661266
 I Don't Care,2970757252,Virstag.DontCare,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=2970757252
@@ -631,6 +640,7 @@ Increased Max Gods in Theist Religions,2991154934,MoreTheistGods.Mod,1,0,0,Gamep
 Infiltrator Protocol,3793533339,asunib.infiltratorprotocol,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3793533339
 Initial Motivation,3046519492,cedaro.initialmotivation,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3046519492
 Inject Genes,2918091446,zaf.injectgene,1,0,0,"Genes, xenotypes & races",https://steamcommunity.com/sharedfiles/filedetails/?id=2918091446
+Injector Implant,3837632462,,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3837632462
 Injured Carry,2413690575,haecriver.injuredcarry,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2413690575
 Injury Texture Variety,3561610873,keshash.injurytextures,0,0,1,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3561610873
 Inspiration Tweaks,2117570018,catachat.inspirationtweaks,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2117570018
@@ -679,6 +689,7 @@ Lightless Empyrean Reborn,3517488959,pphhyy.lightlessempyrean,0,1,0,Content & ov
 Lily-Style Pack,3748934221,GeneGene.style.lily,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=3748934221
 Limit Quest Pawns,2898408684,kathanon.limitquestpawns,1,0,0,"World, biomes, factions & travel",https://steamcommunity.com/sharedfiles/filedetails/?id=2898408684
 Limitless Deathrest,2880595382,demonx3.limitlessdeathless,1,0,0,"Medical, needs & hygiene",https://steamcommunity.com/sharedfiles/filedetails/?id=2880595382
+Linkable Descriptions,3837322529,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3837322529
 Linkable Groups,3659197870,linnun.linkablegroups,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3659197870
 Linkables Info Expanded,3212476920,deadmano.linkablesinfoexpanded,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3212476920
 Linked Planters,3037074487,rswallen.linkedplanters,1,0,0,"Building, production & storage",https://steamcommunity.com/sharedfiles/filedetails/?id=3037074487
@@ -712,6 +723,7 @@ Meat on a Stick,3435027361,badoaks.MeatOnAStick,1,0,0,Gameplay tweaks,https://st
 Meat on a Stick (Retexture),3786054758,morton.RetextureMeatonaStick,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3786054758
 Meat on a Stick - Expansion,3577333297,badoaks.meatonastick,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3577333297
 Meat on a Stick - Expansion (Retexture),3786055464,morton.RetextureMeatonaStickExpansion,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3786055464
+Mech Group Rename & Caravan List,3837808142,,1,0,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3837808142
 Mech Recharger Standby Mode,2879340506,heremeus.mechrechargerstandby,1,0,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=2879340506
 Mech Work Tab,3268299107,spacemoth.mechtab,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3268299107
 Mechanitor Encounters,3417287863,makinglovetomy.warqueenmechwife.allnightlong,0,1,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3417287863
@@ -755,7 +767,6 @@ Missile Girl - Performance Mod,3712928623,vr.missilegirl,1,0,0,Performance & too
 Misstall's Furniture,3688166182,Misstall.Furniture,0,0,1,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=3688166182
 Mod Options Sort,2910865748,superniquito.modoptionssort,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=2910865748
 Modern Empire Tab,3748548815,astryl.ModernEmpireTab,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3748548815
-Modern Notifications,3752932665,astryl.ModernNotifications,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3752932665
 Modern Psycasts UI,3745137736,astryl.ModernPsycastsUI,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3745137736
 Modern Social Tab,3740700588,astryl.ModernSocialTab,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3740700588
 Mojave Mask - Progression Storytellers,3781130446,ferny.MojaveMask,0,1,0,"Research, storytellers & progression",https://steamcommunity.com/sharedfiles/filedetails/?id=3781130446
@@ -803,6 +814,7 @@ Necroa Archovirus,3531035748,ushanka.necroaarchovirus,1,0,0,Content & overhauls,
 Neko's Compatibility Fixes,3828892965,,1,0,0,Performance & tools,https://steamcommunity.com/sharedfiles/filedetails/?id=3828892965
 Nerfed Fecal Sludge,3133620553,ferny.nerfedfecalsludge,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3133620553
 Neural Supercharger Ownership,3285440328,ilyvion.neuralsuperchargerownership,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3285440328
+Never Home Area,3839235856,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3839235856
 New Ritual Rewards,3680590908,gilith.newritualreward,0,1,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3680590908
 Nice Bill Tab,3520130671,andromeda.nicebilltab,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3520130671
 Nice Bill Tab - Expansion,3721023311,HICON.NiceBillTabExpansion,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3721023311
@@ -830,7 +842,7 @@ No Random Apparel on Ideology Edit,2669243201,edern.norandomapparelonideoedit,1,
 No Time Change Sounds,2572368517,rhadamant.notimechangesounds,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2572368517
 No Version In Pause Menu,3568421458,Jetroid.DoNotDrawVersion,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3568421458
 No Version Warning,2599504692,mlie.noversionwarning,1,0,0,Performance & tools,https://steamcommunity.com/sharedfiles/filedetails/?id=2599504692
-Noble and Psycaster Styles Morbid,3828495663,,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=3828495663
+Noble and Psycaster Furniture Styles Morbid,3828495663,,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=3828495663
 Node Research,3729878405,ferny.noderesearch,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3729878405
 Non-Lethal: Re-Examined,3455926746,Smxrez.nonlethalreexamined,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3455926746
 Noobert's Event Scheduler (Continued),3178111019,zal.eventscheduler,1,0,0,"World, biomes, factions & travel",https://steamcommunity.com/sharedfiles/filedetails/?id=3178111019
@@ -863,6 +875,7 @@ Pack Your Craw,3785541749,DirtbagActual.PackYourCraw,0,1,0,Gameplay tweaks,https
 Pack Your Craw (Retexture),3785816610,morton.RetexturePackYourCraw,0,1,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3785816610
 Paintable Spots & Objects,2902039321,kongkim.paintablespotsobjects,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2902039321
 "Panels, Frames & Stairs",2844647879,kongkim.panelsframes,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=2844647879
+Panning For Gold Ore Patch,3836445267,,0,1,0,Patches & compatibility,https://steamcommunity.com/sharedfiles/filedetails/?id=3836445267
 Parka Retexture,2984307648,tied.parkaretex,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=2984307648
 Party Your F****** Ass Off (Continued),3656819555,Mlie.PartyYourFAssOff,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3656819555
 PATCHED 1.7 Call Trade Ships,3513064727,Wecardo.CallTradeShips,1,0,0,Patches & compatibility,https://steamcommunity.com/sharedfiles/filedetails/?id=3513064727
@@ -896,10 +909,12 @@ Phase Weaponry - Revert Man in Black Change,3328573858,loki.phaseweaponrynmib,0,
 Photo Mode,3799924005,,0,0,1,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3799924005
 Pick Up And Haul,1279012058,mehni.pickupandhaul,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=1279012058
 Pillar Planner,3768069893,astryl.PillarPlanner,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3768069893
+Pilot Console Retexture,3528477422,happycam.odysseyconsoleretexture,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3528477422
 Pipette Tool,2787342464,telardo.pipettetool,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=2787342464
 Planning Extended,2877392159,scherub.planningextended,1,0,0,Quality of life,https://steamcommunity.com/sharedfiles/filedetails/?id=2877392159
 PlatformStudyToggle,3228118083,tk421storm.platformstudytoggle,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3228118083
 Platonic Relationships,3395394391,lydocia.PlatonicRelationships,1,0,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3395394391
+Player Multicolor Ideology Icon,3839041756,,0,0,1,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3839041756
 Please use the pews ! (Ritual Seats Range Fix),3792610727,reqo.pleaseusethepews,1,0,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3792610727
 Pocket Sand,2226330302,usagirei.pocketsand,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=2226330302
 PocketMap Architect Fix,3386472432,dizzyeevee.pocketmaparchitectfix,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3386472432
@@ -908,9 +923,6 @@ Police Uniforms,3474720857,pu.lunartikaaa,0,1,0,"Apparel, styles & cosmetics",ht
 Political Compass - Mort's Ideologies,2932322843,mortstrudel.mortideology,0,1,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=2932322843
 Polyamory Beds (1.5+),3276496684,Meltup.PolyamoryBeds.Vanilla,0,1,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3276496684
 Polyamory Trait,3760161846,lucius.polyamorytrait,0,1,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3760161846
-Ponpeco Furnitures : Kids' Room,3367310887,ponpeco.PFKidsRoom,0,0,1,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=3367310887
-Ponpeco Furnitures : Sci-Fi,3610234567,ponpeco.pfsf,0,0,1,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=3610234567
-Ponpeco Pajamas,3482959515,ponpeco.ponpecopajamas,0,0,1,"Apparel, styles & cosmetics",https://steamcommunity.com/sharedfiles/filedetails/?id=3482959515
 Popup Alerts for Condition Ending,3359890371,espio.endpopup,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=3359890371
 Popup Framework,3654537815,ferny.PopupFramework,1,0,0,Frameworks & libraries,https://steamcommunity.com/sharedfiles/filedetails/?id=3654537815
 Power Alerts,1664714758,diddily.poweralerts,1,0,0,UI & information,https://steamcommunity.com/sharedfiles/filedetails/?id=1664714758
@@ -1207,6 +1219,7 @@ Text Tool,3773691016,ferny.TextTool,1,0,0,Gameplay tweaks,https://steamcommunity
 The Sims Traits,3604588393,goji.thesimstraits,0,1,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3604588393
 The Vanity Project - Beards,3143138787,thevanityproject.beards,0,0,1,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=3143138787
 Theming for Progression Modpack,3493025708,ferny.themingformodpack,1,0,0,"Research, storytellers & progression",https://steamcommunity.com/sharedfiles/filedetails/?id=3493025708
+These Are Our Lands,3828062951,,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3828062951
 Thick Roof Miner Temp,3672142760,CC.Rimworld.ThickRoofMinerTemp,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3672142760
 Thunderstorm,3278460897,neko.thunderstorm,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3278460897
 Time As a Slave,3310058867,llunak.timeasslave,1,0,0,Ideology & social,https://steamcommunity.com/sharedfiles/filedetails/?id=3310058867
@@ -1273,9 +1286,10 @@ Useless Hair (Continued),3044216509,zal.uselesshair,0,0,1,"Hair, bodies & animat
 User Media Props,3359330248,ferny.usermediaprops,0,0,1,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=3359330248
 VA-11 Hall-A Jill Hair,3237918783,Fly.Jill.Hairs,0,0,1,"Hair, bodies & animations",https://steamcommunity.com/sharedfiles/filedetails/?id=3237918783
 Van's Paintings,2901656436,sirvan.vanspaintings,1,0,0,"Furniture, decor & props",https://steamcommunity.com/sharedfiles/filedetails/?id=2901656436
-Van's Retexture : Hemogen Vials,3453224032,sirvan.hemogentexture,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3453224032
+Van's Retexture : Hemogen Vials ,3453224032,sirvan.hemogentexture,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3453224032
 Van's Retexture : Mechanitor,2943977908,sirvan.mechanitorretexture,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=2943977908
 Van's Retexture : Melee Weapons,2922441211,sirvan.mwretextured,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=2922441211
+Van's Retexture : Organ jars,3541295970,,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3541295970
 Vanilla + Wall Vitals Monitors Retexture,3283859881,happycam.vitalsretexture,1,0,0,Textures & retextures,https://steamcommunity.com/sharedfiles/filedetails/?id=3283859881
 Vanilla Animal Voice Genes,3639550391,pacca.genevoiceanimalsvanilla,0,1,0,Vanilla Expanded,https://steamcommunity.com/sharedfiles/filedetails/?id=3639550391
 Vanilla Animals Expanded,2871933948,vanillaexpanded.vanillaanimalsexpanded,0,1,0,Vanilla Expanded,https://steamcommunity.com/sharedfiles/filedetails/?id=2871933948
@@ -1412,6 +1426,7 @@ Vehicle Framework,3014915404,smashphil.vehicleframework,1,0,0,Frameworks & libra
 Vehicle Framework - Local Flight Systems,3482176791,NuanKi.LocalFlight,1,0,0,Frameworks & libraries,https://steamcommunity.com/sharedfiles/filedetails/?id=3482176791
 Vehicle Interior Framework,3184281714,chaotic.rvinterior,0,1,0,Frameworks & libraries,https://steamcommunity.com/sharedfiles/filedetails/?id=3184281714
 Vehicle Map Framework,3426502333,oels.vehiclemapframework,1,0,0,Frameworks & libraries,https://steamcommunity.com/sharedfiles/filedetails/?id=3426502333
+Vehicles at Work,3835520732,,1,0,0,"Vehicles, gravships & mechs",https://steamcommunity.com/sharedfiles/filedetails/?id=3835520732
 VFE Production/Farming - Dubs Bad Hygiene Patches (Adopted) (Deprecated),2766440237,shavius.oreno.vfe.dubsbadhygiene,0,1,0,Vanilla Expanded,https://steamcommunity.com/sharedfiles/filedetails/?id=2766440237
 VFE Props and Decor Search Bar Addon,3713356452,sk.vfepdsearch,1,0,0,Vanilla Expanded,https://steamcommunity.com/sharedfiles/filedetails/?id=3713356452
 VFE Spacer AddOn,2816486181,CiXwOw.VFESpacerAddOn,0,1,0,Vanilla Expanded,https://steamcommunity.com/sharedfiles/filedetails/?id=2816486181
@@ -1429,6 +1444,10 @@ Victorian Era Apparels!,2814195394,gunmar.victorianeraapparels,0,0,1,"Apparel, s
 Visandars Rocks and Stones,3009790001,vis.rocksandstones,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3009790001
 Visit Settlements,3535955435,ninagoblin.visitsettlements,1,0,0,"World, biomes, factions & travel",https://steamcommunity.com/sharedfiles/filedetails/?id=3535955435
 Visored Headgear,3070137089,tbo.visored,1,0,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3070137089
+Visual Progression Framework,3834891951,,1,0,0,Frameworks & libraries,https://steamcommunity.com/sharedfiles/filedetails/?id=3834891951
+Visual Progression: Chemfuel,3837997724,,1,0,0,"Research, storytellers & progression",https://steamcommunity.com/sharedfiles/filedetails/?id=3837997724
+Visual Progression: Van's Hemogen Vials,3836592165,,1,0,0,"Research, storytellers & progression",https://steamcommunity.com/sharedfiles/filedetails/?id=3836592165
+Visual Progression: Van's Organ Jars,3838085030,,1,0,0,"Research, storytellers & progression",https://steamcommunity.com/sharedfiles/filedetails/?id=3838085030
 Visual XML Patches,3570531169,mlie.visualxmlpatches,1,0,0,Patches & compatibility,https://steamcommunity.com/sharedfiles/filedetails/?id=3570531169
 VOE - Progression Mining Patch,3634124647,ryan.voe.progressionminingpatch,1,0,0,Patches & compatibility,https://steamcommunity.com/sharedfiles/filedetails/?id=3634124647
 Void Specialist,3751240132,SierraOnline.VoidSpecialist,0,1,0,Gameplay tweaks,https://steamcommunity.com/sharedfiles/filedetails/?id=3751240132

@@ -8,49 +8,65 @@ Searchable, filterable list of workshop items from:
 
 [Site patch notes](CHANGELOG.md)
 
-**Steam snapshot date: 8 November 2026**
+**Steam snapshot date: 15 November 2026**
 
-**packageId from RimSort steamDB: 1012 of 1504**
+**packageId from RimSort steamDB: 1012 of 1523**
 
-**Known packageIds (RimSort + previous overlay): 1436 of 1504**
+**Known packageIds (RimSort + previous overlay): 1428 of 1523**
 
-**Unique mods: 1504** — Core 874 · Content 433 · Cosmetics 197 (3 collection pages omitted from the item list)
+**Unique mods: 1523** — Core 893 · Content 435 · Cosmetics 195 (3 collection pages omitted from the item list)
 
 This is an unofficial helper, not an official Progression site. Categories are inferred from titles and which collection an item sits in.
 
 ## This snapshot vs previous catalog
 
-### Added (13)
-- AASB2: Underground Ore x3 — 3834396059
-- Medic Warcasket — 3835096426
-- Medieval Overhaul - Timber Keep Progress — 3834876866
-- VFE:C Addon - Double Tents [FORKED RELISTED] — 3667753684
-- [LFS] UI Rethemed - Core — 3832843406
-- [LFS] UI Rethemed - Ideology — 3834172773
-- [LFS] UI Rethemed - History — 3830774158
-- [ADOPTED] Stubbly Facial Hair — 3821528132
-- Cleaning Speed — 2748222814
-- Bulk Stonecutting - Keep Progress — 3834465412
-- [LFS] UI Rethemed - Factions — 3832850311
-- Xenotype Descriptions — 3832924427
-- RimHUD Passion Icons — 3829500081
+### Added (27)
+- [LFS] UI Rethemed - Wildlife — 3828731834
+- Player Multicolor Ideology Icon — 3839041756
+- Visual Progression: Chemfuel — 3837997724
+- These Are Our Lands — 3828062951
+- Vehicles at Work — 3835520732
+- CAI 5000 Performance Fix (1.7) — 3827953715
+- I Can Sit On This Throne — 3836624677
+- [LFS] UI Rethemed - Main Bar — 3826865706
+- Visual Progression: Van's Organ Jars — 3838085030
+- Never Home Area — 3839235856
+- Chemfuel Retextured : For Medieval and Tribal — 3454176238
+- Ambience Core — 3835975372
+- Baby Birds Can't Fly — 3836369455
+- [DG]More Door Variants — 3832293718
+- Automatic Foraging — 3687750532
+- [LFS] UI Rethemed - Quests — 3829391880
+- Chemfuel Retexture — 3730861087
+- Visual Progression: Van's Hemogen Vials — 3836592165
+- Van's Retexture : Organ jars — 3541295970
+- Panning For Gold Ore Patch — 3836445267
+- Linkable Descriptions — 3837322529
+- [LFS] UI Rethemed - Animals — 3831602102
+- [LFS] UI Rethemed - Notifications — 3827650605
+- Injector Implant — 3837632462
+- Mech Group Rename & Caravan List — 3837808142
+- Dynamic Spacefarer Policy — 3829638797
+- Visual Progression Framework — 3834891951
 
-### Removed (3)
-- Modern Faction Menu — 3742926690
-- Modern History Menu — 3742925193
-- Cybranian - Faction Interface — 2854657718
+### Removed (8)
+- Animal Tab — 712141500
+- Declutter UI — 3649094165
+- Modern Notifications — 3752932665
+- Ponpeco Pajamas — 3482959515
+- Ponpeco Furnitures : Kids' Room — 3367310887
+- Ponpeco Furnitures : Sci-Fi — 3610234567
+- Faction Territories FPS Fix — 3768849805
+- Faction Territories and Vassalage — 3626725895
 
-### Renamed (7)
-- Interaction Spot On Chunk  → Interaction Spot On X  — 3827781564
-- Roo's Minotaur Xenotype (1.6) → Roo's Minotaur Xenotype (Continued) — 3548423129
-- ReBuild: Doors and Corners - Cell Door Fix → ReBuild: Cell Door Fix — 3598547615
-- ChordedKeybinds → Chorded Keybinds — 3660259520
-- Null Tooltip & Nameless Book Fix → Neko's Compatibility Fixes — 3828892965
-- Mass Graves 1.6 → Mass Graves 1.7 — 3545739596
-- Form and Function Hairstyle → RimAesthetics: Form and Function — 3785728415
+### Renamed (4)
+- HALO: Rimworld Psychic Pulse Armory (Continued) → [1.6] HALO: Rimworld Psychic Pulse Armory (Continued) — 3507626861
+- Noble and Psycaster Styles Morbid → Noble and Psycaster Furniture Styles Morbid — 3828495663
+- Van's Retexture : Hemogen Vials → Van's Retexture : Hemogen Vials  — 3453224032
+- Gravship Pilot Console Retexture → Pilot Console Retexture — 3528477422
 
-### Newly unavailable (1)
-- Beam Constructor — 3801431089
+### Newly unavailable (0)
+- None
 
 ## Open the catalog
 
