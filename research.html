@@ -389,7 +389,7 @@ function select(d) {
     <h3>Leads to</h3><div class="links">${p.kids.length ? p.kids.map(q => linkBtn(q, p)).join('') : '<span class="muted">Nothing</span>'}</div>`;
 }
 // what finishing the project unlocks, grouped the way a player looks for it
-const UNLOCK_KINDS = [['building', 'Buildings'], ['item', 'Items'], ['floor', 'Floors'], ['plant', 'Plants'], ['creature', 'Creatures'], ['surgery', 'Surgeries'], ['ritual', 'Rituals']];
+const UNLOCK_KINDS = [['building', 'Buildings'], ['vehicle', 'Vehicles'], ['item', 'Items'], ['floor', 'Floors'], ['plant', 'Plants'], ['creature', 'Creatures'], ['surgery', 'Surgeries'], ['ritual', 'Rituals']];
 function unlockList(p) {
   if (!p.u.length) return '<h3>Unlocks</h3><p class="muted">Nothing directly</p>';
   const kinds = Array.isArray(p.uk) && p.uk.length === p.u.length ? p.uk : p.u.map(() => 'item');
