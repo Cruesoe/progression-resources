@@ -34,15 +34,7 @@ def main() -> None:
     new_text = "\n".join(lines) + "\n"
     if re.search(r"\(\d+ of \d+\)", new_text):
         new_text = re.sub(r"\(\d+ of \d+\)", f"({have} of {total})", new_text, count=1)
-    today = datetime.now(timezone.utc)
-    today_iso = today.strftime("%Y-%m-%d")
-    today_display = f"{today.day} {today.strftime('%B %Y')}"
-    new_text = re.sub(
-        r'<time datetime="[^"]+">[^<]+</time>',
-        f'<time datetime="{today_iso}">{today_display}</time>',
-        new_text,
-        count=1,
-    )
+    today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     HTML.write_text(new_text, encoding="utf-8")
 
     if CSV_PATH.exists():
@@ -61,12 +53,6 @@ def main() -> None:
 
     if README.exists():
         rtxt = README.read_text(encoding="utf-8")
-        rtxt = re.sub(
-            r"\*\*Steam snapshot date: [^\n]+\*\*",
-            f"**Steam snapshot date: {today_display}**",
-            rtxt,
-            count=1,
-        )
         cov = f"**packageId coverage: {have} of {total}**"
         if re.search(r"\*\*packageId coverage:", rtxt):
             rtxt = re.sub(r"\*\*packageId coverage:.*", cov, rtxt, count=1)
@@ -81,7 +67,10 @@ def main() -> None:
         if "packageIds filled" in rtxt:
             rtxt = re.sub(r"- packageIds filled.*", note, rtxt, count=1)
         else:
-            rtxt = rtxt.rstrip() + "\n\n## Snapshot notes\n\n" + note + "\n"
+            if "## Snapshot notes" in rtxt:
+                rtxt = rtxt.replace("## Snapshot notes\n\n", "## Snapshot notes\n\n" + note + "\n", 1)
+            else:
+                rtxt = rtxt.rstrip() + "\n\n## Snapshot notes\n\n" + note + "\n"
         README.write_text(rtxt, encoding="utf-8")
     print(f"merged {len(mapping)} overlay ids -> {have}/{total}")
 

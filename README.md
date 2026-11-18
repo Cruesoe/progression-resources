@@ -97,11 +97,8 @@ Repo **Settings → Pages → Build and deployment**
 
 ## Snapshot notes
 
+- packageIds filled 2026-11-18
 - Steam Web API snapshot 2026-09-13
 - packageId from RimSort steamDB.json; existing overlay/catalog packageIds kept when RimSort has no row
 - New workshop IDs without a RimSort row are left blank (packageId unknown)
 - Did not download workshop mods via SteamCMD
-
-## Snapshot notes
-
-- packageIds filled 2026-11-18
