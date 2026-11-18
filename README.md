@@ -8,7 +8,9 @@ Unofficial tools for ferny's Progression RimWorld collections: a searchable cata
 
 [Site patch notes](CHANGELOG.md)
 
-**Steam snapshot date: 15 November 2026**
+**Steam snapshot date: 18 November 2026**
+
+**packageId coverage: 1430 of 1523**
 
 **packageId from RimSort steamDB: 1012 of 1523**
 
@@ -99,3 +101,7 @@ Repo **Settings → Pages → Build and deployment**
 - packageId from RimSort steamDB.json; existing overlay/catalog packageIds kept when RimSort has no row
 - New workshop IDs without a RimSort row are left blank (packageId unknown)
 - Did not download workshop mods via SteamCMD
+
+## Snapshot notes
+
+- packageIds filled 2026-11-18
