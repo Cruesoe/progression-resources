@@ -99,6 +99,10 @@ dd { margin: 0; min-width: 0; word-break: break-word; }
   .key { display: none; }
 }
 @media (prefers-reduced-motion: no-preference) { .node rect.box { transition: stroke .12s; } }
+.ugroup { display: grid; gap: 3px; margin-bottom: 8px; }
+.ugroup > span { font-size: 12px; color: var(--muted); }
+.unlocks { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; max-height: 220px; overflow-y: auto; }
+.unlocks li { border: 1px solid var(--line); border-radius: 3px; padding: 1px 7px; font-size: 13px; background: var(--canvas); }
 .crumb { font-size: 13px; color: var(--muted); }
 .crumb a { color: var(--accent); text-decoration: none; }
 #loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 16px; }
@@ -173,6 +177,7 @@ function load(ed) {
     D.all = D.projects.filter(p => !p.na && p.ot);
     for (const p of D.all) {
       for (const k of ['l', 'tl', 'c', 'ds', 's', 'mr', 'rt', 'hub', 'chub', 'ot', 'ct', 'k']) p[k] = str(p[k]);
+      p.uk = Array.isArray(p.uk) ? p.uk.map(str) : [];
       p.p = Array.isArray(p.p) ? [...new Set(p.p.map(str))].filter(d => d && d !== p.d) : [];
       p.hp = Array.isArray(p.hp) ? p.hp.map(str) : [];
       p.u = Array.isArray(p.u) ? p.u.map(str).filter(Boolean) : [];
@@ -368,6 +373,7 @@ function select(d) {
     <h3>${esc(source(p))}${modLink(p)}</h3>
     <h2>${esc(cap(p.l) || p.d)}</h2>
     <div class="def">${esc(p.d)}</div>
+    <div style="margin-top:12px">${unlockList(p)}</div>
     <dl>
       <dt>Era</dt><dd>${esc(p.tl || 'none')}${p.rt && p.rt !== (p.tl || 'Undefined') ? ` → ${esc(p.rt)} (raised to its prerequisites)` : ''}</dd>
       <dt>Cost</dt><dd>${esc(p.c || '—')}</dd>
@@ -379,9 +385,17 @@ function select(d) {
       ${p.f ? `<dt>File</dt><dd class="def">${esc(p.f)}</dd>` : ''}
     </dl>
     ${p.ds ? `<p class="desc">${esc(p.ds)}</p>` : ''}
-    <h3>Unlocks</h3><p class="desc">${p.u.length ? esc(p.u.join(', ')) : '<span class="muted">Nothing</span>'}</p>
     <h3>Requires</h3><div class="links">${p.p.length ? p.p.map(q => linkBtn(q, p)).join('') : '<span class="muted">Nothing</span>'}</div>
     <h3>Leads to</h3><div class="links">${p.kids.length ? p.kids.map(q => linkBtn(q, p)).join('') : '<span class="muted">Nothing</span>'}</div>`;
+}
+// what finishing the project unlocks, grouped the way a player looks for it
+const UNLOCK_KINDS = [['building', 'Buildings'], ['item', 'Items'], ['floor', 'Floors'], ['plant', 'Plants'], ['creature', 'Creatures'], ['surgery', 'Surgeries'], ['ritual', 'Rituals']];
+function unlockList(p) {
+  if (!p.u.length) return '<h3>Unlocks</h3><p class="muted">Nothing directly</p>';
+  const kinds = Array.isArray(p.uk) && p.uk.length === p.u.length ? p.uk : p.u.map(() => 'item');
+  const groups = UNLOCK_KINDS.map(([k, name]) => [name, p.u.filter((_, i) => kinds[i] === k)]).filter(g => g[1].length);
+  return `<h3>Unlocks · ${p.u.length}</h3>` + groups.map(([name, list]) =>
+    `<div class="ugroup"><span>${name}</span><ul class="unlocks">${list.map(l => `<li>${esc(cap(l))}</li>`).join('')}</ul></div>`).join('');
 }
 // the project's mod: its catalog entry on the site, otherwise its Workshop page
 function modLink(p) {
