@@ -4,7 +4,7 @@
     "researchMods":  139,
     "projects":  {
                      "Progression":  2225,
-                     "ProgressionLESS":  1153
+                     "ProgressionLESS":  1087
                  },
     "mods":  {
                  "1880253632":  {
@@ -81,7 +81,7 @@
                                     "name":  "Progression: Vehicles",
                                     "p":  31,
                                     "less":  "ProgressionLESS Vehicles",
-                                    "l":  31
+                                    "l":  16
                                 },
                  "3365118555":  {
                                     "name":  "Mechanoid Upgrades",
@@ -321,7 +321,7 @@
                                     "name":  "Progression: Power",
                                     "p":  22,
                                     "less":  "ProgressionLESS Power",
-                                    "l":  22
+                                    "l":  6
                                 },
                  "2134308519":  {
                                     "name":  "Vanilla Cooking Expanded",
@@ -461,7 +461,7 @@
                                     "name":  "Progression: Water",
                                     "p":  34,
                                     "less":  "ProgressionLESS Water",
-                                    "l":  35
+                                    "l":  7
                                 },
                  "1814987817":  {
                                     "name":  "Vanilla Apparel Expanded",
