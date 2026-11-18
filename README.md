@@ -12,60 +12,56 @@ Unofficial tools for ferny's Progression RimWorld collections: a searchable cata
 
 **packageId coverage: 1518 of 1523**
 
-**packageId from RimSort steamDB: 1012 of 1523**
+**packageId from RimSort steamDB: 1012 of 1543**
 
-**Known packageIds (RimSort + previous overlay): 1428 of 1523**
+**Known packageIds (RimSort + previous overlay): 1513 of 1543**
 
-**Unique mods: 1523** — Core 893 · Content 435 · Cosmetics 195 (3 collection pages omitted from the item list)
+**Unique mods: 1543** — Core 899 · Content 444 · Cosmetics 200 (3 collection pages omitted from the item list)
 
 This is an unofficial helper, not an official Progression site. Categories are inferred from titles and which collection an item sits in.
 
 ## This snapshot vs previous catalog
 
 ### Added (27)
-- [LFS] UI Rethemed - Wildlife — 3828731834
-- Player Multicolor Ideology Icon — 3839041756
-- Visual Progression: Chemfuel — 3837997724
-- These Are Our Lands — 3828062951
-- Vehicles at Work — 3835520732
+- Rustic Meal Retexture — 3453364177
+- Cherokee Sling - Vehicle and Container Airlift — 3836765380
+- Milky Way — 3773448562
+- Utility Vehicle — 3627439568
+- [LFS] UI Rethemed - Architect — 3830054994
+- Visual Progression: Meals — 3834892583
+- HE-Chevrolet Tahoe '07 — 3430904230
+- NANAME Floors — 3293767181
+- Engine Industries — 3009527756
+- UI Rethemed - Era Looks — 3840498215
+- Body Hair Framework — 3823805934
+- HE-Ford B700 Bus '87 — 3281446276
+- Wayward Biomes: Core — 3710302618
+- Sling Framework — 3840130852
+- Progression: Power — 3841675689
+- Fog Color Changer — 3492647454
+- [LFS] UI Rethemed - Relationships — 3840876824
+- Morton's Body Hair (Not Tattoos) — 3825963278
+- Progression: Water — 3841674396
+- Progression: Waste — 3841676471
+- SQUISHY Ranged — 3833016652
+- Wayward Biomes: Tangled Hollows — 3837906824
+- Progression: Vehicles — 3841677765
+- Smooth Terrain — 3502765685
+- Overlord Warcasket — 3841078351
+- GTek's Vehicles - 1998 Subaru Forester — 3367924127
+- [LFS] UI Rethemed - Colonist Card — 3828206639
+
+### Removed (7)
 - CAI 5000 Performance Fix (1.7) — 3827953715
-- I Can Sit On This Throne — 3836624677
-- [LFS] UI Rethemed - Main Bar — 3826865706
-- Visual Progression: Van's Organ Jars — 3838085030
-- Never Home Area — 3839235856
-- Chemfuel Retextured : For Medieval and Tribal — 3454176238
-- Ambience Core — 3835975372
-- Baby Birds Can't Fly — 3836369455
-- [DG]More Door Variants — 3832293718
-- Automatic Foraging — 3687750532
-- [LFS] UI Rethemed - Quests — 3829391880
-- Chemfuel Retexture — 3730861087
-- Visual Progression: Van's Hemogen Vials — 3836592165
-- Van's Retexture : Organ jars — 3541295970
-- Panning For Gold Ore Patch — 3836445267
-- Linkable Descriptions — 3837322529
-- [LFS] UI Rethemed - Animals — 3831602102
-- [LFS] UI Rethemed - Notifications — 3827650605
-- Injector Implant — 3837632462
-- Mech Group Rename & Caravan List — 3837808142
-- Dynamic Spacefarer Policy — 3829638797
-- Visual Progression Framework — 3834891951
+- Better Inspect Pane — 3788686557
+- RimHUD — 1508850027
+- Chest Hair Tattoos — 3549854404
+- Cybranian - Social Interface — 2854221326
+- [LYN] VVE Renamed — 3014810352
+- RimHUD Passion Icons — 3829500081
 
-### Removed (8)
-- Animal Tab — 712141500
-- Declutter UI — 3649094165
-- Modern Notifications — 3752932665
-- Ponpeco Pajamas — 3482959515
-- Ponpeco Furnitures : Kids' Room — 3367310887
-- Ponpeco Furnitures : Sci-Fi — 3610234567
-- Faction Territories FPS Fix — 3768849805
-- Faction Territories and Vassalage — 3626725895
-
-### Renamed (4)
-- HALO: Rimworld Psychic Pulse Armory (Continued) → [1.6] HALO: Rimworld Psychic Pulse Armory (Continued) — 3507626861
-- Noble and Psycaster Styles Morbid → Noble and Psycaster Furniture Styles Morbid — 3828495663
-- Van's Retexture : Hemogen Vials → Van's Retexture : Hemogen Vials  — 3453224032
-- Gravship Pilot Console Retexture → Pilot Console Retexture — 3528477422
+### Renamed (1)
+- Won hair_women → Won hair_women  — 1886150617
 
 ### Newly unavailable (0)
 - None

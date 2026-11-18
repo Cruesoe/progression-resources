@@ -1,8 +1,8 @@
 The Progression — categorized catalog
-Steam snapshot: 15 November 2026
+Steam snapshot: 18 November 2026
 
 ========================================================================
-Frameworks & libraries  (29)
+Frameworks & libraries  (31)
 ========================================================================
   - [SYR] Processor Framework (Deprecated)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3210544395
@@ -16,6 +16,8 @@ Frameworks & libraries  (29)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2925432336
   - Biomes! Framework
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3709492514
+  - Body Hair Framework
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3823805934
   - Bunny Framework
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3015333853
   - Custom Base Framework
@@ -42,6 +44,8 @@ Frameworks & libraries  (29)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3654537815
   - ReplaceLib
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3417393194
+  - Sling Framework
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3840130852
   - SpineLib
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3778463813
   - TD Find Lib - Continued
@@ -64,7 +68,7 @@ Frameworks & libraries  (29)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2574315206
 
 ========================================================================
-Performance & tools  (30)
+Performance & tools  (29)
 ========================================================================
   - [1.5-1.6] Custom Xenotype Exporter Tool
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3254345251
@@ -72,8 +76,6 @@ Performance & tools  (30)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3599419929
   - Architect Menu Optimizer
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3697920753
-  - CAI 5000 Performance Fix (1.7)
-    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3827953715
   - Copy Mod-ID to Clipboard
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3378714569
   - Dev Mode Above Select Starting Site
@@ -128,12 +130,16 @@ Performance & tools  (30)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3744475229
 
 ========================================================================
-UI & information  (118)
+UI & information  (119)
 ========================================================================
   - [DR] Build Outline（占地描边）
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3796610291
   - [LFS] UI Rethemed - Animals
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3831602102
+  - [LFS] UI Rethemed - Architect
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3830054994
+  - [LFS] UI Rethemed - Colonist Card
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3828206639
   - [LFS] UI Rethemed - Core
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3832843406
   - [LFS] UI Rethemed - Factions
@@ -148,6 +154,8 @@ UI & information  (118)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3827650605
   - [LFS] UI Rethemed - Quests
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3829391880
+  - [LFS] UI Rethemed - Relationships
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3840876824
   - [LFS] UI Rethemed - Wildlife
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3828731834
   - [LTO] Colony Groups
@@ -168,8 +176,6 @@ UI & information  (118)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3696948139
   - Better Gene Processor UI
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3548641009
-  - Better Inspect Pane
-    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3788686557
   - Better Mod Menu
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3636406008
   - Better Records Tab (Continued)
@@ -298,8 +304,6 @@ UI & information  (118)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2914821423
   - Right-Click Gizmo Indicator
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3750529401
-  - RimHUD
-    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=1508850027
   - Scenario Editor UI Overhaul
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3547456746
   - Scenario Searchbars [1.6]
@@ -474,7 +478,7 @@ Quality of life  (51)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2436086611
 
 ========================================================================
-Textures & retextures  (73)
+Textures & retextures  (74)
 ========================================================================
   - (unavailable 2920418046)  [unavailable]
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2920418046
@@ -580,6 +584,8 @@ Textures & retextures  (73)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2979449586
   - Revert Column Texture
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3534066559
+  - Rustic Meal Retexture
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3453364177
   - Simple Cape and Hood Retexture
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3543386604
   - Simple HD Bodies
@@ -660,8 +666,6 @@ Hair, bodies & animations  (77)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3742391245
   - Butchery Work Scales With Body Size
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3809027243
-  - Chest Hair Tattoos
-    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3549854404
   - Croiyaki's Deadlock Hairs
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3666617471
   - Cute Boy Hairstyles
@@ -714,6 +718,8 @@ Hair, bodies & animations  (77)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3509800074
   - More and Retextured Head Shapes for VTE for Facial Animation
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3407049972
+  - Morton's Body Hair (Not Tattoos)
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3825963278
   - Nice Short Female Hairs
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3316363751
   - Nixte's Hair Salon
@@ -776,7 +782,7 @@ Hair, bodies & animations  (77)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3132223639
   - Won hair_men
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=1879950403
-  - Won hair_women
+  - Won hair_women 
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=1886150617
   - Yayo's Animation (Continued)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=2877292196
@@ -2104,7 +2110,7 @@ Genes, xenotypes & races  (68)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3710012135
 
 ========================================================================
-Ideology & social  (50)
+Ideology & social  (49)
 ========================================================================
   - [LC] Collector Ideology
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3535706184
@@ -2130,8 +2136,6 @@ Ideology & social  (50)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2936965087
   - Cybranian - Ideology Virtues
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3459205505
-  - Cybranian - Social Interface
-    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2854221326
   - Dark Psychic Rituals: The Following
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3596468709
   - Dismiss Beggars
@@ -2208,7 +2212,7 @@ Ideology & social  (50)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3108763487
 
 ========================================================================
-World, biomes, factions & travel  (55)
+World, biomes, factions & travel  (57)
 ========================================================================
   - (unavailable 3226502149)  [unavailable]
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3226502149
@@ -2312,6 +2316,10 @@ World, biomes, factions & travel  (55)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2046222331
   - Visit Settlements
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3535955435
+  - Wayward Biomes: Core
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3710302618
+  - Wayward Biomes: Tangled Hollows
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3837906824
   - We Had a Trader? (Continued)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=1541408076
   - Winter Taiga Biome 2
@@ -2322,7 +2330,7 @@ World, biomes, factions & travel  (55)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=2886919774
 
 ========================================================================
-Research, storytellers & progression  (44)
+Research, storytellers & progression  (49)
 ========================================================================
   - Alfred Ancient - Progression Storytellers
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3579763743
@@ -2368,6 +2376,8 @@ Research, storytellers & progression  (44)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3265298940
   - Progression: Kitchen
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3424640315
+  - Progression: Power
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3841675689
   - Progression: Production
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3453408412
   - Progression: Robotics
@@ -2382,10 +2392,16 @@ Research, storytellers & progression  (44)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3253283971
   - Progression: Therapy
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3753615736
+  - Progression: Vehicles
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3841677765
   - Progression: Verticality
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3416136317
   - Progression: Warrants
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3270214529
+  - Progression: Waste
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3841676471
+  - Progression: Water
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3841674396
   - Progression: Worlds
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3534993993
   - Romina Ready - Progression Storytellers
@@ -2400,6 +2416,8 @@ Research, storytellers & progression  (44)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3745138223
   - Visual Progression: Chemfuel
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3837997724
+  - Visual Progression: Meals
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3834892583
   - Visual Progression: Van's Hemogen Vials
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3836592165
   - Visual Progression: Van's Organ Jars
@@ -2414,7 +2432,7 @@ Research, storytellers & progression  (44)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3403972335
 
 ========================================================================
-Vehicles, gravships & mechs  (33)
+Vehicles, gravships & mechs  (36)
 ========================================================================
   - (unavailable 3015087560)  [unavailable]
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3015087560
@@ -2424,6 +2442,8 @@ Vehicles, gravships & mechs  (33)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3673815123
   - Apex Mechanoids
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3792325789
+  - Cherokee Sling - Vehicle and Container Airlift
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3836765380
   - Debt-Bound Gravship
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3529144158
   - Extra Vehicle Patterns
@@ -2434,6 +2454,8 @@ Vehicles, gravships & mechs  (33)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3528780638
   - Gravship Fleet
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3787239201
+  - GTek's Vehicles - 1998 Subaru Forester
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3367924127
   - Healer Mech Serum Choice
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2714095848
   - Heavy Truck
@@ -2480,11 +2502,13 @@ Vehicles, gravships & mechs  (33)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3246748490
   - Technical map Vehicles
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3438366909
+  - Utility Vehicle
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3627439568
   - Vehicles at Work
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3835520732
 
 ========================================================================
-Gameplay tweaks  (326)
+Gameplay tweaks  (334)
 ========================================================================
   - (unavailable 3712465624)  [unavailable]
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3712465624
@@ -2508,8 +2532,6 @@ Gameplay tweaks  (326)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3526957922
   - [GMT] Trading Spot
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2874517333
-  - [LYN] VVE Renamed
-    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3014810352
   - [RH2] CPERS: Arrest Here!
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2563157350
   - AASB2: Underground Ore x3
@@ -2660,6 +2682,8 @@ Gameplay tweaks  (326)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=1716086112
   - Elosth's Pawn Presets
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3719680719
+  - Engine Industries
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3009527756
   - Enhanced of Vanilla - Flaks and Plates
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3526444119
   - Enhanced Vat Learning
@@ -2692,6 +2716,8 @@ Gameplay tweaks  (326)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3793154978
   - Fluffy Breakdowns Continued
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3654021202
+  - Fog Color Changer
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3492647454
   - Foot Traffic Heatmap
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3240217316
   - Fuck Embrasures
@@ -2722,6 +2748,10 @@ Gameplay tweaks  (326)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3417891982
   - Hard Vacuum
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3530415332
+  - HE-Chevrolet Tahoe '07
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3430904230
+  - HE-Ford B700 Bus '87
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3281446276
   - HEAVY Snow
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2912575354
   - Helixien Gas Brazier
@@ -2820,6 +2850,8 @@ Gameplay tweaks  (326)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3497828669
   - Milk Pipe Network
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2988129340
+  - Milky Way
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3773448562
   - Mine Sight
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3769804600
   - Minimal Light Control
@@ -2846,6 +2878,8 @@ Gameplay tweaks  (326)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3815624891
   - Name Your Entities
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3229905841
+  - NANAME Floors
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3293767181
   - Nerfed Fecal Sludge
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3133620553
   - Neural Supercharger Ownership
@@ -2878,6 +2912,8 @@ Gameplay tweaks  (326)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=2896673577
   - Opulent Gold
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3138887051
+  - Overlord Warcasket
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3841078351
   - Oxygen Detector
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3587621326
   - Pacing Manager
@@ -2962,8 +2998,6 @@ Gameplay tweaks  (326)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3796688140
   - Rimblings
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3806903620
-  - RimHUD Passion Icons
-    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3829500081
   - Rimmessian Fox
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3708558259
   - RimToll
@@ -3022,12 +3056,16 @@ Gameplay tweaks  (326)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2800676538
   - Smarter Visitors
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3012491521
+  - Smooth Terrain
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3502765685
   - Soil Contrast
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=1561838700
   - Spawn Mod Content
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2922590693
   - Spectacular Skullspike
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2963460063
+  - SQUISHY Ranged
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3833016652
   - Standing Cryptopods
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2765538832
   - Stoneborn - Delights
@@ -3088,6 +3126,8 @@ Gameplay tweaks  (326)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=1542424705
   - Ugly Together
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2884233923
+  - UI Rethemed - Era Looks
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3840498215
   - Un-Limited Reborn
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3295368629
   - UNA English Translations
