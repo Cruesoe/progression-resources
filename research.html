@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Progression Research Tree</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one-screen viewer. Header with view, tab strip, search and mod filter; canvas at in-game coordinates; details sheet over it. */
+:root {
+  --bg: #e9ebe6; --canvas: #f3f4f0; --band: #e4e7df; --surface: #ffffff; --line: #c9cdc2;
+  --fg: #22261f; --muted: #646b5e; --edge: #b3b8ab; --edge-hi: #2d3328; --accent: #3c6e47; --hit: #d08a1f;
+  --shadow: 0 4px 18px rgba(30,35,25,.18);
+  --e0: #8f8f8f; --e1: #73543d; --e2: #8a1f1f; --e3: #7d7a12; --e4: #2f7a2f; --e5: #1f7a7a; --e6: #2b3f99; --e7: #94529a; --ea: #5e2a63;
+  --f-ui: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15171a; --canvas: #1c1f23; --band: #22262b; --surface: #23272c; --line: #353a41;
+  --fg: #e3e6e8; --muted: #8e959c; --edge: #444b53; --edge-hi: #e3e6e8; --accent: #7cc48a; --hit: #f0a93a;
+  --shadow: 0 4px 18px rgba(0,0,0,.5);
+  --e0: #9a9a9a; --e1: #a57a58; --e2: #d05a5a; --e3: #c2bd45; --e4: #5cb85c; --e5: #4fb8b8; --e6: #7088e0; --e7: #c88fd0; --ea: #a768ae; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #15171a; --canvas: #1c1f23; --band: #22262b; --surface: #23272c; --line: #353a41;
+  --fg: #e3e6e8; --muted: #8e959c; --edge: #444b53; --edge-hi: #e3e6e8; --accent: #7cc48a; --hit: #f0a93a;
+  --shadow: 0 4px 18px rgba(0,0,0,.5);
+  --e0: #9a9a9a; --e1: #a57a58; --e2: #d05a5a; --e3: #c2bd45; --e4: #5cb85c; --e5: #4fb8b8; --e6: #7088e0; --e7: #c88fd0; --ea: #a768ae; color-scheme: dark }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-ui); font-size: 15px; display: flex; flex-direction: column; overflow: hidden; }
+button, input, select { font: inherit; color: inherit; }
+header { display: flex; flex-direction: column; gap: 6px; padding-block: 8px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); border-bottom: 1px solid var(--line); background: var(--surface); position: relative; z-index: 5; }
+.row { display: flex; gap: 6px 12px; align-items: center; flex-wrap: wrap; min-width: 0; }
+h1 { font-size: 18px; font-weight: 700; margin: 0; white-space: nowrap; }
+.meta { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.seg button { border: 0; background: transparent; padding: 3px 10px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--surface); }
+.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: thin; min-width: 0; padding-bottom: 2px; }
+.tabs button { flex: none; border: 1px solid var(--line); border-radius: 3px; background: transparent; padding: 2px 9px; cursor: pointer; white-space: nowrap; }
+.tabs button b { font-family: var(--f-mono); font-weight: 400; font-size: 12px; color: var(--muted); margin-left: 5px; }
+.tabs button b.m { color: var(--hit); }
+.tabs button[aria-pressed="true"] { border-color: var(--fg); background: var(--band); font-weight: 600; }
+.find { position: relative; flex: 1 1 220px; min-width: 0; max-width: 360px; }
+.find input, select { width: 100%; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas); padding: 3px 8px; min-width: 0; }
+select { width: auto; max-width: 260px; }
+#results { position: absolute; top: 100%; left: 0; right: 0; margin-top: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow); max-height: 50vh; overflow-y: auto; z-index: 10; }
+#results button { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 5px 8px; cursor: pointer; }
+#results button:hover, #results button:focus-visible { background: var(--band); }
+#results small { display: block; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+label.chk { display: inline-flex; gap: 5px; align-items: center; font-size: 14px; color: var(--muted); white-space: nowrap; }
+.key { display: flex; gap: 4px 10px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.key span { display: inline-flex; align-items: center; gap: 4px; }
+.key i { width: 10px; height: 10px; border-radius: 2px; background: var(--c); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+#stage { flex: 1; position: relative; overflow: hidden; background: var(--canvas); touch-action: none; cursor: grab; min-height: 0; }
+#stage.panning { cursor: grabbing; }
+svg { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-select: none; }
+.band { fill: var(--band); }
+#eras { position: absolute; left: 0; right: 0; top: 0; height: 26px; pointer-events: none; }
+#eras div { position: absolute; top: 0; height: 26px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: color-mix(in srgb, var(--surface) 88%, transparent); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); overflow: hidden; white-space: nowrap; }
+#eras b { font-family: var(--f-mono); font-weight: 400; letter-spacing: 0; margin-left: 6px; text-transform: none; }
+.edge { fill: none; stroke: var(--edge); stroke-width: 1.2; }
+.edge.x { stroke-dasharray: 3 4; }
+.noX .edge.x:not(.hi) { display: none; }
+.edge.hi { stroke: var(--edge-hi); stroke-width: 2.2; }
+.dimmed .edge:not(.hi) { opacity: .08; }
+.node { cursor: pointer; }
+.node rect.box { fill: var(--surface); stroke: var(--edge); stroke-width: 1; }
+.node .bar { fill: var(--c); }
+.node text { fill: var(--fg); font-family: var(--f-ui); }
+.node .lbl { font-size: 13px; font-weight: 600; }
+.node .sub { font-size: 10px; fill: var(--muted); font-family: var(--f-mono); }
+.node .hub { fill: var(--c); }
+.node.cyc rect.box { stroke: #d33; stroke-width: 2; }
+.node.match rect.box { stroke: var(--hit); stroke-width: 2.5; }
+.filtering .node:not(.match) { opacity: .25; }
+.dimmed .node:not(.on) { opacity: .15; }
+.node.sel rect.box { stroke: var(--edge-hi); stroke-width: 3; }
+.zoom { position: absolute; right: calc(12px + env(safe-area-inset-right, 0px)); top: 36px; display: flex; flex-direction: column; gap: 4px; }
+.zoom button { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); box-shadow: var(--shadow); font-size: 17px; cursor: pointer; }
+#info { position: absolute; right: calc(12px + env(safe-area-inset-right, 0px)); top: 36px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: 340px; margin-right: 46px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; box-shadow: var(--shadow); padding: 14px 16px; overflow-y: auto; }
+#close { position: absolute; top: 8px; right: 8px; border: 0; background: none; font-size: 18px; cursor: pointer; color: var(--muted); padding: 4px 8px; }
+#info h2 { margin: 0 0 2px; font-size: 20px; line-height: 1.15; text-wrap: balance; padding-right: 24px; }
+#info h3 { margin: 12px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+#info h3:first-of-type { margin-top: 0; }
+.def { font-family: var(--f-mono); font-size: 12px; color: var(--muted); word-break: break-all; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; font-size: 14px; }
+dt { color: var(--muted); }
+dd { margin: 0; min-width: 0; word-break: break-word; }
+.desc { font-size: 14px; line-height: 1.45; margin: 0; }
+.links { display: flex; flex-wrap: wrap; gap: 4px; }
+.link { border: 1px solid var(--line); border-radius: 3px; background: transparent; padding: 2px 7px; font-size: 13px; cursor: pointer; text-align: left; }
+.link small { color: var(--muted); font-size: 11px; margin-left: 4px; }
+.link.off { border-style: dashed; color: var(--muted); cursor: default; }
+.muted { color: var(--muted); font-size: 13px; }
+@media (max-width: 760px) {
+  #info { left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); top: auto; bottom: calc(8px + env(safe-area-inset-bottom, 0px)); width: auto; max-height: 55%; margin-right: 0; }
+  .key { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) { .node rect.box { transition: stroke .12s; } }
+.crumb { font-size: 13px; color: var(--muted); }
+.crumb a { color: var(--accent); text-decoration: none; }
+#loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 16px; }
+</style>
+<meta name="description" content="Every research project in ferny's Progression RimWorld pack, with ferny's mods or the ProgressionLESS mods.">
+<meta name="theme-color" content="#101a17">
+<link rel="canonical" href="https://cruesoe.github.io/progression-resources/research.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b3a2e'/%3E%3Cpath d='M19 48V16h15c8 0 13 5 13 12s-5 12-13 12h-7v8zm8-15h7c3 0 5-2 5-5s-2-5-5-5h-7z' fill='%2395d5b2'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Progression Resources">
+<meta property="og:title" content="Progression research tree">
+<meta property="og:description" content="Every research project in ferny's Progression pack, with ferny's mods or the ProgressionLESS mods.">
+<meta property="og:url" content="https://cruesoe.github.io/progression-resources/research.html">
+<style>
+/* Progression Resources palette (the catalog's), in place of the viewer's light/dark themes */
+:root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+  --bg: #0e1412; --canvas: #101a17; --band: #15201c; --surface: #15201c; --line: #2d463c;
+  --fg: #e8f5ef; --muted: #8aa99a; --edge: #3a5a4d; --edge-hi: #e8f5ef; --accent: #52b788; --hit: #f0a93a;
+  --shadow: 0 10px 40px rgba(0,0,0,.35);
+  --e0: #9a9a9a; --e1: #a57a58; --e2: #d05a5a; --e3: #c2bd45; --e4: #5cb85c; --e5: #4fb8b8; --e6: #7088e0; --e7: #c88fd0; --ea: #a768ae;
+  color-scheme: dark;
+}
+html, body { margin: 0; }
+[hidden] { display: none !important; }
+*, *::before, *::after { box-sizing: border-box; }
+</style>
+
+
+<header>
+  <nav class="crumb" id="crumb" hidden><a href="./">Progression Resources</a> · <a href="catalog.html">Catalog</a></nav>
+  <div class="row"><h1 id="h1">Progression research tree</h1><span class="meta" id="meta"></span></div>
+  <div class="row">
+    <div class="seg" role="group" aria-label="Edition" id="eds"></div>
+    <div class="seg" role="group" aria-label="Layout"><button id="vOne" aria-pressed="true">Combined</button><button id="vTabs" aria-pressed="false">Tabs</button></div>
+    <div class="find"><input id="q" type="search" placeholder="Find a project or mod" autocomplete="off" aria-label="Find a project or mod"><div id="results" hidden></div></div>
+    <select id="mod" aria-label="Highlight a mod"><option value="">Highlight a mod…</option></select>
+    <label class="chk"><input type="checkbox" id="xera" checked> Lines between eras</label>
+  </div>
+  <div class="tabs" id="tabs" role="group" aria-label="Research tabs"></div>
+  <div class="key" id="key"></div>
+</header>
+<div id="stage">
+  <svg id="svg"><g id="world"><g id="bands"></g><g id="edges"></g><g id="nodes"></g></g></svg>
+  <div id="eras"></div>
+  <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">&minus;</button><button id="zfit" aria-label="Show whole tab">⤢</button></div>
+  <div id="info" hidden></div>
+  <div id="loading">Loading the research tree…</div>
+</div>
+
+<script id="data" type="application/json"></script>
+<script>
+(async () => {
+// embedded data (single page), or fetched from research/tree.json (the Progression Resources site)
+const RAW = document.getElementById('data').textContent.trim();
+const SITE = !RAW;
+let ROOT;
+try { ROOT = SITE ? await fetch('research/tree.json').then(r => r.json()) : JSON.parse(RAW); }
+catch { document.getElementById('loading').textContent = 'The research tree could not be loaded. Reload the page to try again.'; return; }
+document.getElementById('loading').hidden = true;
+document.getElementById('crumb').hidden = !SITE;
+const EDS = ROOT.editions || { Progression: ROOT };
+const MODS = ROOT.mods || {};
+const SX = 190, SY = 100, W = 140, H = 50, TOP = 36;
+const LEVELS = ['Undefined', 'Animal', 'Neolithic', 'Medieval', 'Industrial', 'Spacer', 'Ultra', 'Archotech'];
+const ERA_NAMES = { Undefined: 'No era', Animal: 'Animal' };
+const str = v => typeof v === 'string' ? v : typeof v === 'number' ? String(v) : '';
+let edition, META, TAB_LABELS, ALL, byDef;
+// one edition's projects, normalized once
+function load(ed) {
+  const D = EDS[ed]; edition = ed; META = D.meta || {}; TAB_LABELS = D.tabs || {};
+  if (!D.ready) {
+    D.all = D.projects.filter(p => !p.na && p.ot);
+    for (const p of D.all) {
+      for (const k of ['l', 'tl', 'c', 'ds', 's', 'mr', 'rt', 'hub', 'chub', 'ot', 'ct', 'k']) p[k] = str(p[k]);
+      p.p = Array.isArray(p.p) ? [...new Set(p.p.map(str))].filter(d => d && d !== p.d) : [];
+      p.hp = Array.isArray(p.hp) ? p.hp.map(str) : [];
+      p.u = Array.isArray(p.u) ? p.u.map(str).filter(Boolean) : [];
+      p.kids = []; p.lv = Math.max(0, LEVELS.indexOf(p.rt));
+    }
+    D.byDef = new Map(D.all.map(p => [p.d, p]));
+    for (const p of D.all) for (const q of p.p) D.byDef.get(q)?.kids.push(p.d);
+    D.ready = true;
+  }
+  ALL = D.all; byDef = D.byDef;
+}
+const eraColor = p => p.ct === 'Anomaly' || p.ot === 'Anomaly' ? 'var(--ea)' : `var(--e${p.lv})`;
+const cap = s => s ? s[0].toUpperCase() + s.slice(1) : '';
+const clip = (s, n) => s.length > n ? s.slice(0, n - 1) + '…' : s;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const tabName = t => t === 'Main' && mode === 'one' ? 'Combined' : cap(TAB_LABELS[t]) || t.replace(/^Tab/, '').replace(/^[A-Za-z]+_/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
+const source = p => p.k === 'vanilla' ? (p.s === 'Core' ? 'Vanilla' : p.s + ' (DLC)') : p.k === 'fork' ? 'ProgressionLESS ' + p.s : p.s;
+
+// ---- state ----
+let mode = 'one', tab = null, sel = null, modFilter = '';
+const $ = id => document.getElementById(id);
+const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+const T = p => mode === 'one' ? p.ct : p.ot;
+const X = p => (mode === 'one' ? +p.cx : +p.ox) || 0;
+const Y = p => (mode === 'one' ? +p.cy : +p.oy) || 0;
+const HUB = p => mode === 'one' ? p.chub : p.hub;
+function tabsOf() {
+  const order = META.tabOrder || [];
+  const ts = [...new Set(ALL.map(T))];
+  const rank = t => t === 'Main' ? -1 : order.indexOf(t) < 0 ? 999 : order.indexOf(t);
+  return ts.sort((a, b) => rank(a) - rank(b) || tabName(a).localeCompare(tabName(b)));
+}
+
+// ---- header ----
+const PARAMS = new URLSearchParams(SITE ? location.search : '');
+let booted = false;
+load(EDS[PARAMS.get('ed')] ? PARAMS.get('ed') : EDS[store.get('pt-edition')] ? store.get('pt-edition') : Object.keys(EDS)[0]);
+function renderHeader() {
+  const mods = new Map(); for (const p of ALL) mods.set(source(p), (mods.get(source(p)) || 0) + 1);
+  if (!mods.has(modFilter)) modFilter = '';
+  $('mod').innerHTML = '<option value="">Highlight a mod…</option>' + [...mods].sort((a, b) => a[0].localeCompare(b[0])).map(([m, n]) => `<option value="${esc(m)}">${esc(m)} (${n})</option>`).join('');
+  $('mod').value = modFilter;
+  $('meta').textContent = `${ALL.length} projects from ${META.mods || '?'} mods · built ${META.generated || ''}`;
+  $('h1').textContent = edition + ' research tree';
+  $('eds').innerHTML = Object.keys(EDS).map(e => `<button data-ed="${esc(e)}" aria-pressed="${e === edition}">${esc(e)}</button>`).join('');
+  $('eds').hidden = Object.keys(EDS).length < 2;
+}
+$('eds').addEventListener('click', e => {
+  const b = e.target.closest('[data-ed]'); if (!b || b.dataset.ed === edition) return;
+  const keepSel = sel, keepTab = tab;
+  load(b.dataset.ed); store.set('pt-edition', edition); renderHeader();
+  const p = keepSel && byDef.get(keepSel);
+  show(p ? T(p) : tabsOf().includes(keepTab) ? keepTab : tabsOf()[0], p ? keepSel : null);
+});
+$('key').innerHTML = LEVELS.map((l, i) => ALL.some(p => p.lv === i) ? `<span><i style="--c:var(--e${i})"></i>${ERA_NAMES[l] || l}</span>` : '').join('') + '<span><i style="--c:var(--ea)"></i>Anomaly</span><span>▲ major hub · △ minor hub</span>';
+function renderTabs() {
+  $('tabs').innerHTML = tabsOf().map(t => {
+    const n = ALL.filter(p => T(p) === t), m = modFilter ? n.filter(p => source(p) === modFilter).length : 0;
+    return `<button data-tab="${esc(t)}" aria-pressed="${t === tab}">${esc(tabName(t))}<b class="${m ? 'm' : ''}">${modFilter ? m + '/' : ''}${n.length}</b></button>`;
+  }).join('');
+}
+$('tabs').addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) show(b.dataset.tab); });
+function setMode(m) {
+  mode = m; store.set('pt-mode', m);
+  $('vOne').setAttribute('aria-pressed', m === 'one'); $('vTabs').setAttribute('aria-pressed', m === 'tabs');
+  const keep = sel && byDef.get(sel);
+  show(keep ? T(keep) : tabsOf()[0], keep ? sel : null);
+}
+$('vOne').onclick = () => setMode('one'); $('vTabs').onclick = () => setMode('tabs');
+$('xera').onchange = () => $('svg').classList.toggle('noX', !$('xera').checked);
+$('mod').onchange = () => { modFilter = $('mod').value; applyFilter(); renderTabs(); syncUrl(); };
+
+// ---- drawing one tab ----
+const world = $('world'), stage = $('stage'), info = $('info');
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+let nodeEls = new Map(), edgeEls = [], bands = [], WORLD_W = 0, WORLD_H = 0, onTab = [];
+function show(t, select_ = null) {
+  tab = t; store.set('pt-tab-' + mode, t);
+  renderTabs();
+  for (const g of ['bands', 'edges', 'nodes']) $(g).textContent = '';
+  nodeEls = new Map(); edgeEls = [];
+  onTab = ALL.filter(p => T(p) === t);
+  const minX = Math.min(...onTab.map(X)), minY = Math.min(...onTab.map(Y));
+  for (const p of onTab) { p.px = (X(p) - minX) * SX + 20; p.py = (Y(p) - minY) * SY + TOP + 10; }
+  WORLD_W = Math.max(...onTab.map(p => p.px)) + W + 20; WORLD_H = Math.max(...onTab.map(p => p.py)) + H + 20;
+  // era blocks: contiguous column ranges per tech level
+  bands = [];
+  for (let i = 0; i < LEVELS.length; i++) {
+    const ps = onTab.filter(p => p.lv === i); if (!ps.length) continue;
+    bands.push({ name: ERA_NAMES[LEVELS[i]] || LEVELS[i], x0: Math.min(...ps.map(p => p.px)), x1: Math.max(...ps.map(p => p.px)) + W, n: ps.length });
+  }
+  bands.sort((a, b) => a.x0 - b.x0);
+  const overlapping = bands.some((b, i) => i && b.x0 < bands[i - 1].x1 - 1);
+  if (overlapping) bands = [{ name: tabName(t), x0: 20, x1: WORLD_W - 20, n: onTab.length }];
+  bands.forEach((b, i) => { if (i % 2 === 0 && bands.length > 1) el('rect', { class: 'band', x: b.x0 - 20, y: 0, width: b.x1 - b.x0 + 40, height: WORLD_H }, $('bands')); });
+  $('eras').innerHTML = bands.map(b => `<div>${esc(b.name)}<b>${b.n}</b></div>`).join('');
+  for (const p of onTab) for (const d of p.p) {
+    const a = byDef.get(d); if (!a || T(a) !== t || p.hp.includes(d)) continue;
+    const x1 = a.px + W, y1 = a.py + H / 2, x2 = p.px, y2 = p.py + H / 2, dx = Math.max(30, Math.abs(x2 - x1) / 2);
+    edgeEls.push({ from: d, to: p.d, e: el('path', { d: `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`, class: 'edge' + (a.lv !== p.lv ? ' x' : '') }, $('edges')) });
+  }
+  for (const p of onTab) {
+    const n = el('g', { class: 'node' + (p.cyc ? ' cyc' : ''), transform: `translate(${p.px},${p.py})`, 'data-d': p.d, style: `--c:${eraColor(p)}` }, $('nodes'));
+    el('rect', { class: 'box', width: W, height: H, rx: 3 }, n);
+    el('rect', { class: 'bar', width: W, height: 4, rx: 1 }, n);
+    el('text', { x: 7, y: 22, class: 'lbl' }, n).textContent = clip(cap(p.l || p.d), 20);
+    el('text', { x: 7, y: 40, class: 'sub' }, n).textContent = clip([source(p).replace(/^Progression: /, 'P: ').replace(/^ProgressionLESS /, 'PL: '), p.c].filter(Boolean).join(' · '), 24);
+    const h = HUB(p); if (h === 'major' || h === 'minor') el('text', { x: W - 14, y: 20, class: 'hub' }, n).textContent = h === 'major' ? '▲' : '△';
+    nodeEls.set(p.d, n);
+  }
+  applyFilter();
+  select(select_ && byDef.get(select_) && T(byDef.get(select_)) === t ? select_ : null);
+  if (select_) center(byDef.get(select_)); else fitAll();
+}
+function applyFilter() {
+  $('svg').classList.toggle('filtering', !!modFilter);
+  for (const [d, n] of nodeEls) n.classList.toggle('match', !!modFilter && source(byDef.get(d)) === modFilter);
+}
+
+// ---- view ----
+let view = { x: 0, y: 0, k: 1 };
+function apply() {
+  world.setAttribute('transform', `translate(${view.x},${view.y}) scale(${view.k})`);
+  [...$('eras').children].forEach((d, i) => { const b = bands[i]; d.style.left = view.x + (b.x0 - 20) * view.k + 'px'; d.style.width = (b.x1 - b.x0 + 40) * view.k + 'px'; });
+}
+function fitAll() {
+  const r = stage.getBoundingClientRect();
+  view.k = Math.min(1, Math.max(0.05, Math.min(r.width / WORLD_W, (r.height - 26) / WORLD_H)));
+  view.x = Math.max(0, (r.width - WORLD_W * view.k) / 2); view.y = 26 - TOP * view.k; apply();
+}
+function center(p) { if (!p) return; const r = stage.getBoundingClientRect(); view.k = Math.max(view.k, 0.7); view.x = r.width / 2 - (p.px + W / 2) * view.k; view.y = r.height / 2 - (p.py + H / 2) * view.k; apply(); }
+function zoomAt(f, cx, cy) { const k = Math.min(2.5, Math.max(0.04, view.k * f)); view.x = cx - (cx - view.x) * k / view.k; view.y = cy - (cy - view.y) * k / view.k; view.k = k; apply(); }
+stage.addEventListener('wheel', e => { e.preventDefault(); const r = stage.getBoundingClientRect(); zoomAt(Math.exp(-e.deltaY * 0.0015), e.clientX - r.left, e.clientY - r.top); }, { passive: false });
+const mid = () => { const r = stage.getBoundingClientRect(); return [r.width / 2, r.height / 2]; };
+$('zin').onclick = () => zoomAt(1.3, ...mid());
+$('zout').onclick = () => zoomAt(0.77, ...mid());
+$('zfit').onclick = fitAll;
+const pts = new Map(); let gesture = null;
+stage.addEventListener('pointerdown', e => {
+  if (e.target.closest('.zoom, #info')) return;
+  stage.setPointerCapture(e.pointerId); pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  const n = e.target.closest('.node');
+  gesture = { sx: e.clientX, sy: e.clientY, vx: view.x, vy: view.y, node: pts.size === 1 && n ? n.dataset.d : null, moved: pts.size > 1, dist: 0 };
+  if (pts.size === 2) { const [a, b] = [...pts.values()]; gesture.dist = Math.hypot(a.x - b.x, a.y - b.y); }
+});
+stage.addEventListener('pointermove', e => {
+  if (!gesture || !pts.has(e.pointerId)) return;
+  pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (pts.size === 2) {
+    const [a, b] = [...pts.values()], d = Math.hypot(a.x - b.x, a.y - b.y), r = stage.getBoundingClientRect();
+    if (gesture.dist) zoomAt(d / gesture.dist, (a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top);
+    gesture.dist = d; gesture.moved = true; return;
+  }
+  const dx = e.clientX - gesture.sx, dy = e.clientY - gesture.sy;
+  if (!gesture.moved && Math.hypot(dx, dy) < 6) return;
+  gesture.moved = true; stage.classList.add('panning');
+  view.x = gesture.vx + dx; view.y = gesture.vy + dy; apply();
+});
+const end = e => {
+  pts.delete(e.pointerId); stage.classList.remove('panning');
+  if (!gesture) return;
+  if (pts.size === 1) { const [p] = pts.values(); Object.assign(gesture, { sx: p.x, sy: p.y, vx: view.x, vy: view.y, dist: 0 }); return; }
+  if (!pts.size) { if (!gesture.moved) select(gesture.node); gesture = null; }
+};
+stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
+
+// ---- selection ----
+function chain(d, key) { const out = new Set(), todo = [d]; while (todo.length) { const p = byDef.get(todo.pop()); if (!p) continue; for (const q of p[key]) if (!out.has(q)) { out.add(q); todo.push(q); } } return out; }
+function linkBtn(d, from) {
+  const p = byDef.get(d);
+  if (!p) return `<span class="link off" title="Not in this load">${esc(d)}</span>`;
+  const other = T(p) !== T(from) ? `<small>${esc(tabName(T(p)))}</small>` : '';
+  const hidden = from.hp.includes(d) ? '<small>hidden</small>' : '';
+  return `<button class="link" data-go="${esc(d)}">${esc(cap(p.l) || d)}${other}${hidden}</button>`;
+}
+function select(d) {
+  if (sel) nodeEls.get(sel)?.classList.remove('sel');
+  sel = d;
+  const p = d && byDef.get(d);
+  for (const n of nodeEls.values()) n.classList.remove('on');
+  for (const e of edgeEls) e.e.classList.remove('hi');
+  $('svg').classList.toggle('dimmed', !!p);
+  info.hidden = !p;
+  syncUrl();
+  if (!p) return;
+  const up = chain(d, 'p'), down = chain(d, 'kids'), on = new Set([d, ...up, ...down]);
+  for (const x of on) nodeEls.get(x)?.classList.add('on');
+  nodeEls.get(d)?.classList.add('sel');
+  for (const e of edgeEls) if (on.has(e.from) && on.has(e.to) && ((up.has(e.from) || e.from === d) && (up.has(e.to) || e.to === d) || (down.has(e.to) && (down.has(e.from) || e.from === d)))) { e.e.classList.add('hi'); e.e.parentNode.appendChild(e.e); }
+  const hub = HUB(p);
+  info.innerHTML = `<button id="close" aria-label="Close">✕</button>
+    <h3>${esc(source(p))}${modLink(p)}</h3>
+    <h2>${esc(cap(p.l) || p.d)}</h2>
+    <div class="def">${esc(p.d)}</div>
+    <dl>
+      <dt>Era</dt><dd>${esc(p.tl || 'none')}${p.rt && p.rt !== (p.tl || 'Undefined') ? ` → ${esc(p.rt)} (raised to its prerequisites)` : ''}</dd>
+      <dt>Cost</dt><dd>${esc(p.c || '—')}</dd>
+      <dt>Tab</dt><dd>${esc(tabName(p.ot))} (tabs) · ${esc(p.ct === 'Main' ? 'Combined' : tabName(p.ct))} (combined)</dd>
+      ${hub ? `<dt>Layout</dt><dd>${esc(cap(hub))}${hub === 'major' || hub === 'minor' ? ' hub' : ''}</dd>` : ''}
+      ${p.cyc ? '<dt>Warning</dt><dd>On a prerequisite cycle</dd>' : ''}
+      ${p.mr ? `<dt>Needs mod</dt><dd class="def">${esc(p.mr)}</dd>` : ''}
+      <dt>Chain</dt><dd>${up.size} before, ${down.size} after</dd>
+      ${p.f ? `<dt>File</dt><dd class="def">${esc(p.f)}</dd>` : ''}
+    </dl>
+    ${p.ds ? `<p class="desc">${esc(p.ds)}</p>` : ''}
+    <h3>Unlocks</h3><p class="desc">${p.u.length ? esc(p.u.join(', ')) : '<span class="muted">Nothing</span>'}</p>
+    <h3>Requires</h3><div class="links">${p.p.length ? p.p.map(q => linkBtn(q, p)).join('') : '<span class="muted">Nothing</span>'}</div>
+    <h3>Leads to</h3><div class="links">${p.kids.length ? p.kids.map(q => linkBtn(q, p)).join('') : '<span class="muted">Nothing</span>'}</div>`;
+}
+// the project's mod: its catalog entry on the site, otherwise its Workshop page
+function modLink(p) {
+  const m = MODS[source(p)]; if (!m || !m.id) return '';
+  return SITE && m.catalog ? ` · <a href="catalog.html?q=${encodeURIComponent(m.id)}">in the catalog</a>`
+    : ` · <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${encodeURIComponent(m.id)}" target="_blank" rel="noopener">Workshop</a>`;
+}
+// shareable state on the site: edition, layout, highlighted mod and selected project
+function syncUrl() {
+  if (!SITE || !booted) return;
+  const u = new URL(location.href), s = u.searchParams;
+  edition !== Object.keys(EDS)[0] ? s.set('ed', edition) : s.delete('ed');
+  mode === 'tabs' ? s.set('view', 'tabs') : s.delete('view');
+  modFilter ? s.set('mod', modFilter) : s.delete('mod');
+  sel ? s.set('p', sel) : s.delete('p');
+  history.replaceState(null, '', u);
+}
+function go(d) { const p = byDef.get(d); if (!p) return; if (T(p) !== tab) show(T(p), d); else { select(d); center(p); } }
+info.addEventListener('click', e => { if (e.target.closest('#close')) return select(null); const b = e.target.closest('[data-go]'); if (b) go(b.dataset.go); });
+
+// ---- search ----
+const q = $('q'), results = $('results');
+q.addEventListener('input', () => {
+  const s = q.value.trim().toLowerCase();
+  if (s.length < 2) { results.hidden = true; return; }
+  const hits = ALL.filter(p => (p.l || '').toLowerCase().includes(s) || p.d.toLowerCase().includes(s) || p.s.toLowerCase().includes(s)).slice(0, 40);
+  results.innerHTML = hits.length ? hits.map(p => `<button data-go="${esc(p.d)}">${esc(cap(p.l) || p.d)}<small>${esc(source(p))} · ${esc(tabName(T(p)))}</small></button>`).join('') : '<div class="muted" style="padding:6px 8px">No match</div>';
+  results.hidden = false;
+});
+results.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (!b) return; results.hidden = true; go(b.dataset.go); });
+document.addEventListener('pointerdown', e => { if (!e.target.closest('.find')) results.hidden = true; });
+q.addEventListener('keydown', e => { if (e.key === 'Escape') { results.hidden = true; q.blur(); } if (e.key === 'Enter') results.querySelector('button')?.click(); });
+
+if (PARAMS.get('mod')) modFilter = PARAMS.get('mod');
+renderHeader();
+mode = PARAMS.get('view') === 'tabs' || (!PARAMS.get('view') && store.get('pt-mode') === 'tabs') ? 'tabs' : 'one';
+$('vOne').setAttribute('aria-pressed', mode === 'one'); $('vTabs').setAttribute('aria-pressed', mode === 'tabs');
+const saved = store.get('pt-tab-' + mode);
+requestAnimationFrame(() => {
+  booted = true;
+  const want = PARAMS.get('p') && byDef.get(PARAMS.get('p'));
+  if (want) return show(T(want), want.d);
+  if (modFilter) { // the tab holding most of the highlighted mod's projects
+    const n = new Map(); for (const p of ALL) if (source(p) === modFilter) n.set(T(p), (n.get(T(p)) || 0) + 1);
+    const best = [...n].sort((a, b) => b[1] - a[1])[0]; if (best) return show(best[0]);
+  }
+  show(tabsOf().includes(saved) ? saved : tabsOf()[0]);
+});
+addEventListener('resize', apply);
+})();
+</script>
+
+</html>

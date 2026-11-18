@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Merge backup/packageids_overlay.json into index.html, CSV, and README."""
+"""Merge backup/packageids_overlay.json into catalog.html, CSV, and README."""
 from __future__ import annotations
 
 import csv
@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 OVERLAY = ROOT / "backup/packageids_overlay.json"
-HTML = ROOT / "index.html"
+HTML = ROOT / "catalog.html"
 CSV_PATH = ROOT / "backup/progression_packageids.csv"
 README = ROOT / "README.md"
 

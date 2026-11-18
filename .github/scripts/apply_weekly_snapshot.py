@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-HTML = ROOT / "index.html"
+HTML = ROOT / "catalog.html"
 README = ROOT / "README.md"
 CSV_PATH = ROOT / "backup/progression_packageids.csv"
 TXT_PATH = ROOT / "backup/progression_collections_categorized.txt"
@@ -190,7 +190,7 @@ def update_readme(text: str, data: dict, changes: dict, display_date: str) -> st
     text = re.sub(r"\*\*Known packageIds .*?\*\*", f"**Known packageIds (RimSort + previous overlay): {known} of {total}**", text, count=1)
     text = re.sub(r"\*\*Unique mods:.*?\*\*[^\n]*", f"**Unique mods: {total}** — Core {counts['core']} · Content {counts['content']} · Cosmetics {counts['cosmetics']} (3 collection pages omitted from the item list)", text, count=1)
     replacement = "## This snapshot vs previous catalog\n\n" + format_change_list(changes) + "\n\n"
-    return re.sub(r"## This snapshot vs previous catalog\n.*?(?=## Open the catalog)", replacement, text, count=1, flags=re.S)
+    return re.sub(r"## This snapshot vs previous catalog\n.*?(?=## Open the site)", replacement, text, count=1, flags=re.S)
 
 
 def write_backups(data: dict, display_date: str) -> None:

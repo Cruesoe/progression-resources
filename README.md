@@ -1,6 +1,6 @@
-# RimWorld Progression collections catalog
+# Progression Resources
 
-Searchable, filterable list of workshop items from:
+Unofficial tools for ferny's Progression RimWorld collections: a searchable catalog of every mod and the whole pack's research tree, linked both ways. The catalog covers:
 
 - [The Progression Modpack [1.6]](https://steamcommunity.com/workshop/filedetails/?id=3521297585) (1/3 Core)
 - [The Progression Content (2/3)](https://steamcommunity.com/workshop/filedetails/?id=3521319712)
@@ -68,16 +68,19 @@ This is an unofficial helper, not an official Progression site. Categories are i
 ### Newly unavailable (0)
 - None
 
-## Open the catalog
+## Open the site
 
-- Live site (GitHub Pages): https://cruesoe.github.io/rimworld-progression-catalog/
+- Live site (GitHub Pages): https://cruesoe.github.io/progression-resources/
 - Or open `index.html` from this repo.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Searchable catalog |
+| `index.html` | Home page |
+| `catalog.html` | Searchable catalog, refreshed from Steam every Sunday |
+| `research.html` | Research tree of the whole pack, with ferny's mods or the ProgressionLESS mods |
+| `research/tree.json`, `research/summary.json` | Research tree data, rebuilt from the mods' files when the pack changes |
 | `backup/progression_collections_categorized.xlsx` | Spreadsheet backup |
 | `backup/progression_collections_categorized.txt` | Plain-text grouped list |
 | `backup/progression_modpack_mods.txt` | Core pack numbered list |
