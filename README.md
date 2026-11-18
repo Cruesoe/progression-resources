@@ -10,7 +10,7 @@ Unofficial tools for ferny's Progression RimWorld collections: a searchable cata
 
 **Steam snapshot date: 18 November 2026**
 
-**packageId coverage: 1430 of 1523**
+**packageId coverage: 1518 of 1523**
 
 **packageId from RimSort steamDB: 1012 of 1523**
 
