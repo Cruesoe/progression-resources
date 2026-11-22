@@ -8,60 +8,29 @@ Unofficial tools for ferny's Progression RimWorld collections: a searchable cata
 
 [Site patch notes](CHANGELOG.md)
 
-**Steam snapshot date: 18 November 2026**
+**Steam snapshot date: 22 November 2026**
 
 **packageId coverage: 1540 of 1543**
 
-**packageId from RimSort steamDB: 1012 of 1543**
+**packageId from RimSort steamDB: 1012 of 1545**
 
-**Known packageIds (RimSort + previous overlay): 1513 of 1543**
+**Known packageIds (RimSort + previous overlay): 1540 of 1545**
 
-**Unique mods: 1543** — Core 899 · Content 444 · Cosmetics 200 (3 collection pages omitted from the item list)
+**Unique mods: 1545** — Core 900 · Content 445 · Cosmetics 200 (3 collection pages omitted from the item list)
 
 This is an unofficial helper, not an official Progression site. Categories are inferred from titles and which collection an item sits in.
 
 ## This snapshot vs previous catalog
 
-### Added (27)
-- Rustic Meal Retexture — 3453364177
-- Cherokee Sling - Vehicle and Container Airlift — 3836765380
-- Milky Way — 3773448562
-- Utility Vehicle — 3627439568
-- [LFS] UI Rethemed - Architect — 3830054994
-- Visual Progression: Meals — 3834892583
-- HE-Chevrolet Tahoe '07 — 3430904230
-- NANAME Floors — 3293767181
-- Engine Industries — 3009527756
-- UI Rethemed - Era Looks — 3840498215
-- Body Hair Framework — 3823805934
-- HE-Ford B700 Bus '87 — 3281446276
-- Wayward Biomes: Core — 3710302618
-- Sling Framework — 3840130852
-- Progression: Power — 3841675689
-- Fog Color Changer — 3492647454
-- [LFS] UI Rethemed - Relationships — 3840876824
-- Morton's Body Hair (Not Tattoos) — 3825963278
-- Progression: Water — 3841674396
-- Progression: Waste — 3841676471
-- SQUISHY Ranged — 3833016652
-- Wayward Biomes: Tangled Hollows — 3837906824
-- Progression: Vehicles — 3841677765
-- Smooth Terrain — 3502765685
-- Overlord Warcasket — 3841078351
-- GTek's Vehicles - 1998 Subaru Forester — 3367924127
-- [LFS] UI Rethemed - Colonist Card — 3828206639
+### Added (2)
+- Time Since Save — 3842457773
+- Map Vehicles – Ocean Expansion — 3842174841
 
-### Removed (7)
-- CAI 5000 Performance Fix (1.7) — 3827953715
-- Better Inspect Pane — 3788686557
-- RimHUD — 1508850027
-- Chest Hair Tattoos — 3549854404
-- Cybranian - Social Interface — 2854221326
-- [LYN] VVE Renamed — 3014810352
-- RimHUD Passion Icons — 3829500081
+### Removed (0)
+- None
 
-### Renamed (1)
-- Won hair_women → Won hair_women  — 1886150617
+### Renamed (0)
+- None
 
 ### Newly unavailable (0)
 - None

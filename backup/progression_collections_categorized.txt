@@ -1,5 +1,5 @@
 The Progression — categorized catalog
-Steam snapshot: 18 November 2026
+Steam snapshot: 22 November 2026
 
 ========================================================================
 Frameworks & libraries  (31)
@@ -2432,7 +2432,7 @@ Research, storytellers & progression  (49)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3403972335
 
 ========================================================================
-Vehicles, gravships & mechs  (36)
+Vehicles, gravships & mechs  (37)
 ========================================================================
   - (unavailable 3015087560)  [unavailable]
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3015087560
@@ -2466,6 +2466,8 @@ Vehicles, gravships & mechs  (36)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3704669419
   - Logistics Mechanoid
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2885430743
+  - Map Vehicles – Ocean Expansion
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3842174841
   - Mech Group Rename & Caravan List
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3837808142
   - Mech Recharger Standby Mode
@@ -2508,7 +2510,7 @@ Vehicles, gravships & mechs  (36)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3835520732
 
 ========================================================================
-Gameplay tweaks  (334)
+Gameplay tweaks  (335)
 ========================================================================
   - (unavailable 3712465624)  [unavailable]
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3712465624
@@ -3098,6 +3100,8 @@ Gameplay tweaks  (334)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3672142760
   - Thunderstorm
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3278460897
+  - Time Since Save
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3842457773
   - Titles For Me
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3374370341
   - Too Many Areas (Continued)
