@@ -345,26 +345,28 @@ function show(t, select_ = null) {
     const x1 = a.px + W, y1 = a.py + H / 2, x2 = p.px, y2 = p.py + H / 2, dx = Math.max(30, Math.abs(x2 - x1) / 2);
     let path = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
     if (experimental() && x2-x1 > SX) {
-      // Follow the parent-to-child slope. Choose clearance locally at each
-      // crossed column so one obstacle cannot send the entire link upwards.
-      let x = x1, y = y1;
-      path = `M${x},${y}`;
-      function connect(toX,toY) {
-        const mid = (x+toX)/2;
-        path += ` C${mid},${y} ${mid},${toY} ${toX},${toY}`;
-        x = toX; y = toY;
+      // Equally spaced control points make x linear in the Bézier parameter.
+      // The curve is monotone in y, so its two column-edge heights bound it.
+      function route(left, startY, right, endY, columns) {
+        const width = right-left;
+        function height(x) {
+          const u = (x-left)/width;
+          return startY + (endY-startY)*u*u*(3-2*u);
+        }
+        for (let i=0; i<columns.length; i++) {
+          const {x,bands} = columns[i];
+          const entry = height(x), exit = height(x+W);
+          const hit = bands.find(b => Math.max(entry,exit)>b.top && Math.min(entry,exit)<b.bottom);
+          if (!hit) continue;
+          const middle = (entry+exit)/2;
+          const lane = Math.abs(middle-hit.top) < Math.abs(middle-hit.bottom) ? hit.top : hit.bottom;
+          return route(left,startY,x,lane,columns.slice(0,i))
+            + ` H${x+W}` + route(x+W,lane,right,endY,columns.slice(i+1));
+        }
+        return ` C${left+width/3},${startY} ${right-width/3},${endY} ${right},${endY}`;
       }
-      for (const column of corridors) {
-        if (column.x <= x1 || column.x >= x2) continue;
-        const fraction = (column.x+W/2-x1)/(x2-x1);
-        let target = y1 + fraction*(y2-y1);
-        const band = column.bands.find(b => target > b.top && target < b.bottom);
-        if (band) target = target-band.top < band.bottom-target ? band.top : band.bottom;
-        connect(column.x,target);
-        x = column.x+W;
-        path += ` H${x}`;
-      }
-      connect(x2,y2);
+      const between = corridors.filter(c => c.x>x1 && c.x+W<x2);
+      path = `M${x1},${y1}` + route(x1,y1,x2,y2,between);
     }
     edgeEls.push({ from: d, to: p.d, e: el('path', { d: path, class: 'edge' + (a.lv !== p.lv ? ' x' : '') }, $('edges')) });
   }
