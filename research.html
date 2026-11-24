@@ -362,6 +362,51 @@ function branchLayout(projects) {
       assigned.set(p.d,best);
       positions.set(p.d,{x:(eraStart+best.x)*1.25,y:best.y*0.8});
     }
+    // Align rows with connected cards on both sides. Leave room between
+    // distinct families, even if the column could be packed more tightly.
+    const layers = new Map();
+    for (const p of nodes) {
+      const column = assigned.get(p.d).x;
+      if (!layers.has(column)) layers.set(column,[]);
+      layers.get(column).push(p);
+    }
+    const columns = [...layers.keys()].sort((a,b) => a-b);
+    for (let pass=0; pass<8; pass++) {
+      for (const column of (pass%2 ? columns.slice().reverse() : columns)) {
+        const layer = layers.get(column);
+        const desired = new Map();
+        for (const p of layer) {
+          const here = assigned.get(p.d);
+          let sum = here.y*0.6, weight = 0.6;
+          const children = p.kids.filter(id => parents.get(id)?.includes(p.d));
+          for (const id of [...parents.get(p.d),...children]) {
+            const other = assigned.get(id);
+            const w = 1/Math.max(1,Math.abs(column-other.x));
+            sum += w*other.y; weight += w;
+          }
+          desired.set(p.d,sum/weight);
+        }
+        layer.sort((a,b) => desired.get(a.d)-desired.get(b.d));
+        // Pool adjacent rows whose preferred positions would collide.
+        const pools = [];
+        let offset = 0;
+        for (let i=0;i<layer.length;i++) {
+          const p = layer[i];
+          if (i) offset += familyOrder.get(p.d)===familyOrder.get(layer[i-1].d) ? 1 : 1.7;
+          pools.push({rows:[{p,offset}],mean:desired.get(p.d)-offset});
+          while (pools.length>1 && pools.at(-2).mean>pools.at(-1).mean) {
+            const right=pools.pop(), left=pools.at(-1);
+            left.mean=(left.mean*left.rows.length+right.mean*right.rows.length)/(left.rows.length+right.rows.length);
+            left.rows.push(...right.rows);
+          }
+        }
+        for (const pool of pools) for (const {p,offset} of pool.rows) {
+          const row = pool.mean+offset;
+          assigned.get(p.d).y=row;
+          positions.get(p.d).y=row*0.8;
+        }
+      }
+    }
     eraStart += Math.max(...slots.keys())+1.8;
   }
   return {positions};
