@@ -264,6 +264,103 @@ const world = $('world'), stage = $('stage'), info = $('info');
 const NS = 'http://www.w3.org/2000/svg';
 const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
 let nodeEls = new Map(), edgeEls = [], bands = [], WORLD_W = 0, WORLD_H = 0, onTab = [];
+// Build the experimental tree from visible dependencies. Each project follows
+// one primary parent for alignment; all prerequisite edges are still drawn.
+function branchLayout(projects) {
+  const positions = new Map();
+  let eraStart = 0;
+  const eras = [...new Set(projects.map(p => p.lv))].sort((a,b) => a-b);
+  for (const era of eras) {
+    const nodes = projects.filter(p => p.lv === era)
+      .sort((a,b) => a.d.localeCompare(b.d));
+    const ids = new Set(nodes.map(p => p.d));
+    const families = new Map(), depth = new Map(), roots = [];
+    const parents = new Map(nodes.map(p => [p.d,
+      p.p.filter(id => ids.has(id) && !p.hp.includes(id))]));
+    const pending = new Set(nodes);
+    while (pending.size) {
+      let ready = [...pending].filter(p => parents.get(p.d).every(id => depth.has(id)));
+      if (!ready.length) ready = [[...pending][0]]; // deterministic break for cycles
+      for (const p of ready) {
+        const eligible = parents.get(p.d).filter(id => depth.has(id));
+        eligible.sort((a,b) => depth.get(b)-depth.get(a)
+          || byDef.get(a).kids.length-byDef.get(b).kids.length || a.localeCompare(b));
+        const owner = eligible[0];
+        depth.set(p.d,owner ? depth.get(owner)+1 : 0);
+        if (owner) {
+          if (!families.has(owner)) families.set(owner,[]);
+          families.get(owner).push(p);
+        } else roots.push(p);
+        pending.delete(p);
+      }
+    }
+
+    // A subtree reserves rows only at depths where it actually has cards.
+    // Adjacent branches can share whitespace without interleaving siblings.
+    function subtree(p) {
+      const points = [], low = [], high = [];
+      const children = families.get(p.d) || [];
+      let first = 0, last = 0;
+      for (const child of children) {
+        const part = subtree(child);
+        let shift = 0;
+        part.low.forEach((y,i) => {
+          if (high[i+1] !== undefined) shift = Math.max(shift, high[i+1]+(i ? 1.35 : 1)-y);
+        });
+        if (!points.length) first = shift;
+        last = shift;
+        for (const q of part.points) points.push({p:q.p,x:q.x+1,y:q.y+shift});
+        part.low.forEach((y,i) => {
+          low[i+1] = Math.min(low[i+1] ?? Infinity,y+shift);
+          high[i+1] = Math.max(high[i+1] ?? -Infinity,part.high[i]+shift);
+        });
+      }
+      const center = (first+last)/2;
+      points.forEach(q => q.y -= center);
+      points.push({p,x:0,y:0});
+      low[0] = high[0] = center;
+      return {points,low:low.map(y => y-center),high:high.map(y => y-center)};
+    }
+    // Pack whole trees into reading order. Taller families stay intact.
+    const trees = roots.map(subtree);
+    // Trees joined by a secondary prerequisite share a horizontal origin,
+    // so that edge also progresses to the right.
+    const owner = new Map(), component = trees.map((_,i) => i);
+    trees.forEach((tree,i) => tree.points.forEach(q => owner.set(q.p.d,i)));
+    function representative(i) {
+      while (component[i] !== i) i = component[i];
+      return i;
+    }
+    for (const p of nodes) for (const id of parents.get(p.d)) {
+      component[representative(owner.get(id))] = representative(owner.get(p.d));
+    }
+    const clusters = new Map();
+    trees.forEach((tree,i) => {
+      const key = representative(i);
+      if (!clusters.has(key)) clusters.set(key,[]);
+      clusters.get(key).push(tree);
+    });
+    const targetHeight = Math.max(5,Math.ceil(Math.sqrt(nodes.length)));
+    let left = eraStart, top = 0, width = 0;
+    for (const cluster of clusters.values()) {
+      const totalHeight = cluster.reduce((sum,t) => sum+Math.max(...t.high)-Math.min(...t.low)+1.6,0);
+      if (top && top+totalHeight > targetHeight) {
+        left += width+0.5; top = 0; width = 0;
+      }
+      for (const tree of cluster) {
+      const min = Math.min(...tree.low), height = Math.max(...tree.high)-min+1;
+
+      for (const q of tree.points) {
+        positions.set(q.p.d,{x:(left+q.x)*1.25,y:(top+q.y-min)*0.68});
+        width = Math.max(width,q.x+1);
+      }
+      top += height+0.6;
+      }
+    }
+    eraStart = left+width+0.8;
+  }
+  return {positions};
+}
 function show(t, select_ = null) {
   tab = t; store.set('pt-tab-' + mode, t);
   renderTabs();
@@ -274,43 +371,7 @@ function show(t, select_ = null) {
   $('svg').classList.toggle('focusEdges', experimental() && !$('experimentalLinks').checked);
   experimentLayout = null;
   if (experimental()) {
-    const combined = mode === 'one';
-    const sourceX = p => Number(combined ? p.cx : p.ox) || 0;
-    const sourceY = p => Number(combined ? p.cy : p.oy) || 0;
-    // Reserve a consistent routing gutter beside each exported column.
-    const xs = [...new Set(onTab.map(sourceX))].sort((a,b) => a-b);
-    const positions = new Map(), columns = new Map(), tabIds = new Set(onTab.map(p => p.d));
-    const columnOf = new Map();
-    for (const p of [...onTab].sort((a,b) => sourceX(a)-sourceX(b))) {
-      let column = xs.indexOf(sourceX(p));
-      const parent = p.p.length === 1 && byDef.get(p.p[0]);
-      const nearby = parent && tabIds.has(parent.d) && parent.lv === p.lv
-        && !p.hp.includes(parent.d) && sourceX(parent) < sourceX(p);
-      if (nearby) column = Math.min(column, columnOf.get(parent.d) + 1);
-      columnOf.set(p.d, column);
-      if (!columns.has(column)) columns.set(column, new Map());
-      const groups = columns.get(column), key = nearby ? parent.d : p.d + '/single';
-      if (!groups.has(key)) groups.set(key, {parent: nearby && parent, cards: []});
-      groups.get(key).cards.push(p);
-    }
-    for (const [column, groups] of [...columns].sort((a,b) => a[0]-b[0])) {
-      // Align each sibling group's midpoint with its parent, then resolve
-      // collisions between groups while keeping the siblings contiguous.
-      const blocks = [...groups.values()].map(({parent,cards}) => {
-        cards.sort((a,b) => sourceY(a)-sourceY(b));
-        const middle = parent ? positions.get(parent.d).y : sourceY(cards[0]);
-        return {cards, top: middle - (cards.length-1)*0.32};
-      }).sort((a,b) => a.top-b.top);
-      let bottom = -Infinity;
-      for (const block of blocks) {
-        const top = Math.max(block.top,bottom);
-        block.cards.forEach((p,i) => positions.set(p.d,{x:column*1.35,y:top+i*0.64}));
-        bottom = top + block.cards.length*0.64 + (block.cards.length>1 ? 0.20 : 0);
-      }
-    }
-    // Some special tabs have no exported placement.
-    experimentLayout = xs.length === 1 && onTab.every(p => sourceY(p) === 0)
-      ? window.ProgressionExperimentalLayout.compute(onTab, mode) : {positions};
+    experimentLayout = branchLayout(onTab);
   }
   const minX = Math.min(...onTab.map(X)), minY = Math.min(...onTab.map(Y));
   for (const p of onTab) { p.px = (X(p) - minX) * SX + 20; p.py = (Y(p) - minY) * SY + TOP + 10; }
