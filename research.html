@@ -323,30 +323,46 @@ function branchLayout(projects) {
     }
     // Horizontal distance represents prerequisite depth throughout the era.
     // Compact each layer independently, retaining the subtree traversal order.
-    const layers = new Map();
-    const upstreamHeight = root => {
-      const rows = root.p.filter(id => positions.has(id) && !root.hp.includes(id))
-        .map(id => positions.get(id).y);
-      return rows.length ? rows.reduce((sum,y) => sum+y,0)/rows.length : Infinity;
-    };
-    roots.sort((a,b) => upstreamHeight(a)-upstreamHeight(b) || a.d.localeCompare(b.d));
-    for (const root of roots) {
-      const tree = subtree(root);
-      for (const q of tree.points.sort((a,b) => a.y-b.y)) {
-        if (!layers.has(q.x)) layers.set(q.x,[]);
-        layers.get(q.x).push({p:q.p,root});
+    // Pack related branches as units. Secondary dependencies constrain each
+    // card's earliest column even when its primary family starts elsewhere.
+    const trees = roots.map(subtree);
+    const familyOrder = new Map();
+    const desiredRow = new Map();
+    let offset = 0;
+    for (const tree of trees) {
+      const low = Math.min(...tree.low);
+      for (const q of tree.points) {
+        familyOrder.set(q.p.d,offset);
+        desiredRow.set(q.p.d,q.y-low);
       }
+      offset += Math.max(...tree.high)-low+1.6;
     }
-    for (const [rank,layer] of layers) {
-      let y = 0, previous;
-      for (const {p,root} of layer) {
-        if (previous && root !== previous) y += 0.18;
-        positions.set(p.d,{x:(eraStart+rank)*1.25,y});
-        y += 0.68;
-        previous = root;
+    const height = Math.max(8, Math.ceil(Math.sqrt(nodes.length)));
+    const slots = new Map(), assigned = new Map();
+    const ordered = nodes.slice().sort((a,b) => depth.get(a.d)-depth.get(b.d)
+      || familyOrder.get(a.d)-familyOrder.get(b.d)
+      || desiredRow.get(a.d)-desiredRow.get(b.d));
+    for (const p of ordered) {
+      const upstream = parents.get(p.d).map(id => assigned.get(id)).filter(Boolean);
+      const first = upstream.reduce((x,q) => Math.max(x,q.x+1),0);
+      const target = upstream.length
+        ? upstream.reduce((sum,q) => sum+q.y,0)/upstream.length
+        : (familyOrder.get(p.d)+desiredRow.get(p.d)) % height;
+      let best, cost = Infinity;
+      for (let x = first; (x-first)*2 <= cost; x++) {
+        const used = slots.get(x);
+        for (let y = 0; y < height; y++) {
+          if (used?.has(y)) continue;
+          const penalty = (x-first)*2 + Math.abs(y-target);
+          if (penalty < cost) { best = {x,y}; cost = penalty; }
+        }
       }
+      if (!slots.has(best.x)) slots.set(best.x,new Set());
+      slots.get(best.x).add(best.y);
+      assigned.set(p.d,best);
+      positions.set(p.d,{x:(eraStart+best.x)*1.25,y:best.y*0.8});
     }
-    eraStart += layers.size+0.8;
+    eraStart += Math.max(...slots.keys())+1.8;
   }
   return {positions};
 }
