@@ -60,6 +60,9 @@ svg { display: block; width: 100%; height: 100%; user-select: none; -webkit-user
 #coordGridWorld { pointer-events: none; }
 .coord-grid-line { stroke: var(--muted); stroke-opacity: .22; vector-effect: non-scaling-stroke; }
 .coord-grid-label { fill: var(--muted); font-family: var(--f-mono); font-weight: 600; stroke: var(--canvas); stroke-width: 2px; stroke-linejoin: round; paint-order: stroke; pointer-events: none; }
+#empty-edition { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 580px; width: calc(100% - 32px); padding: 22px 26px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; z-index: 4; }
+#empty-edition h2 { margin: 0 0 12px; font-size: 22px; }
+#empty-edition p { margin: 0; color: var(--muted); line-height: 1.5; }
 #eras { position: absolute; left: 0; right: 0; top: 0; height: 26px; pointer-events: none; }
 #eras div { position: absolute; top: 0; height: 26px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: color-mix(in srgb, var(--surface) 88%, transparent); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); overflow: hidden; white-space: nowrap; }
 #eras b { font-family: var(--f-mono); font-weight: 400; letter-spacing: 0; margin-left: 6px; text-transform: none; }
@@ -149,6 +152,7 @@ html, body { margin: 0; }
   <div class="key" id="key"></div>
 </header>
 <div id="stage">
+  <div id="empty-edition" role="status" hidden><h2>Genesis research tree</h2><p>The Genesis edition has been added, but its current research definitions, prerequisites, and layout positions have not yet been verified. No invented projects or connections are shown. Progression and ProgressionLESS remain available.</p></div>
   <svg id="svg"><g id="world"><g id="bands"></g><g id="coordGridWorld"></g><g id="edges"></g><g id="nodes"></g></g></svg>
   <div id="eras"></div>
   <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">&minus;</button><button id="zfit" aria-label="Show whole tab">⤢</button></div>
@@ -168,6 +172,9 @@ catch { document.getElementById('loading').textContent = 'The research tree coul
 document.getElementById('loading').hidden = true;
 document.getElementById('crumb').hidden = !SITE;
 const EDS = ROOT.editions || { Progression: ROOT };
+// Genesis is a separate edition; do not substitute Progression research for it.
+// Once verified Genesis projects are exported into tree.json, the viewer uses them.
+if (!EDS.Genesis) EDS.Genesis = { projects: [], meta: { pending: true } };
 const MODS = ROOT.mods || {};
 const SX = 190, SY = 100, W = 140, H = 50, TOP = 36;
 const LEVELS = ['Undefined', 'Animal', 'Neolithic', 'Medieval', 'Industrial', 'Spacer', 'Ultra', 'Archotech'];
@@ -226,10 +233,11 @@ function renderHeader() {
   if (!mods.has(modFilter)) modFilter = '';
   $('mod').innerHTML = '<option value="">Highlight a mod…</option>' + [...mods].sort((a, b) => a[0].localeCompare(b[0])).map(([m, n]) => `<option value="${esc(m)}">${esc(m)} (${n})</option>`).join('');
   $('mod').value = modFilter;
-  $('meta').textContent = `${ALL.length} projects from ${META.mods || '?'} mods · built ${META.generated || ''}`;
+  $('meta').textContent = META.pending ? 'Research data awaiting verification' : `${ALL.length} projects from ${META.mods || '?'} mods · built ${META.generated || ''}`;
   $('h1').textContent = edition + ' research tree';
   $('eds').innerHTML = Object.keys(EDS).map(e => `<button data-ed="${esc(e)}" aria-pressed="${e === edition}">${esc(e)}</button>`).join('');
   $('eds').hidden = Object.keys(EDS).length < 2;
+  $('key').innerHTML = META.pending ? '' : LEVELS.map((l, i) => ALL.some(p => p.lv === i) ? `<span><i style="--c:var(--e${i})"></i>${ERA_NAMES[l] || l}</span>` : '').join('') + '<span><i style="--c:var(--ea)"></i>Anomaly</span><span>▲ major hub · △ minor hub</span>';
 }
 $('eds').addEventListener('click', e => {
   const b = e.target.closest('[data-ed]'); if (!b || b.dataset.ed === edition) return;
@@ -238,7 +246,6 @@ $('eds').addEventListener('click', e => {
   const p = keepSel && byDef.get(keepSel);
   show(p ? T(p) : tabsOf().includes(keepTab) ? keepTab : tabsOf()[0], p ? keepSel : null);
 });
-$('key').innerHTML = LEVELS.map((l, i) => ALL.some(p => p.lv === i) ? `<span><i style="--c:var(--e${i})"></i>${ERA_NAMES[l] || l}</span>` : '').join('') + '<span><i style="--c:var(--ea)"></i>Anomaly</span><span>▲ major hub · △ minor hub</span>';
 function renderTabs() {
   $('tabs').innerHTML = tabsOf().map(t => {
     const n = ALL.filter(p => T(p) === t), m = modFilter ? n.filter(p => source(p) === modFilter).length : 0;
@@ -273,6 +280,12 @@ function show(t, select_ = null) {
   for (const g of ['bands', 'coordGridWorld', 'edges', 'nodes']) $(g).textContent = '';
   nodeEls = new Map(); edgeEls = [];
   onTab = ALL.filter(p => T(p) === t);
+  $('empty-edition').hidden = onTab.length > 0;
+  if (!onTab.length) {
+    gridRegions = []; bands = []; WORLD_W = 1; WORLD_H = 1; sel = null;
+    $('eras').textContent = ''; info.hidden = true; syncUrl();
+    return;
+  }
   const minX = Math.min(...onTab.map(X)), minY = Math.min(...onTab.map(Y));
   for (const p of onTab) { p.px = (X(p) - minX) * SX + 20; p.py = (Y(p) - minY) * SY + TOP + 10; }
   WORLD_W = Math.max(...onTab.map(p => p.px)) + W + 20; WORLD_H = Math.max(...onTab.map(p => p.py)) + H + 20;
