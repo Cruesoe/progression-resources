@@ -1,5 +1,5 @@
 The Progression — categorized catalog
-Steam snapshot: 22 November 2026
+Steam snapshot: 24 November 2026
 
 ========================================================================
 Frameworks & libraries  (31)
@@ -158,6 +158,8 @@ UI & information  (119)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3840876824
   - [LFS] UI Rethemed - Wildlife
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3828731834
+  - [LFS] UI Rethemed - Work
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3835296643
   - [LTO] Colony Groups
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2345493945
   - [UI-Overhaul] PrettyUI
@@ -338,8 +340,6 @@ UI & information  (119)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3678214467
   - Sleek Research Tab
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3752835712
-  - Sleek Work Priorities
-    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3764537806
   - Sleek Work Schedule Tab
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3742689571
   - Stuff on Tables Forked
@@ -480,9 +480,9 @@ Quality of life  (51)
 ========================================================================
 Textures & retextures  (74)
 ========================================================================
-  - (unavailable 2920418046)  [unavailable]
+  - Alpha Animals Retexture
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2920418046
-  - (unavailable 3809376831)  [unavailable]
+  - Workshop item 3809376831
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3809376831
   - [AV] Mechanoid Skins
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3667667489
@@ -632,11 +632,11 @@ Textures & retextures  (74)
 ========================================================================
 Hair, bodies & animations  (77)
 ========================================================================
-  - (unavailable 2768240773)  [unavailable]
+  - Workshop item 2768240773
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=2768240773
-  - (unavailable 3626568203)  [unavailable]
+  - Workshop item 3626568203
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3626568203
-  - (unavailable 3626568306)  [unavailable]
+  - Workshop item 3626568306
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3626568306
   - [ADOPTED] Stubbly Facial Hair
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3821528132
@@ -788,7 +788,7 @@ Hair, bodies & animations  (77)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=2877292196
 
 ========================================================================
-Apparel, styles & cosmetics  (84)
+Apparel, styles & cosmetics  (86)
 ========================================================================
   - [LM] Cowboy Hats Bloatended
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3688414599
@@ -924,10 +924,14 @@ Apparel, styles & cosmetics  (84)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3261314247
   - SimpleStairs (Fork)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3526906079
+  - Soviet Ideology Style
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3843473937
   - Stationhouse Supplies
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3432907335
   - Stoneborn - Dwarven Style Pack
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3172496453
+  - Styles Pack for VFE Classical (Fan Mod)
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3840619132
   - Sun & Moon Beams - 动态光束
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3616506033
   - Tacticool Ops
@@ -962,7 +966,7 @@ Apparel, styles & cosmetics  (84)
 ========================================================================
 Furniture, decor & props  (46)
 ========================================================================
-  - (unavailable 2792624577)  [unavailable]
+  - Workshop item 2792624577
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2792624577
   - [DHM]Wallpenmarker
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3707830801
@@ -1456,7 +1460,7 @@ Alpha series  (15)
 ========================================================================
 Content & overhauls  (53)
 ========================================================================
-  - (unavailable 2545774148)  [unavailable]
+  - Workshop item 2545774148
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2545774148
   - Altered Carbon 2: ReSleeved
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2196278117
@@ -1566,9 +1570,9 @@ Content & overhauls  (53)
 ========================================================================
 Animals  (47)
 ========================================================================
-  - (unavailable 3775906812)  [unavailable]
+  - Workshop item 3775906812
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3775906812
-  - (unavailable 3798549519)  [unavailable]
+  - Skunks - Continued
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3798549519
   - [AP] Hunting Meme 1.6 (Temp)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3535691822
@@ -1664,7 +1668,7 @@ Animals  (47)
 ========================================================================
 Combat, weapons & raids  (44)
 ========================================================================
-  - (unavailable 3611982780)  [unavailable]
+  - Configurable Dynamic Weapon Cooldown
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3611982780
   - [1.6] CAI 5000 - Advanced AI + Fog Of War (continued)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3673768803
@@ -1900,13 +1904,13 @@ Building, production & storage  (70)
 ========================================================================
 Medical, needs & hygiene  (34)
 ========================================================================
-  - (unavailable 2164584341)  [unavailable]
+  - Bodyparts Rot
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2164584341
-  - (unavailable 3309016770)  [unavailable]
+  - Workshop item 3309016770
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3309016770
-  - (unavailable 3680510302)  [unavailable]
+  - I Miss My Limbs (Continued)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3680510302
-  - (unavailable 3798550391)  [unavailable]
+  - Better Vomit - Continued
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3798550391
   - [DSGT] Nurse Job
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=1820501433
@@ -1972,7 +1976,7 @@ Medical, needs & hygiene  (34)
 ========================================================================
 Genes, xenotypes & races  (68)
 ========================================================================
-  - (unavailable 3628433732)  [unavailable]
+  - Workshop item 3628433732
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3628433732
   - [CF] VRE - Sanguophage Better Parts
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3165181669
@@ -2214,7 +2218,7 @@ Ideology & social  (49)
 ========================================================================
 World, biomes, factions & travel  (57)
 ========================================================================
-  - (unavailable 3226502149)  [unavailable]
+  - Workshop item 3226502149
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3226502149
   - [FSF] Better Pawn Lending Quest
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2551381293
@@ -2434,7 +2438,7 @@ Research, storytellers & progression  (49)
 ========================================================================
 Vehicles, gravships & mechs  (37)
 ========================================================================
-  - (unavailable 3015087560)  [unavailable]
+  - Vehicle Framework - All Vehicles Renamable
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3015087560
   - Always Position Gravship on Landing
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3738322550
@@ -2510,15 +2514,15 @@ Vehicles, gravships & mechs  (37)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3835520732
 
 ========================================================================
-Gameplay tweaks  (335)
+Gameplay tweaks  (339)
 ========================================================================
-  - (unavailable 3712465624)  [unavailable]
+  - Workshop item 3712465624
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3712465624
-  - (unavailable 3778487830)  [unavailable]
+  - Workshop item 3778487830
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3778487830
-  - (unavailable 3798550797)  [unavailable]
+  - StarFix - Continued
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3798550797
-  - (unavailable 3801431089)  [unavailable]
+  - Workshop item 3801431089
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3801431089
   - [CF] VRE - Lycanthrope Better Parts
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3578135470
@@ -2676,6 +2680,8 @@ Gameplay tweaks  (335)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3658946017
   - Dress a Corpse
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3663042682
+  - Dynamic Fog Color
+    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3492647454
   - Dynamic Spacefarer Policy
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3829638797
   - Echoes of the Rim
@@ -2718,8 +2724,6 @@ Gameplay tweaks  (335)
     [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3793154978
   - Fluffy Breakdowns Continued
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3654021202
-  - Fog Color Changer
-    [3/3 Cosmetics]  https://steamcommunity.com/sharedfiles/filedetails/?id=3492647454
   - Foot Traffic Heatmap
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3240217316
   - Fuck Embrasures
@@ -2760,10 +2764,14 @@ Gameplay tweaks  (335)
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2770815124
   - Help me build
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3534699220
+  - Hemophage Warcasket
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3844425399
   - High Life Drug Cooking Speed
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3183941628
   - Holo Dancers
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3599306604
+  - HYRAX
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3844020959
   - I Can Sit On This Throne
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3836624677
   - I Cant Fix That
@@ -2908,6 +2916,8 @@ Gameplay tweaks  (335)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2986525461
   - Nudge Me - Pathfinding Fix
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3665657945
+  - Nurgle Slug Herald
+    [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=3840648231
   - Only If 'Tolerance' Below in Drug Policy
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3088210509
   - Oops all BUGPARTS 2
@@ -2994,6 +3004,8 @@ Gameplay tweaks  (335)
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=2177170403
   - Resource Delivery Helper
     [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3696859196
+  - Resource Readout+
+    [1/3 Core]  https://steamcommunity.com/sharedfiles/filedetails/?id=3844147232
   - Reverse Engineered Region Adjusters
     [2/3 Content]  https://steamcommunity.com/sharedfiles/filedetails/?id=2982567135
   - Rim is Ready

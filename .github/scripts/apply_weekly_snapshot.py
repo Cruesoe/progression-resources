@@ -98,6 +98,8 @@ def infer_category(title: str, categories: list[str]) -> str:
 
 
 def refresh_items(data: dict) -> tuple[dict, dict]:
+    overlay_path = ROOT / 'backup/packageids_overlay.json'
+    overlay = json.loads(overlay_path.read_text(encoding='utf-8')) if overlay_path.exists() else {}
     memberships = {key: collection_ids(collection_id) for key, (collection_id, _) in COLLECTIONS.items()}
     collection_page_ids = {collection_id for collection_id, _ in COLLECTIONS.values()}
     for item_ids in memberships.values():
@@ -115,12 +117,15 @@ def refresh_items(data: dict) -> tuple[dict, dict]:
         old = previous.get(item_id)
         detail = details[item_id]
         available = int(detail.get("result", 0)) == 1
-        title = str(detail.get("title") or (old or {}).get("t") or f"Workshop item {item_id}") if available else f"(unavailable {item_id})"
+        previous_title = (old or {}).get('t', '')
+        if previous_title.startswith('(unavailable '):
+            previous_title = ''
+        title = str(detail.get("title") or previous_title or f"Workshop item {item_id}")
         if old is None:
             changes["added"].append({"t": title, "id": item_id})
         elif available and not old.get("gone") and old["t"] != title:
             changes["renamed"].append({"from": old["t"], "to": title, "id": item_id})
-        elif not available and not old.get("gone"):
+        elif not available and not old.get("gone") and not old.get('metadataUnavailable'):
             changes["newly_unavailable"].append({"t": old["t"], "id": item_id})
         item = {
             "t": title,
@@ -130,10 +135,10 @@ def refresh_items(data: dict) -> tuple[dict, dict]:
             "cosmetics": item_id in memberships["cosmetics"],
             "id": item_id,
             "u": f"https://steamcommunity.com/sharedfiles/filedetails/?id={item_id}",
-            "p": (old or {}).get("p", ""),
+            "p": overlay.get(item_id) or (old or {}).get("p", ""),
         }
         if not available:
-            item["gone"] = True
+            item["metadataUnavailable"] = True
         refreshed.append(item)
     order = {category: index for index, category in enumerate(data["cats"])}
     refreshed.sort(key=lambda item: (order.get(item["c"], len(order)), item["t"].casefold(), int(item["id"])))
@@ -148,15 +153,15 @@ def change_summary(changes: dict) -> str:
 def update_html(html: str, data: dict, changes: dict, iso_date: str, display_date: str) -> str:
     html = re.sub(r'<div class="updated">.*?</div>', f'<div class="updated">Steam snapshot: <time datetime="{iso_date}">{display_date}</time></div>', html, count=1, flags=re.S)
     html = re.sub(r'(<details class="changes">\s*<summary>).*?(</summary>)', r'\g<1>Latest snapshot changes: ' + change_summary(changes) + r'\g<2>', html, count=1, flags=re.S)
-    html = re.sub(r"const DATA = \{.*?\};\s*\n", "const DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", html, count=1, flags=re.S)
+    html = re.sub(r"const DATA = \{.*?\};\s*\n", lambda _: "const DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n", html, count=1, flags=re.S)
     total = len(data["items"])
     known = sum(bool(item.get("p")) for item in data["items"])
     footer_match = re.search(r"<footer>.*?</footer>", html, re.S)
     if footer_match:
         footer = footer_match.group(0)
         footer = re.sub(r"Steam snapshot: .*?\.", f"Steam snapshot: {display_date}.", footer)
-        footer = re.sub(r"(packageId from RimSort steamDB: \d+ of )\d+\.", rf"\g<1>{total}.", footer)
-        footer = re.sub(r"Known packageIds \(RimSort \+ previous overlay\): \d+ of \d+\.", f"Known packageIds (RimSort + previous overlay): {known} of {total}.", footer)
+        footer = re.sub(r"\s*packageId from RimSort steamDB: \d+ of \d+\.", '', footer)
+        footer = re.sub(r"Known packageIds(?: \(RimSort \+ previous overlay\))?: \d+ of \d+\.", f"Known packageIds: {known} of {total}.", footer)
         html = html[:footer_match.start()] + footer + html[footer_match.end():]
     return html
 
@@ -186,8 +191,9 @@ def update_readme(text: str, data: dict, changes: dict, display_date: str) -> st
     total = len(data["items"])
     known = sum(bool(item.get("p")) for item in data["items"])
     text = re.sub(r"\*\*Steam snapshot date:.*?\*\*", f"**Steam snapshot date: {display_date}**", text, count=1)
-    text = re.sub(r"(\*\*packageId from RimSort steamDB: \d+ of )\d+(\*\*)", rf"\g<1>{total}\g<2>", text, count=1)
-    text = re.sub(r"\*\*Known packageIds .*?\*\*", f"**Known packageIds (RimSort + previous overlay): {known} of {total}**", text, count=1)
+    text = re.sub(r"\*\*packageId coverage:.*?\*\*", f"**packageId coverage: {known} of {total}**", text, count=1)
+    text = re.sub(r"\*\*packageId from RimSort steamDB:.*?\*\*\s*", '', text, count=1)
+    text = re.sub(r"\*\*Known packageIds.*?\*\*", f"**Known packageIds: {known} of {total}**", text, count=1)
     text = re.sub(r"\*\*Unique mods:.*?\*\*[^\n]*", f"**Unique mods: {total}** — Core {counts['core']} · Content {counts['content']} · Cosmetics {counts['cosmetics']} (3 collection pages omitted from the item list)", text, count=1)
     replacement = "## This snapshot vs previous catalog\n\n" + format_change_list(changes) + "\n\n"
     return re.sub(r"## This snapshot vs previous catalog\n.*?(?=## Open the site)", replacement, text, count=1, flags=re.S)
@@ -252,6 +258,13 @@ def main() -> None:
     HTML.write_text(update_html(html, data, changes, iso_date, display_date), encoding="utf-8")
     README.write_text(update_readme(README.read_text(encoding="utf-8"), data, changes, display_date), encoding="utf-8")
     write_backups(data, display_date)
+    summary_path = ROOT / 'research/summary.json'
+    if summary_path.exists():
+        summary = json.loads(summary_path.read_text(encoding='utf-8'))
+        ids = {item['id'] for item in data['items']}
+        summary['packMods'] = len(ids)
+        summary['researchMods'] = len(ids.intersection(summary['mods']))
+        summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(f"refreshed {len(data['items'])} mods: {change_summary(changes)}")
 
 

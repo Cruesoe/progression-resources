@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Progression Research Tree</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -113,14 +113,14 @@ dd { margin: 0; min-width: 0; word-break: break-word; }
 .crumb a { color: var(--accent); text-decoration: none; }
 #loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 16px; }
 </style>
-<meta name="description" content="Every research project in ferny's Progression RimWorld pack, with ferny's mods or the ProgressionLESS mods.">
+<meta name="description" content="Explore offline research snapshots for Progression, ProgressionLESS, and the published Genesis pack.">
 <meta name="theme-color" content="#101a17">
 <link rel="canonical" href="https://cruesoe.github.io/progression-resources/research.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b3a2e'/%3E%3Cpath d='M19 48V16h15c8 0 13 5 13 12s-5 12-13 12h-7v8zm8-15h7c3 0 5-2 5-5s-2-5-5-5h-7z' fill='%2395d5b2'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Progression Resources">
 <meta property="og:title" content="Progression research tree">
-<meta property="og:description" content="Every research project in ferny's Progression pack, with ferny's mods or the ProgressionLESS mods.">
+<meta property="og:description" content="Explore offline research snapshots for Progression, ProgressionLESS, and the published Genesis pack.">
 <meta property="og:url" content="https://cruesoe.github.io/progression-resources/research.html">
 <style>
 /* Progression Resources palette (the catalog's), in place of the viewer's light/dark themes */
@@ -150,6 +150,7 @@ html, body { margin: 0; }
   </div>
   <div class="tabs" id="tabs" role="group" aria-label="Research tabs"></div>
   <div class="key" id="key"></div>
+  <div class="meta" id="edition-note"></div>
 </header>
 <div id="stage">
   <div id="empty-edition" role="status" hidden><h2>Genesis research tree</h2><p>The Genesis edition has been added, but its current research definitions, prerequisites, and layout positions have not yet been verified. No invented projects or connections are shown. Progression and ProgressionLESS remain available.</p></div>
@@ -167,7 +168,7 @@ html, body { margin: 0; }
 const RAW = document.getElementById('data').textContent.trim();
 const SITE = !RAW;
 let ROOT;
-try { ROOT = SITE ? await fetch('research/tree.json').then(r => r.json()) : JSON.parse(RAW); }
+try { ROOT = SITE ? await fetch('research/tree.json', {cache:'no-cache'}).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }) : JSON.parse(RAW); }
 catch { document.getElementById('loading').textContent = 'The research tree could not be loaded. Reload the page to try again.'; return; }
 document.getElementById('loading').hidden = true;
 document.getElementById('crumb').hidden = !SITE;
@@ -235,6 +236,8 @@ function renderHeader() {
   $('mod').value = modFilter;
   $('meta').textContent = META.pending ? 'Research data awaiting verification' : `${ALL.length} projects from ${META.mods || '?'} mods · built ${META.generated || ''}`;
   $('h1').textContent = edition + ' research tree';
+  $('edition-note').textContent = (edition === 'Genesis' ? 'Published Genesis Steam collection.' : edition === 'ProgressionLESS' ? 'Progression collections with published ProgressionLESS replacements.' : 'The three published Progression collections.') + ' Offline XML snapshot for RimWorld 1.7; runtime-generated research and custom patch operations may differ. Layout is adapted for the web.';
+  if (META.unavailableItems?.length) $('edition-note').textContent += ` ${META.unavailableItems.length} collection items could not be read.`;
   $('eds').innerHTML = Object.keys(EDS).map(e => `<button data-ed="${esc(e)}" aria-pressed="${e === edition}">${esc(e)}</button>`).join('');
   $('eds').hidden = Object.keys(EDS).length < 2;
   $('key').innerHTML = META.pending ? '' : LEVELS.map((l, i) => ALL.some(p => p.lv === i) ? `<span><i style="--c:var(--e${i})"></i>${ERA_NAMES[l] || l}</span>` : '').join('') + '<span><i style="--c:var(--ea)"></i>Anomaly</span><span>▲ major hub · △ minor hub</span>';

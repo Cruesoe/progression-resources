@@ -1,605 +1,611 @@
 {
-    "built":  "18 November 2026",
-    "packMods":  1543,
-    "researchMods":  139,
-    "projects":  {
-                     "Progression":  2225,
-                     "ProgressionLESS":  1087
-                 },
-    "mods":  {
-                 "1880253632":  {
-                                    "name":  "Vanilla Furniture Expanded - Production",
-                                    "p":  1
-                                },
-                 "2787850474":  {
-                                    "name":  "Vanilla Factions Expanded - Classical",
-                                    "p":  18
-                                },
-                 "3096481956":  {
-                                    "name":  "Asimov",
-                                    "p":  1
-                                },
-                 "3444347874":  {
-                                    "name":  "Vanilla Factions Expanded - Medieval 2",
-                                    "p":  7
-                                },
-                 "3032870787":  {
-                                    "name":  "War Crimes Expanded 2 Core (Updated)",
-                                    "p":  6
-                                },
-                 "3799737423":  {
-                                    "name":  "Vanilla Gravship Expanded - Chapter 2",
-                                    "p":  3
-                                },
-                 "3548973881":  {
-                                    "name":  "Roo\u0027s Satyr and Faun Xenotypes Expanded",
-                                    "p":  1
-                                },
-                 "3100958580":  {
-                                    "name":  "Biomes! Fossils",
-                                    "p":  1
-                                },
-                 "3783411735":  {
-                                    "name":  "Progression: Hives",
-                                    "p":  34,
-                                    "less":  "ProgressionLESS Hives",
-                                    "l":  9
-                                },
-                 "2938820380":  {
-                                    "name":  "Vanilla Factions Expanded - Empire",
-                                    "p":  4
-                                },
-                 "3222694245":  {
-                                    "name":  "Phase Weaponry",
-                                    "p":  1
-                                },
-                 "2982567135":  {
-                                    "name":  "Reverse Engineered Region Adjusters",
-                                    "p":  8
-                                },
-                 "2748889667":  {
-                                    "name":  "Vanilla Plants Expanded - More Plants",
-                                    "p":  1
-                                },
-                 "3354086860":  {
-                                    "name":  "Rimbody",
-                                    "p":  1
-                                },
-                 "2559958496":  {
-                                    "name":  "T\u0027s Samurai Faction",
-                                    "p":  15
-                                },
-                 "1989352844":  {
-                                    "name":  "Vanilla Weapons Expanded - Laser",
-                                    "p":  1
-                                },
-                 "3014906877":  {
-                                    "name":  "Vanilla Vehicles Expanded",
-                                    "p":  4
-                                },
-                 "3841677765":  {
-                                    "name":  "Progression: Vehicles",
-                                    "p":  31,
-                                    "less":  "ProgressionLESS Vehicles",
-                                    "l":  16
-                                },
-                 "3365118555":  {
-                                    "name":  "Mechanoid Upgrades",
-                                    "p":  22
-                                },
-                 "2616538981":  {
-                                    "name":  "Steve\u0027s Walls",
-                                    "p":  1
-                                },
-                 "3239506998":  {
-                                    "name":  "Progression: Genetics",
-                                    "p":  2
-                                },
-                 "1814988282":  {
-                                    "name":  "Vanilla Armour Expanded",
-                                    "p":  4
-                                },
-                 "2008970276":  {
-                                    "name":  "EPOE-Forked: Royalty DLC expansion",
-                                    "p":  3
-                                },
-                 "2403695576":  {
-                                    "name":  "Die for me (Continued)",
-                                    "p":  3
-                                },
-                 "3424640315":  {
-                                    "name":  "Progression: Kitchen",
-                                    "p":  50,
-                                    "less":  "ProgressionLESS Kitchen",
-                                    "l":  7
-                                },
-                 "3382446150":  {
-                                    "name":  "Alpha Crafts",
-                                    "p":  9
-                                },
-                 "3223443793":  {
-                                    "name":  "Integrated Implants",
-                                    "p":  36
-                                },
-                 "3202046258":  {
-                                    "name":  "Vanilla Temperature Expanded",
-                                    "p":  1
-                                },
-                 "2723801948":  {
-                                    "name":  "Vanilla Factions Expanded - Pirates",
-                                    "p":  8
-                                },
-                 "3551721422":  {
-                                    "name":  "Volt Weaponry",
-                                    "p":  1
-                                },
-                 "1718190143":  {
-                                    "name":  "Vanilla Furniture Expanded",
-                                    "p":  3
-                                },
-                 "3798837810":  {
-                                    "name":  "Progression: Arsenal",
-                                    "p":  331,
-                                    "less":  "ProgressionLESS Arsenal",
-                                    "l":  118
-                                },
-                 "3155781848":  {
-                                    "name":  "Vanilla Recycling Expanded",
-                                    "p":  2
-                                },
-                 "2963826335":  {
-                                    "name":  "Dark Ages : Crypts and Tombs",
-                                    "p":  2
-                                },
-                 "3275091331":  {
-                                    "name":  "Alpha Implants",
-                                    "p":  1
-                                },
-                 "2454918139":  {
-                                    "name":  "Vanilla Weapons Expanded - Frontier",
-                                    "p":  1
-                                },
-                 "3538728067":  {
-                                    "name":  "Impact Weaponry - Reloaded",
-                                    "p":  2
-                                },
-                 "2877699803":  {
-                                    "name":  "Vanilla Helixien Gas Expanded",
-                                    "p":  1
-                                },
-                 "3247891820":  {
-                                    "name":  "Spacer Arsenal",
-                                    "p":  1
-                                },
-                 "3551263267":  {
-                                    "name":  "Enhanced Vat Learning",
-                                    "p":  2
-                                },
-                 "3656792230":  {
-                                    "name":  "Simple Additions: Starfire Boss",
-                                    "p":  1
-                                },
-                 "2275449762":  {
-                                    "name":  "Vanilla Brewing Expanded - Coffees and Teas",
-                                    "p":  1
-                                },
-                 "3453408412":  {
-                                    "name":  "Progression: Production",
-                                    "p":  41,
-                                    "less":  "ProgressionLESS Production",
-                                    "l":  9
-                                },
-                 "2196278117":  {
-                                    "name":  "Altered Carbon 2: ReSleeved",
-                                    "p":  12
-                                },
-                 "2454918354":  {
-                                    "name":  "Vanilla Weapons Expanded - Non-Lethal",
-                                    "p":  1
-                                },
-                 "3316062206":  {
-                                    "name":  "Ancient urban ruins",
-                                    "p":  1
-                                },
-                 "2973169158":  {
-                                    "name":  "Alpha Mechs",
-                                    "p":  8
-                                },
-                 "1968134023":  {
-                                    "name":  "Vanilla Furniture Expanded - Art",
-                                    "p":  9
-                                },
-                 "2880970348":  {
-                                    "name":  "Advanced Moisture Pump (Continued)",
-                                    "p":  1
-                                },
-                 "2186560858":  {
-                                    "name":  "Vanilla Brewing Expanded",
-                                    "p":  2
-                                },
-                 "3841676471":  {
-                                    "name":  "Progression: Waste",
-                                    "p":  1,
-                                    "less":  "ProgressionLESS Waste",
-                                    "l":  1
-                                },
-                 "3771246586":  {
-                                    "name":  "Progression: Furniture",
-                                    "p":  97,
-                                    "less":  "ProgressionLESS Furniture",
-                                    "l":  24
-                                },
-                 "3270214529":  {
-                                    "name":  "Progression: Warrants",
-                                    "p":  1
-                                },
-                 "3681298244":  {
-                                    "name":  "Simple Immersion - VBE Coffees and Teas",
-                                    "p":  1
-                                },
-                 "3418017359":  {
-                                    "name":  "Progression: Agriculture",
-                                    "p":  2
-                                },
-                 "3253283971":  {
-                                    "name":  "Progression: Temperature",
-                                    "p":  7,
-                                    "less":  "ProgressionLESS Temperature",
-                                    "l":  3
-                                },
-                 "3787736781":  {
-                                    "name":  "Capture Expansion",
-                                    "p":  10
-                                },
-                 "3609835606":  {
-                                    "name":  "Vanilla Gravship Expanded - Chapter 1",
-                                    "p":  7
-                                },
-                 "2842502659":  {
-                                    "name":  "Vanilla Psycasts Expanded",
-                                    "p":  2
-                                },
-                 "3736402055":  {
-                                    "name":  "Progression: Robotics",
-                                    "p":  124,
-                                    "less":  "ProgressionLESS Robotics",
-                                    "l":  43
-                                },
-                 "3106413957":  {
-                                    "name":  "Stoneborn - Delights",
-                                    "p":  3
-                                },
-                 "2975771801":  {
-                                    "name":  "Vanilla Races Expanded - Android",
-                                    "p":  2
-                                },
-                 "2810324444":  {
-                                    "name":  "Vanilla Genetics Expanded - More Lab Stuff",
-                                    "p":  1
-                                },
-                 "3615540204":  {
-                                    "name":  "Chimera Creation (Continued)",
-                                    "p":  1
-                                },
-                 "2375692535":  {
-                                    "name":  "Vanilla Weapons Expanded - Coilguns",
-                                    "p":  1
-                                },
-                 "3688808936":  {
-                                    "name":  "Arsenal - Orbital Security",
-                                    "p":  4
-                                },
-                 "2925432336":  {
-                                    "name":  "Big and Small - Framework",
-                                    "p":  1
-                                },
-                 "3634353108":  {
-                                    "name":  "Security Clearance",
-                                    "p":  1
-                                },
-                 "3613068789":  {
-                                    "name":  "Generally More Research",
-                                    "p":  65
-                                },
-                 "2878860499":  {
-                                    "name":  "Medicines+",
-                                    "p":  6
-                                },
-                 "3465257079":  {
-                                    "name":  "Imperial Attires",
-                                    "p":  1
-                                },
-                 "1957158779":  {
-                                    "name":  "Vanilla Furniture Expanded - Farming",
-                                    "p":  3
-                                },
-                 "3237638097":  {
-                                    "name":  "Reel\u0027s Expanded Storage",
-                                    "p":  2
-                                },
-                 "3841675689":  {
-                                    "name":  "Progression: Power",
-                                    "p":  22,
-                                    "less":  "ProgressionLESS Power",
-                                    "l":  6
-                                },
-                 "2134308519":  {
-                                    "name":  "Vanilla Cooking Expanded",
-                                    "p":  5
-                                },
-                 "3375627095":  {
-                                    "name":  "Mechanoid Upgrades - Anomaly",
-                                    "p":  1
-                                },
-                 "3451325196":  {
-                                    "name":  "Laser Weapons: Re-Examined",
-                                    "p":  1
-                                },
-                 "3492739424":  {
-                                    "name":  "Research Papers",
-                                    "p":  1
-                                },
-                 "3532192464":  {
-                                    "name":  "Eltex Weaponry (Continued)",
-                                    "p":  1
-                                },
-                 "3690565613":  {
-                                    "name":  "Progression: Factories",
-                                    "p":  21,
-                                    "less":  "ProgressionLESS Factories",
-                                    "l":  5
-                                },
-                 "3748351639":  {
-                                    "name":  "Vanilla Plants Expanded - Flowers",
-                                    "p":  1
-                                },
-                 "3079786283":  {
-                                    "name":  "Vanilla Factions Expanded - Tribals",
-                                    "p":  11
-                                },
-                 "2028381079":  {
-                                    "name":  "Vanilla Furniture Expanded - Spacer Module",
-                                    "p":  2
-                                },
-                 "3522893553":  {
-                                    "name":  "Progression: Gravship",
-                                    "p":  20,
-                                    "less":  "ProgressionLESS Gravship",
-                                    "l":  0
-                                },
-                 "2158539170":  {
-                                    "name":  "Vanilla Cooking Expanded - Sushi",
-                                    "p":  1
-                                },
-                 "3219596926":  {
-                                    "name":  "Medieval Overhaul",
-                                    "p":  46
-                                },
-                 "1328216966":  {
-                                    "name":  "Medical Dissection",
-                                    "p":  1
-                                },
-                 "3025493377":  {
-                                    "name":  "Vanilla Factions Expanded - Deserters",
-                                    "p":  3
-                                },
-                 "3573344880":  {
-                                    "name":  "Ushankas Hacking Expansion",
-                                    "p":  4
-                                },
-                 "3125246043":  {
-                                    "name":  "[FM] DBH Addon: Expanded Pack",
-                                    "p":  1
-                                },
-                 "3590863552":  {
-                                    "name":  "Progression: Education",
-                                    "p":  14,
-                                    "less":  "ProgressionLESS Education",
-                                    "l":  7
-                                },
-                 "2062943477":  {
-                                    "name":  "Vanilla Furniture Expanded - Power",
-                                    "p":  5
-                                },
-                 "2801160906":  {
-                                    "name":  "Vanilla Genetics Expanded",
-                                    "p":  6
-                                },
-                 "2419690698":  {
-                                    "name":  "Vanilla Weapons Expanded - Makeshift",
-                                    "p":  1
-                                },
-                 "3532877485":  {
-                                    "name":  "Ion Weaponry (Continued)",
-                                    "p":  1
-                                },
-                 "3705179186":  {
-                                    "name":  "Medical Expansion - Vaccines",
-                                    "p":  6
-                                },
-                 "3047892432":  {
-                                    "name":  "Vanilla Vehicles Expanded - Tier 3",
-                                    "p":  11
-                                },
-                 "3236303965":  {
-                                    "name":  "ReSplice: Core",
-                                    "p":  1
-                                },
-                 "3713354466":  {
-                                    "name":  "Medical Expansion - Addiction Treatment",
-                                    "p":  1
-                                },
-                 "3292746186":  {
-                                    "name":  "Progression: Storage",
-                                    "p":  21,
-                                    "less":  "ProgressionLESS Storage",
-                                    "l":  3
-                                },
-                 "3609646528":  {
-                                    "name":  "Epochs - Golems",
-                                    "p":  5
-                                },
-                 "3077879089":  {
-                                    "name":  "Pulse Weaponry",
-                                    "p":  1
-                                },
-                 "3763005969":  {
-                                    "name":  "Progression: Drugs",
-                                    "p":  73,
-                                    "less":  "ProgressionLESS Drugs",
-                                    "l":  13
-                                },
-                 "836308268":  {
-                                   "name":  "Dubs Bad Hygiene",
-                                   "p":  23
-                               },
-                 "3733951755":  {
-                                    "name":  "Vanilla Quests Expanded - Drone Factory",
-                                    "p":  1
-                                },
-                 "3841674396":  {
-                                    "name":  "Progression: Water",
-                                    "p":  34,
-                                    "less":  "ProgressionLESS Water",
-                                    "l":  7
-                                },
-                 "1814987817":  {
-                                    "name":  "Vanilla Apparel Expanded",
-                                    "p":  4
-                                },
-                 "3424105991":  {
-                                    "name":  "Temporary Patches",
-                                    "p":  1
-                                },
-                 "3723818517":  {
-                                    "name":  "Logic Switch",
-                                    "p":  1
-                                },
-                 "3634874325":  {
-                                    "name":  "Progression: Attire",
-                                    "p":  18,
-                                    "less":  "ProgressionLESS Attire",
-                                    "l":  9
-                                },
-                 "3792325789":  {
-                                    "name":  "Apex Mechanoids",
-                                    "p":  2
-                                },
-                 "3654021202":  {
-                                    "name":  "Fluffy Breakdowns Continued",
-                                    "p":  2
-                                },
-                 "3009527756":  {
-                                    "name":  "Engine Industries",
-                                    "p":  3
-                                },
-                 "3018569666":  {
-                                    "name":  "Rim-Gnoblins",
-                                    "p":  1
-                                },
-                 "1906780517":  {
-                                    "name":  "Vanilla Weapons Expanded - Quickdraw",
-                                    "p":  1
-                                },
-                 "1814383360":  {
-                                    "name":  "Vanilla Weapons Expanded",
-                                    "p":  2
-                                },
-                 "728314182":  {
-                                   "name":  "RT Fuse",
-                                   "p":  2
-                               },
-                 "3367948914":  {
-                                    "name":  "Forsaken Faction For Alpha Genes",
-                                    "p":  2
-                                },
-                 "3478462020":  {
-                                    "name":  "Aquariums!",
-                                    "p":  7
-                                },
-                 "3819508584":  {
-                                    "name":  "Surveillance Shift",
-                                    "p":  10
-                                },
-                 "3227008885":  {
-                                    "name":  "Ushankas Luciferium Expansion",
-                                    "p":  11
-                                },
-                 "2847321165":  {
-                                    "name":  "Holograms And Projectors",
-                                    "p":  1
-                                },
-                 "3589154549":  {
-                                    "name":  "Bionic modularity",
-                                    "p":  6
-                                },
-                 "3589157997":  {
-                                    "name":  "Bionic modularity - animals",
-                                    "p":  1
-                                },
-                 "1845154007":  {
-                                    "name":  "Vanilla Furniture Expanded - Security",
-                                    "p":  5
-                                },
-                 "1949064302":  {
-                                    "name":  "Expanded Prosthetics and Organ Engineering - Forked",
-                                    "p":  11
-                                },
-                 "3265298940":  {
-                                    "name":  "Progression: Hospitality",
-                                    "p":  3,
-                                    "less":  "ProgressionLESS Hospitality",
-                                    "l":  2
-                                },
-                 "2881104358":  {
-                                    "name":  "Roo\u0027s Painting Expansion",
-                                    "p":  2
-                                },
-                 "3819707781":  {
-                                    "name":  "Progression: Bionics",
-                                    "p":  531,
-                                    "less":  "ProgressionLESS Bionics",
-                                    "l":  73
-                                },
-                 "3590516685":  {
-                                    "name":  "Vanilla Cooking Expanded - Bakery",
-                                    "p":  1
-                                },
-                 "3309003431":  {
-                                    "name":  "Vanilla Factions Expanded - Insectoids 2",
-                                    "p":  3
-                                },
-                 "2134312965":  {
-                                    "name":  "Vanilla Cooking Expanded - Stews",
-                                    "p":  1
-                                },
-                 "3228158975":  {
-                                    "name":  "T\u0027s Seal the Spirits : Tribal Anomaly",
-                                    "p":  5
-                                },
-                 "3455694362":  {
-                                    "name":  "Vanilla Cooking Expanded - Haute",
-                                    "p":  1
-                                },
-                 "3522676478":  {
-                                    "name":  "Ushankas Glittertech Expansion",
-                                    "p":  18
-                                },
-                 "3776015553":  {
-                                    "name":  "As above, So below II",
-                                    "p":  5
-                                },
-                 "3221550806":  {
-                                    "name":  "Ushankas Biological Warfare",
-                                    "p":  8
-                                },
-                 "3686924415":  {
-                                    "name":  "Vanilla Furniture Expanded - Factory",
-                                    "p":  2
-                                },
-                 "3832293718":  {
-                                    "name":  "[DG]More Door Variants",
-                                    "p":  1
-                                }
-             }
+  "built": "24 November 2026",
+  "packMods": 1551,
+  "researchMods": 140,
+  "projects": {
+    "Progression": 2241,
+    "ProgressionLESS": 1103,
+    "Genesis": 526
+  },
+  "mods": {
+    "3783411735": {
+      "name": "Progression: Hives",
+      "p": 34,
+      "less": "ProgressionLESS Hives",
+      "l": 9
+    },
+    "1989352844": {
+      "name": "Vanilla Weapons Expanded - Laser",
+      "p": 1
+    },
+    "2275449762": {
+      "name": "Vanilla Brewing Expanded - Coffees and Teas",
+      "p": 1
+    },
+    "3265298940": {
+      "name": "Progression: Hospitality",
+      "p": 3,
+      "less": "ProgressionLESS Hospitality",
+      "l": 2
+    },
+    "2975771801": {
+      "name": "Vanilla Races Expanded - Android",
+      "p": 2
+    },
+    "1328216966": {
+      "name": "Medical Dissection",
+      "p": 1
+    },
+    "3548973881": {
+      "name": "Roo's Satyr and Faun Xenotypes Expanded",
+      "p": 1
+    },
+    "3247891820": {
+      "name": "Spacer Arsenal",
+      "p": 1
+    },
+    "3763005969": {
+      "name": "Progression: Drugs",
+      "p": 73,
+      "less": "ProgressionLESS Drugs",
+      "l": 13
+    },
+    "3819707781": {
+      "name": "Progression: Bionics",
+      "p": 531,
+      "less": "ProgressionLESS Bionics",
+      "l": 73
+    },
+    "3223443793": {
+      "name": "Integrated Implants",
+      "p": 36
+    },
+    "3025493377": {
+      "name": "Vanilla Factions Expanded - Deserters",
+      "p": 3
+    },
+    "3367948914": {
+      "name": "Forsaken Faction For Alpha Genes",
+      "p": 2
+    },
+    "3032870787": {
+      "name": "War Crimes Expanded 2 Core (Updated)",
+      "p": 6
+    },
+    "3096481956": {
+      "name": "Asimov",
+      "p": 1
+    },
+    "3228158975": {
+      "name": "T's Seal the Spirits : Tribal Anomaly",
+      "p": 5
+    },
+    "3292746186": {
+      "name": "Progression: Storage",
+      "p": 21,
+      "less": "ProgressionLESS Storage",
+      "l": 3
+    },
+    "3077879089": {
+      "name": "Pulse Weaponry",
+      "p": 1
+    },
+    "1718190143": {
+      "name": "Vanilla Furniture Expanded",
+      "p": 3
+    },
+    "3451325196": {
+      "name": "Laser Weapons: Re-Examined",
+      "p": 1
+    },
+    "3221550806": {
+      "name": "Ushankas Biological Warfare",
+      "p": 8
+    },
+    "3309003431": {
+      "name": "Vanilla Factions Expanded - Insectoids 2",
+      "p": 3
+    },
+    "3382446150": {
+      "name": "Alpha Crafts",
+      "p": 9
+    },
+    "2842502659": {
+      "name": "Vanilla Psycasts Expanded",
+      "p": 2
+    },
+    "3819508584": {
+      "name": "Surveillance Shift",
+      "p": 10
+    },
+    "728314182": {
+      "name": "RT Fuse",
+      "p": 2
+    },
+    "3792325789": {
+      "name": "Apex Mechanoids",
+      "p": 2
+    },
+    "3748351639": {
+      "name": "Vanilla Plants Expanded - Flowers",
+      "p": 1
+    },
+    "2881104358": {
+      "name": "Roo's Painting Expansion",
+      "p": 2
+    },
+    "2028381079": {
+      "name": "Vanilla Furniture Expanded - Spacer Module",
+      "p": 2
+    },
+    "2186560858": {
+      "name": "Vanilla Brewing Expanded",
+      "p": 2
+    },
+    "3100958580": {
+      "name": "Biomes! Fossils",
+      "p": 1
+    },
+    "2454918139": {
+      "name": "Vanilla Weapons Expanded - Frontier",
+      "p": 1
+    },
+    "3316062206": {
+      "name": "Ancient urban ruins",
+      "p": 1
+    },
+    "1814987817": {
+      "name": "Vanilla Apparel Expanded",
+      "p": 4
+    },
+    "3538728067": {
+      "name": "Impact Weaponry - Reloaded",
+      "p": 2
+    },
+    "2810324444": {
+      "name": "Vanilla Genetics Expanded - More Lab Stuff",
+      "p": 1
+    },
+    "3589154549": {
+      "name": "Bionic modularity",
+      "p": 6
+    },
+    "3079786283": {
+      "name": "Vanilla Factions Expanded - Tribals",
+      "p": 11
+    },
+    "3613068789": {
+      "name": "Generally More Research",
+      "p": 65
+    },
+    "3787736781": {
+      "name": "Capture Expansion",
+      "p": 10
+    },
+    "3681298244": {
+      "name": "Simple Immersion - VBE Coffees and Teas",
+      "p": 1
+    },
+    "2925432336": {
+      "name": "Big and Small - Framework",
+      "p": 1
+    },
+    "3014906877": {
+      "name": "Vanilla Vehicles Expanded",
+      "p": 4
+    },
+    "2062943477": {
+      "name": "Vanilla Furniture Expanded - Power",
+      "p": 5
+    },
+    "3375627095": {
+      "name": "Mechanoid Upgrades - Anomaly",
+      "p": 1
+    },
+    "3634874325": {
+      "name": "Progression: Attire",
+      "p": 18,
+      "less": "ProgressionLESS Attire",
+      "l": 9
+    },
+    "3832293718": {
+      "name": "[DG]More Door Variants",
+      "p": 1
+    },
+    "1949064302": {
+      "name": "Expanded Prosthetics and Organ Engineering - Forked",
+      "p": 11
+    },
+    "3522676478": {
+      "name": "Ushankas Glittertech Expansion",
+      "p": 18
+    },
+    "3841674396": {
+      "name": "Progression: Water",
+      "p": 34,
+      "less": "ProgressionLESS Water",
+      "l": 7
+    },
+    "2134312965": {
+      "name": "Vanilla Cooking Expanded - Stews",
+      "p": 1
+    },
+    "2616538981": {
+      "name": "Steve's Walls",
+      "p": 1
+    },
+    "3551263267": {
+      "name": "Enhanced Vat Learning",
+      "p": 2
+    },
+    "3532192464": {
+      "name": "Eltex Weaponry (Continued)",
+      "p": 1
+    },
+    "3424640315": {
+      "name": "Progression: Kitchen",
+      "p": 50,
+      "less": "ProgressionLESS Kitchen",
+      "l": 7
+    },
+    "1814988282": {
+      "name": "Vanilla Armour Expanded",
+      "p": 4
+    },
+    "3589157997": {
+      "name": "Bionic modularity - animals",
+      "p": 1
+    },
+    "2938820380": {
+      "name": "Vanilla Factions Expanded - Empire",
+      "p": 4
+    },
+    "3202046258": {
+      "name": "Vanilla Temperature Expanded",
+      "p": 1
+    },
+    "3453408412": {
+      "name": "Progression: Production",
+      "p": 41,
+      "less": "ProgressionLESS Production",
+      "l": 9
+    },
+    "3615540204": {
+      "name": "Chimera Creation (Continued)",
+      "p": 1
+    },
+    "3573344880": {
+      "name": "Ushankas Hacking Expansion",
+      "p": 4
+    },
+    "3690565613": {
+      "name": "Progression: Factories",
+      "p": 21,
+      "less": "ProgressionLESS Factories",
+      "l": 5
+    },
+    "2134308519": {
+      "name": "Vanilla Cooking Expanded",
+      "p": 5
+    },
+    "2847321165": {
+      "name": "Holograms And Projectors",
+      "p": 1
+    },
+    "2801160906": {
+      "name": "Vanilla Genetics Expanded",
+      "p": 6
+    },
+    "2973169158": {
+      "name": "Alpha Mechs",
+      "p": 8
+    },
+    "3365118555": {
+      "name": "Mechanoid Upgrades",
+      "p": 22
+    },
+    "2403695576": {
+      "name": "Die for me (Continued)",
+      "p": 3
+    },
+    "2963826335": {
+      "name": "Dark Ages : Crypts and Tombs",
+      "p": 2
+    },
+    "3465257079": {
+      "name": "Imperial Attires",
+      "p": 1
+    },
+    "3590516685": {
+      "name": "Vanilla Cooking Expanded - Bakery",
+      "p": 1
+    },
+    "3634353108": {
+      "name": "Security Clearance",
+      "p": 1
+    },
+    "3237638097": {
+      "name": "Reel's Expanded Storage",
+      "p": 2
+    },
+    "3155781848": {
+      "name": "Vanilla Recycling Expanded",
+      "p": 2
+    },
+    "1957158779": {
+      "name": "Vanilla Furniture Expanded - Farming",
+      "p": 3
+    },
+    "2880970348": {
+      "name": "Advanced Moisture Pump (Continued)",
+      "p": 1
+    },
+    "3733951755": {
+      "name": "Vanilla Quests Expanded - Drone Factory",
+      "p": 1
+    },
+    "3736402055": {
+      "name": "Progression: Robotics",
+      "p": 124,
+      "less": "ProgressionLESS Robotics",
+      "l": 43
+    },
+    "1906780517": {
+      "name": "Vanilla Weapons Expanded - Quickdraw",
+      "p": 1
+    },
+    "3841675689": {
+      "name": "Progression: Power",
+      "p": 22,
+      "less": "ProgressionLESS Power",
+      "l": 6
+    },
+    "3713354466": {
+      "name": "Medical Expansion - Addiction Treatment",
+      "p": 1
+    },
+    "3656792230": {
+      "name": "Simple Additions: Starfire Boss",
+      "p": 1
+    },
+    "3522893553": {
+      "name": "Progression: Gravship",
+      "p": 20,
+      "less": "ProgressionLESS Gravship",
+      "l": 0
+    },
+    "3609835606": {
+      "name": "Vanilla Gravship Expanded - Chapter 1",
+      "p": 7
+    },
+    "3551721422": {
+      "name": "Volt Weaponry",
+      "p": 1
+    },
+    "3354086860": {
+      "name": "Rimbody",
+      "p": 1
+    },
+    "3688808936": {
+      "name": "Arsenal - Orbital Security",
+      "p": 4
+    },
+    "3776015553": {
+      "name": "As above, So below II",
+      "p": 5
+    },
+    "3125246043": {
+      "name": "[FM] DBH Addon: Expanded Pack",
+      "p": 1
+    },
+    "3239506998": {
+      "name": "Progression: Genetics",
+      "p": 2
+    },
+    "1968134023": {
+      "name": "Vanilla Furniture Expanded - Art",
+      "p": 9
+    },
+    "3841676471": {
+      "name": "Progression: Waste",
+      "p": 1,
+      "less": "ProgressionLESS Waste",
+      "l": 1
+    },
+    "2878860499": {
+      "name": "Medicines+",
+      "p": 6
+    },
+    "3654021202": {
+      "name": "Fluffy Breakdowns Continued",
+      "p": 2
+    },
+    "3009527756": {
+      "name": "Engine Industries",
+      "p": 3
+    },
+    "3047892432": {
+      "name": "Vanilla Vehicles Expanded - Tier 3",
+      "p": 11
+    },
+    "836308268": {
+      "name": "Dubs Bad Hygiene",
+      "p": 23
+    },
+    "3723818517": {
+      "name": "Logic Switch",
+      "p": 1
+    },
+    "3219596926": {
+      "name": "Medieval Overhaul",
+      "p": 46
+    },
+    "3455694362": {
+      "name": "Vanilla Cooking Expanded - Haute",
+      "p": 1
+    },
+    "3686924415": {
+      "name": "Vanilla Furniture Expanded - Factory",
+      "p": 2
+    },
+    "1880253632": {
+      "name": "Vanilla Furniture Expanded - Production",
+      "p": 1
+    },
+    "3798837810": {
+      "name": "Progression: Arsenal",
+      "p": 332,
+      "less": "ProgressionLESS Arsenal",
+      "l": 118
+    },
+    "1814383360": {
+      "name": "Vanilla Weapons Expanded",
+      "p": 2
+    },
+    "3418017359": {
+      "name": "Progression: Agriculture",
+      "p": 2
+    },
+    "3842174841": {
+      "name": "Map Vehicles – Ocean Expansion",
+      "p": 12
+    },
+    "3799737423": {
+      "name": "Vanilla Gravship Expanded - Chapter 2",
+      "p": 3
+    },
+    "3275091331": {
+      "name": "Alpha Implants",
+      "p": 1
+    },
+    "3492739424": {
+      "name": "Research Papers",
+      "p": 1
+    },
+    "2158539170": {
+      "name": "Vanilla Cooking Expanded - Sushi",
+      "p": 1
+    },
+    "2008970276": {
+      "name": "EPOE-Forked: Royalty DLC expansion",
+      "p": 3
+    },
+    "3705179186": {
+      "name": "Medical Expansion - Vaccines",
+      "p": 6
+    },
+    "3106413957": {
+      "name": "Stoneborn - Delights",
+      "p": 3
+    },
+    "3771246586": {
+      "name": "Progression: Furniture",
+      "p": 97,
+      "less": "ProgressionLESS Furniture",
+      "l": 24
+    },
+    "2748889667": {
+      "name": "Vanilla Plants Expanded - More Plants",
+      "p": 1
+    },
+    "3424105991": {
+      "name": "Temporary Patches",
+      "p": 1
+    },
+    "3478462020": {
+      "name": "Aquariums!",
+      "p": 7
+    },
+    "3018569666": {
+      "name": "Rim-Gnoblins",
+      "p": 1
+    },
+    "3590863552": {
+      "name": "Progression: Education",
+      "p": 14,
+      "less": "ProgressionLESS Education",
+      "l": 7
+    },
+    "2375692535": {
+      "name": "Vanilla Weapons Expanded - Coilguns",
+      "p": 1
+    },
+    "2196278117": {
+      "name": "Altered Carbon 2: ReSleeved",
+      "p": 12
+    },
+    "2877699803": {
+      "name": "Vanilla Helixien Gas Expanded",
+      "p": 1
+    },
+    "3444347874": {
+      "name": "Vanilla Factions Expanded - Medieval 2",
+      "p": 7
+    },
+    "2454918354": {
+      "name": "Vanilla Weapons Expanded - Non-Lethal",
+      "p": 1
+    },
+    "3532877485": {
+      "name": "Ion Weaponry (Continued)",
+      "p": 1
+    },
+    "2419690698": {
+      "name": "Vanilla Weapons Expanded - Makeshift",
+      "p": 1
+    },
+    "3841677765": {
+      "name": "Progression: Vehicles",
+      "p": 34,
+      "less": "ProgressionLESS Vehicles",
+      "l": 19
+    },
+    "3227008885": {
+      "name": "Ushankas Luciferium Expansion",
+      "p": 11
+    },
+    "1845154007": {
+      "name": "Vanilla Furniture Expanded - Security",
+      "p": 5
+    },
+    "2787850474": {
+      "name": "Vanilla Factions Expanded - Classical",
+      "p": 18
+    },
+    "3253283971": {
+      "name": "Progression: Temperature",
+      "p": 7,
+      "less": "ProgressionLESS Temperature",
+      "l": 3
+    },
+    "2982567135": {
+      "name": "Reverse Engineered Region Adjusters",
+      "p": 8
+    },
+    "2723801948": {
+      "name": "Vanilla Factions Expanded - Pirates",
+      "p": 8
+    },
+    "2559958496": {
+      "name": "T's Samurai Faction",
+      "p": 15
+    },
+    "3270214529": {
+      "name": "Progression: Warrants",
+      "p": 1
+    },
+    "3236303965": {
+      "name": "ReSplice: Core",
+      "p": 1
+    },
+    "3609646528": {
+      "name": "Epochs - Golems",
+      "p": 5
+    },
+    "3222694245": {
+      "name": "Phase Weaponry",
+      "p": 1
+    }
+  },
+  "genesisMods": 512
 }

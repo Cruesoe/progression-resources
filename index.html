@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Progression Resources</title>
-<meta name="description" content="Unofficial tools for ferny's Progression RimWorld collections: search every mod in the pack and explore its whole research tree.">
+<meta name="description" content="Explore Progression, ProgressionLESS, and Genesis research. Search the mods in ferny's three Progression collections.">
 <meta name="theme-color" content="#101a17">
 <link rel="canonical" href="https://cruesoe.github.io/progression-resources/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b3a2e'/%3E%3Cpath d='M19 48V16h15c8 0 13 5 13 12s-5 12-13 12h-7v8zm8-15h7c3 0 5-2 5-5s-2-5-5-5h-7z' fill='%2395d5b2'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Progression Resources">
 <meta property="og:title" content="Progression Resources">
-<meta property="og:description" content="Search every mod in ferny's Progression collections and explore the pack's whole research tree.">
+<meta property="og:description" content="Explore Progression, ProgressionLESS, and Genesis research. Search the mods in ferny's three Progression collections.">
 <meta property="og:url" content="https://cruesoe.github.io/progression-resources/">
 <meta name="twitter:card" content="summary">
 <style>
@@ -53,7 +53,7 @@
 <main class="wrap">
   <div>
     <h1>Progression Resources</h1>
-    <p class="lede">Unofficial tools for ferny's Progression RimWorld collections. Search every mod in the pack, and explore the whole pack's research tree.</p>
+    <p class="lede">Explore Progression, ProgressionLESS, and Genesis research. Search the mods in ferny's three Progression collections.</p>
   </div>
 
   <div class="cards">
@@ -65,7 +65,7 @@
     </a>
     <a class="card" href="research.html">
       <h2>Research tree</h2>
-      <p>Every research project in the pack, combined on one tab or split by era. Find any project, see what it needs and unlocks, or highlight one mod. Switch to ProgressionLESS to see the pack with the ProgressionLESS mods in place of ferny's.</p>
+      <p>Compare Progression, ProgressionLESS, and the published Genesis pack. Find projects, prerequisites, and unlocks in combined or tabbed layouts. These offline snapshots use RimWorld 1.7 XML; runtime-generated research and custom patch operations may differ.</p>
       <div class="figures" id="research-figures"></div>
       <span class="go">Open the research tree →</span>
     </a>
@@ -78,6 +78,7 @@
       <a class="content" href="https://steamcommunity.com/workshop/filedetails/?id=3521319712" target="_blank" rel="noopener">The Progression Content (2/3)</a>
       <a class="cosmetics" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3637541646" target="_blank" rel="noopener">The Progression Cosmetics (3/3)</a>
       <a class="less" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3809921502" target="_blank" rel="noopener">ProgressionLESS</a>
+      <a class="less" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3798004429" target="_blank" rel="noopener">Genesis</a>
     </div>
   </section>
 
@@ -88,11 +89,11 @@
 </main>
 <script>
 (async () => {
-  const fmt = n => Number(n).toLocaleString('en-GB');
+  const fmt = n => Number.isFinite(Number(n)) ? Number(n).toLocaleString('en-GB') : '—';
   try {
-    const s = await fetch('research/summary.json').then(r => r.json());
+    const s = await fetch('research/summary.json', {cache:'no-cache'}).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
     document.getElementById('catalog-figures').innerHTML = `<span><b>${fmt(s.packMods)}</b>mods</span><span><b>${fmt(s.researchMods)}</b>add research</span>`;
-    document.getElementById('research-figures').innerHTML = `<span><b>${fmt(s.projects.Progression)}</b>projects</span><span><b>${fmt(s.projects.ProgressionLESS)}</b>with ProgressionLESS</span>`;
+    document.getElementById('research-figures').innerHTML = ['Progression', 'ProgressionLESS', 'Genesis'].map(ed => `<span><b>${fmt(s.projects[ed])}</b>${ed}</span>`).join('');
     document.getElementById('built').textContent = `Research tree built ${s.built}.`;
   } catch { /* figures are optional */ }
 })();

@@ -32,8 +32,7 @@ def main() -> None:
     total = len(data["items"])
     lines[data_idx] = "const DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";"
     new_text = "\n".join(lines) + "\n"
-    if re.search(r"\(\d+ of \d+\)", new_text):
-        new_text = re.sub(r"\(\d+ of \d+\)", f"({have} of {total})", new_text, count=1)
+    new_text = re.sub(r"Known packageIds(?: \(RimSort \+ previous overlay\))?: \d+ of \d+\.", f"Known packageIds: {have} of {total}.", new_text)
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     HTML.write_text(new_text, encoding="utf-8")
 
@@ -53,9 +52,10 @@ def main() -> None:
 
     if README.exists():
         rtxt = README.read_text(encoding="utf-8")
-        cov = f"**packageId coverage: {have} of {total}**"
-        if re.search(r"\*\*packageId coverage:", rtxt):
-            rtxt = re.sub(r"\*\*packageId coverage:.*", cov, rtxt, count=1)
+        cov = f"**Known packageIds: {have} of {total}**"
+        rtxt = re.sub(r"\*\*packageId coverage:.*?\*\*\s*", '', rtxt)
+        if re.search(r"\*\*Known packageIds", rtxt):
+            rtxt = re.sub(r"\*\*Known packageIds.*?\*\*", cov, rtxt, count=1)
         else:
             rtxt = re.sub(
                 r"(\*\*Steam snapshot date: [^\n]+\*\*\n)",
