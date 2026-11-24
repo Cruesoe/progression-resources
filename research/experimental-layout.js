@@ -9,7 +9,7 @@
  *     prioritising critical dependency chains and branch hubs.
  *  3. Reorder each column by repeated forward/backward weighted-barycentre
  *     sweeps to align dependent research and reduce visual crossings.
- *  4. Retain a small bias towards original vertical positions for stability.
+ *  4. Assign projects to their nearest upstream hub and leave space between branches.
  *
  * This is Sugiyama-inspired, not a copy or direct port of YART's C# code.
  */
@@ -19,6 +19,7 @@
   const ERAS = ['Undefined', 'Animal', 'Neolithic', 'Medieval',
     'Industrial', 'Spacer', 'Ultra', 'Archotech'];
   const ROW_STEP = 0.63; // matches the existing card height and separation
+  const BRANCH_GAP = 1; // one empty row between distinct hub branches
   const COLUMN_CAPACITY = 24;
   const SWEEPS = 8;
   const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
@@ -32,6 +33,7 @@
       id: p.d, p, index, oldX: getX(p), oldY: getY(p),
       era: Math.max(0, ERAS.indexOf(p.rt)),
       parents: [], children: [], internalParents: [], internalChildren: [],
+      hub: combined ? p.chub : p.hub, branch: null,
       column: -1, row: 0, critical: -1
     }));
     const byId = new Map(nodes.map(n => [n.id, n]));
@@ -96,6 +98,11 @@
         const index = columns.length;
         for (const n of chosen) {
           n.column = index;
+          // Shared descendants belong to the latest placed upstream hub.
+          const inherited = n.internalParents.map(parent => parent.branch)
+            .filter(Boolean).sort((a, b) => b.column - a.column
+              || Math.abs(a.oldY - n.oldY) - Math.abs(b.oldY - n.oldY));
+          n.branch = n.hub === 'major' || n.hub === 'minor' ? n : inherited[0] || null;
           placed.add(n);
         }
         columns.push(chosen);
@@ -156,11 +163,28 @@
       }
     }
 
+    for (const col of columns) {
+      // Keep branches contiguous within each layer. The exported hub rows
+      // give each branch a stable vertical order across neighboring layers.
+      const order = n => n.branch?.oldY ?? n.oldY;
+      col.sort((a, b) => order(a) - order(b)
+        || (a.branch?.index ?? a.index) - (b.branch?.index ?? b.index)
+        || a.row - b.row);
+      let next = 0;
+      for (let i = 0; i < col.length; i++) {
+        const n = col[i], previous = col[i - 1];
+        if (previous && previous.branch !== n.branch) next += BRANCH_GAP;
+        // Preserve open rows from the exported layout when there is room.
+        n.row = Math.max(next, Math.round(order(n) / ROW_STEP));
+        next = n.row + 1;
+      }
+    }
+
     return {
       positions: new Map(nodes.map(n => [n.id, { x: n.column, y: +(n.row * ROW_STEP).toFixed(2) }])),
       columns: columns.length,
       projectCount: nodes.length,
-      algorithm: 'era-aware topological layers + barycentre ordering'
+      algorithm: 'era-aware topological layers + hub spacing'
     };
   }
 
