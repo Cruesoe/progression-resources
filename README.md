@@ -48,10 +48,25 @@ This is an unofficial helper, not an official Progression site. Categories are i
 | `catalog.html` | Searchable catalog, refreshed from Steam every Sunday |
 | `research.html` | Research tree of the whole pack, with ferny's mods or the ProgressionLESS mods |
 | `research/tree.json`, `research/summary.json` | Research tree data, rebuilt from the mods' files when the pack changes |
+| `research/experimental-layout.js` | Standalone, dependency-based experimental layout used by Progression New and ProgressionLESS New |
 | `backup/progression_collections_categorized.xlsx` | Spreadsheet backup |
 | `backup/progression_collections_categorized.txt` | Plain-text grouped list |
 | `backup/progression_modpack_mods.txt` | Core pack numbered list |
 | `backup/progression_packageids.csv` | Title / workshop ID / packageId table |
+
+## Experimental research layouts
+
+On `research.html`, select **Progression New** or **ProgressionLESS New** to
+compare the experimental graph-derived layouts with the original editions.
+Both versions use the same underlying project data. The original editions
+and their stored positions are unchanged.
+
+The experimental algorithm is kept separately in
+`research/experimental-layout.js` so its era-aware, prerequisite-first
+scheduling and crossing-reduction approach can be translated into the
+Research Organized mod later. It uses no hand-assigned research categories.
+The experimental view hides unrelated dependency lines unless
+**Show all links** is enabled.
 
 ## Enable GitHub Pages (if the live URL 404s)
 
