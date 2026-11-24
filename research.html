@@ -321,62 +321,32 @@ function branchLayout(projects) {
       low[0] = high[0] = center;
       return {points,low:low.map(y => y-center),high:high.map(y => y-center)};
     }
-    // Pack whole trees into reading order. Taller families stay intact.
-    const trees = roots.map(subtree);
-    // Trees joined by a secondary prerequisite share a horizontal origin,
-    // so that edge also progresses to the right.
-    const owner = new Map(), component = trees.map((_,i) => i);
-    trees.forEach((tree,i) => tree.points.forEach(q => owner.set(q.p.d,i)));
-    function representative(i) {
-      while (component[i] !== i) i = component[i];
-      return i;
-    }
-    for (const p of nodes) for (const id of parents.get(p.d)) {
-      component[representative(owner.get(id))] = representative(owner.get(p.d));
-    }
-    const clusters = new Map();
-    trees.forEach((tree,i) => {
-      const key = representative(i);
-      if (!clusters.has(key)) clusters.set(key,[]);
-      clusters.get(key).push(tree);
-    });
-    const targetHeight = Math.max(5,Math.ceil(Math.sqrt(nodes.length)));
-    let left = eraStart, top = 0, width = 0;
-    for (const cluster of clusters.values()) {
-      const totalHeight = cluster.reduce((sum,t) => sum+Math.max(...t.high)-Math.min(...t.low)+1.6,0);
-      if (top && top+totalHeight > targetHeight) {
-        left += width+0.5; top = 0; width = 0;
-      }
-      for (const tree of cluster) {
-      const min = Math.min(...tree.low), height = Math.max(...tree.high)-min+1;
-
-      for (const q of tree.points) {
-        positions.set(q.p.d,{x:(left+q.x)*1.25,y:(top+q.y-min)*0.68});
-        width = Math.max(width,q.x+1);
-      }
-      top += height+0.6;
+    // Horizontal distance represents prerequisite depth throughout the era.
+    // Compact each layer independently, retaining the subtree traversal order.
+    const layers = new Map();
+    const upstreamHeight = root => {
+      const rows = root.p.filter(id => positions.has(id) && !root.hp.includes(id))
+        .map(id => positions.get(id).y);
+      return rows.length ? rows.reduce((sum,y) => sum+y,0)/rows.length : Infinity;
+    };
+    roots.sort((a,b) => upstreamHeight(a)-upstreamHeight(b) || a.d.localeCompare(b.d));
+    for (const root of roots) {
+      const tree = subtree(root);
+      for (const q of tree.points.sort((a,b) => a.y-b.y)) {
+        if (!layers.has(q.x)) layers.set(q.x,[]);
+        layers.get(q.x).push({p:q.p,root});
       }
     }
-    // A through-line between eras has no local branch to pack. Place its
-    // entry beside the era boundary, near the height of its actual parents.
-    const bridges = nodes.filter(p => !parents.get(p.d).length
-      && !families.has(p.d)
-      && !p.kids.some(id => ids.has(id) && parents.get(id).includes(p.d))
-      && p.p.some(id => positions.has(id) && byDef.get(id).lv < era && !p.hp.includes(id)));
-    const moving = new Set(bridges.map(p => p.d));
-    const openingX = eraStart*1.25;
-    const occupied = nodes.filter(p => !moving.has(p.d) && positions.get(p.d).x === openingX)
-      .map(p => positions.get(p.d).y);
-    for (const p of bridges) {
-      const upstream = p.p.filter(id => positions.has(id) && !p.hp.includes(id));
-      const desired = upstream.reduce((sum,id) => sum+positions.get(id).y,0)/upstream.length;
-      const choices = [desired, ...occupied.flatMap(y => [y-0.68,y+0.68])];
-      const y = choices.filter(y => y >= 0 && occupied.every(other => Math.abs(y-other) >= 0.67999))
-        .sort((a,b) => Math.abs(a-desired)-Math.abs(b-desired))[0];
-      positions.set(p.d,{x:openingX,y});
-      occupied.push(y);
+    for (const [rank,layer] of layers) {
+      let y = 0, previous;
+      for (const {p,root} of layer) {
+        if (previous && root !== previous) y += 0.18;
+        positions.set(p.d,{x:(eraStart+rank)*1.25,y});
+        y += 0.68;
+        previous = root;
+      }
     }
-    eraStart = left+width+0.8;
+    eraStart += layers.size+0.8;
   }
   return {positions};
 }
