@@ -57,6 +57,9 @@ label.chk { display: inline-flex; gap: 5px; align-items: center; font-size: 14px
 #stage.panning { cursor: grabbing; }
 svg { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-select: none; }
 .band { fill: var(--band); }
+#coordGridWorld { pointer-events: none; }
+.coord-grid-line { stroke: var(--muted); stroke-opacity: .22; vector-effect: non-scaling-stroke; }
+.coord-grid-label { fill: var(--muted); font-family: var(--f-mono); font-weight: 600; stroke: var(--canvas); stroke-width: 2px; stroke-linejoin: round; paint-order: stroke; pointer-events: none; }
 #eras { position: absolute; left: 0; right: 0; top: 0; height: 26px; pointer-events: none; }
 #eras div { position: absolute; top: 0; height: 26px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: color-mix(in srgb, var(--surface) 88%, transparent); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); overflow: hidden; white-space: nowrap; }
 #eras b { font-family: var(--f-mono); font-weight: 400; letter-spacing: 0; margin-left: 6px; text-transform: none; }
@@ -140,12 +143,13 @@ html, body { margin: 0; }
     <div class="find"><input id="q" type="search" placeholder="Find a project or mod" autocomplete="off" aria-label="Find a project or mod"><div id="results" hidden></div></div>
     <select id="mod" aria-label="Highlight a mod"><option value="">Highlight a mod…</option></select>
     <label class="chk"><input type="checkbox" id="xera" checked> Lines between eras</label>
+    <label class="chk" title="Show lettered rows and numbered columns"><input type="checkbox" id="coordGrid"> Grid</label>
   </div>
   <div class="tabs" id="tabs" role="group" aria-label="Research tabs"></div>
   <div class="key" id="key"></div>
 </header>
 <div id="stage">
-  <svg id="svg"><g id="world"><g id="bands"></g><g id="edges"></g><g id="nodes"></g></g></svg>
+  <svg id="svg"><g id="world"><g id="bands"></g><g id="coordGridWorld"></g><g id="edges"></g><g id="nodes"></g></g></svg>
   <div id="eras"></div>
   <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">&minus;</button><button id="zfit" aria-label="Show whole tab">⤢</button></div>
   <div id="info" hidden></div>
@@ -200,6 +204,8 @@ const source = p => p.k === 'vanilla' ? (p.s === 'Core' ? 'Vanilla' : p.s + ' (D
 let mode = 'one', tab = null, sel = null, modFilter = '';
 const $ = id => document.getElementById(id);
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+let gridEnabled = store.get('pt-grid') === 'on';
+$('coordGrid').checked = gridEnabled;
 const T = p => mode === 'one' ? p.ct : p.ot;
 const X = p => (mode === 'one' ? +p.cx : +p.ox) || 0;
 const Y = p => (mode === 'one' ? +p.cy : +p.oy) || 0;
@@ -248,22 +254,40 @@ function setMode(m) {
 }
 $('vOne').onclick = () => setMode('one'); $('vTabs').onclick = () => setMode('tabs');
 $('xera').onchange = () => $('svg').classList.toggle('noX', !$('xera').checked);
+$('coordGrid').onchange = () => {
+  gridEnabled = $('coordGrid').checked;
+  store.set('pt-grid', gridEnabled ? 'on' : 'off');
+  if (gridEnabled) scheduleGrid();
+  else $('coordGridWorld').textContent = '';
+};
 $('mod').onchange = () => { modFilter = $('mod').value; applyFilter(); renderTabs(); syncUrl(); };
 
 // ---- drawing one tab ----
 const world = $('world'), stage = $('stage'), info = $('info');
 const NS = 'http://www.w3.org/2000/svg';
 const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
-let nodeEls = new Map(), edgeEls = [], bands = [], WORLD_W = 0, WORLD_H = 0, onTab = [];
+let nodeEls = new Map(), edgeEls = [], bands = [], gridRegions = [], WORLD_W = 0, WORLD_H = 0, onTab = [];
 function show(t, select_ = null) {
   tab = t; store.set('pt-tab-' + mode, t);
   renderTabs();
-  for (const g of ['bands', 'edges', 'nodes']) $(g).textContent = '';
+  for (const g of ['bands', 'coordGridWorld', 'edges', 'nodes']) $(g).textContent = '';
   nodeEls = new Map(); edgeEls = [];
   onTab = ALL.filter(p => T(p) === t);
   const minX = Math.min(...onTab.map(X)), minY = Math.min(...onTab.map(Y));
   for (const p of onTab) { p.px = (X(p) - minX) * SX + 20; p.py = (Y(p) - minY) * SY + TOP + 10; }
   WORLD_W = Math.max(...onTab.map(p => p.px)) + W + 20; WORLD_H = Math.max(...onTab.map(p => p.py)) + H + 20;
+  // Grid origin is computed from node centres for each era in this edition/view.
+  // It is fixed for that layout, and independent of pan or zoom.
+  gridRegions = [];
+  for (const lv of new Set(onTab.map(p => p.lv))) {
+    const ps = onTab.filter(p => p.lv === lv);
+    const xs = ps.map(p => p.px + W / 2), ys = ps.map(p => p.py + H / 2);
+    const x0 = Math.min(...xs) - SX / 2, y0 = Math.min(...ys) - SY / 2;
+    const cols = Math.floor((Math.max(...xs) - x0) / SX + 1e-8) + 1;
+    const rows = Math.floor((Math.max(...ys) - y0) / SY + 1e-8) + 1;
+    gridRegions.push({ lv, era: ERA_NAMES[LEVELS[lv]] || LEVELS[lv],
+      x0, y0, cols, rows, x1: x0 + cols * SX, y1: y0 + rows * SY });
+  }
   // era blocks: contiguous column ranges per tech level
   bands = [];
   for (let i = 0; i < LEVELS.length; i++) {
@@ -298,11 +322,77 @@ function applyFilter() {
   for (const [d, n] of nodeEls) n.classList.toggle('match', !!modFilter && source(byDef.get(d)) === modFilter);
 }
 
+
+// Research Atlas reference: era + row letters (A, B, ... Z, AA) + column number.
+// Coordinates and cell dimensions use the displayed layout, not raw mod X/Y.
+function rowLetters(index) {
+  let name = '';
+  for (let n = index + 1; n > 0; n = Math.floor((n - 1) / 26))
+    name = String.fromCharCode(65 + (n - 1) % 26) + name;
+  return name;
+}
+function gridReference(p) {
+  const g = gridRegions.find(r => r.lv === p.lv);
+  if (!g || !Number.isFinite(p.px) || !Number.isFinite(p.py)) return '—';
+  const col = Math.max(0, Math.min(g.cols - 1, Math.floor((p.px + W / 2 - g.x0) / SX))) + 1;
+  const row = Math.max(0, Math.min(g.rows - 1, Math.floor((p.py + H / 2 - g.y0) / SY)));
+  return g.era + ' ' + rowLetters(row) + col;
+}
+// Redraw just the visible part of the grid on pan/zoom. At distant zooms
+// the line and label stride increases to avoid unreadable density.
+let gridFrame = null;
+function scheduleGrid() {
+  if (!gridEnabled || gridFrame !== null) return;
+  gridFrame = requestAnimationFrame(() => { gridFrame = null; drawGrid(); });
+}
+function drawGrid() {
+  const root = $('coordGridWorld');
+  root.textContent = '';
+  if (!gridEnabled || !gridRegions.length) return;
+  const viewport = stage.getBoundingClientRect(), k = view.k;
+  if (!viewport.width || !viewport.height || !k) return;
+  const left = -view.x / k, right = (viewport.width - view.x) / k;
+  const top = (26 - view.y) / k, bottom = (viewport.height - view.y) / k;
+  const lineStepX = Math.max(1, Math.ceil(15 / (SX * k)));
+  const lineStepY = Math.max(1, Math.ceil(15 / (SY * k)));
+  const labelStepX = Math.max(1, Math.ceil(54 / (SX * k)));
+  const labelStepY = Math.max(1, Math.ceil(32 / (SY * k)));
+  for (const g of gridRegions) {
+    const x0 = Math.max(g.x0, left), x1 = Math.min(g.x1, right);
+    const y0 = Math.max(g.y0, top), y1 = Math.min(g.y1, bottom);
+    if (x1 <= x0 || y1 <= y0) continue;
+    const c0 = Math.max(0, Math.floor((x0 - g.x0) / SX));
+    const c1 = Math.min(g.cols, Math.ceil((x1 - g.x0) / SX));
+    const r0 = Math.max(0, Math.floor((y0 - g.y0) / SY));
+    const r1 = Math.min(g.rows, Math.ceil((y1 - g.y0) / SY));
+    for (let c = Math.ceil(c0 / lineStepX) * lineStepX; c <= c1; c += lineStepX) {
+      const x = g.x0 + c * SX;
+      el('line', { x1:x, y1:y0, x2:x, y2:y1, class:'coord-grid-line' }, root);
+    }
+    for (let r = Math.ceil(r0 / lineStepY) * lineStepY; r <= r1; r += lineStepY) {
+      const y = g.y0 + r * SY;
+      el('line', { x1:x0, y1:y, x2:x1, y2:y, class:'coord-grid-line' }, root);
+    }
+    const fontSize = 12 / k;
+    // Print A1 / B1 / A2 in cell corners; labels remain ~12 screen pixels.
+    for (let c = Math.ceil(c0 / labelStepX) * labelStepX; c < c1; c += labelStepX) {
+      for (let r = Math.ceil(r0 / labelStepY) * labelStepY; r < r1; r += labelStepY) {
+        const x = g.x0 + c * SX, y = g.y0 + r * SY;
+        // Avoid text projected off-screen beyond an edge.
+        if (x + 5 / k < x0 || y + 15 / k < y0) continue;
+        el('text', { x:x + 5 / k, y:y + 15 / k,
+          'font-size':fontSize, class:'coord-grid-label' }, root).textContent = rowLetters(r) + (c + 1);
+      }
+    }
+  }
+}
+
 // ---- view ----
 let view = { x: 0, y: 0, k: 1 };
 function apply() {
   world.setAttribute('transform', `translate(${view.x},${view.y}) scale(${view.k})`);
   [...$('eras').children].forEach((d, i) => { const b = bands[i]; d.style.left = view.x + (b.x0 - 20) * view.k + 'px'; d.style.width = (b.x1 - b.x0 + 40) * view.k + 'px'; });
+  scheduleGrid();
 }
 function fitAll() {
   const r = stage.getBoundingClientRect();
@@ -377,6 +467,8 @@ function select(d) {
     <dl>
       <dt>Era</dt><dd>${esc(p.tl || 'none')}${p.rt && p.rt !== (p.tl || 'Undefined') ? ` → ${esc(p.rt)} (raised to its prerequisites)` : ''}</dd>
       <dt>Cost</dt><dd>${esc(p.c || '—')}</dd>
+      <dt>Grid</dt><dd>${esc(gridReference(p))} <small>(${mode === 'one' ? 'combined' : 'tabs'} · ${esc(edition)})</small></dd>
+      <dt>Position</dt><dd>X ${X(p).toFixed(2)}, Y ${Y(p).toFixed(2)} (display)</dd>
       <dt>Tab</dt><dd>${esc(tabName(p.ot))} (tabs) · ${esc(p.ct === 'Main' ? 'Combined' : tabName(p.ct))} (combined)</dd>
       ${hub ? `<dt>Layout</dt><dd>${esc(cap(hub))}${hub === 'major' || hub === 'minor' ? ' hub' : ''}</dd>` : ''}
       ${p.cyc ? '<dt>Warning</dt><dd>On a prerequisite cycle</dd>' : ''}
