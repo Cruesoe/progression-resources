@@ -357,6 +357,25 @@ function branchLayout(projects) {
       top += height+0.6;
       }
     }
+    // A through-line between eras has no local branch to pack. Place its
+    // entry beside the era boundary, near the height of its actual parents.
+    const bridges = nodes.filter(p => !parents.get(p.d).length
+      && !families.has(p.d)
+      && !p.kids.some(id => ids.has(id) && parents.get(id).includes(p.d))
+      && p.p.some(id => positions.has(id) && byDef.get(id).lv < era && !p.hp.includes(id)));
+    const moving = new Set(bridges.map(p => p.d));
+    const openingX = eraStart*1.25;
+    const occupied = nodes.filter(p => !moving.has(p.d) && positions.get(p.d).x === openingX)
+      .map(p => positions.get(p.d).y);
+    for (const p of bridges) {
+      const upstream = p.p.filter(id => positions.has(id) && !p.hp.includes(id));
+      const desired = upstream.reduce((sum,id) => sum+positions.get(id).y,0)/upstream.length;
+      const choices = [desired, ...occupied.flatMap(y => [y-0.68,y+0.68])];
+      const y = choices.filter(y => y >= 0 && occupied.every(other => Math.abs(y-other) >= 0.67999))
+        .sort((a,b) => Math.abs(a-desired)-Math.abs(b-desired))[0];
+      positions.set(p.d,{x:openingX,y});
+      occupied.push(y);
+    }
     eraStart = left+width+0.8;
   }
   return {positions};
