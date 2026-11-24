@@ -279,12 +279,34 @@ function show(t, select_ = null) {
     const sourceY = p => Number(combined ? p.cy : p.oy) || 0;
     // Reserve a consistent routing gutter beside each exported column.
     const xs = [...new Set(onTab.map(sourceX))].sort((a,b) => a-b);
-    const positions = new Map(), occupied = new Map();
-    for (const p of [...onTab].sort((a,b) => sourceY(a)-sourceY(b))) {
-      const x = xs.indexOf(sourceX(p)) * 1.35;
-      const row = Math.max(Math.round(sourceY(p) / 0.63), occupied.get(x) || 0);
-      occupied.set(x, row + 1);
-      positions.set(p.d, {x, y:row * 0.92});
+    const positions = new Map(), columns = new Map(), tabIds = new Set(onTab.map(p => p.d));
+    const columnOf = new Map();
+    for (const p of [...onTab].sort((a,b) => sourceX(a)-sourceX(b))) {
+      let column = xs.indexOf(sourceX(p));
+      const parent = p.p.length === 1 && byDef.get(p.p[0]);
+      const nearby = parent && tabIds.has(parent.d) && parent.lv === p.lv
+        && !p.hp.includes(parent.d) && sourceX(parent) < sourceX(p);
+      if (nearby) column = Math.min(column, columnOf.get(parent.d) + 1);
+      columnOf.set(p.d, column);
+      if (!columns.has(column)) columns.set(column, new Map());
+      const groups = columns.get(column), key = nearby ? parent.d : p.d + '/single';
+      if (!groups.has(key)) groups.set(key, {parent: nearby && parent, cards: []});
+      groups.get(key).cards.push(p);
+    }
+    for (const [column, groups] of [...columns].sort((a,b) => a[0]-b[0])) {
+      // Align each sibling group's midpoint with its parent, then resolve
+      // collisions between groups while keeping the siblings contiguous.
+      const blocks = [...groups.values()].map(({parent,cards}) => {
+        cards.sort((a,b) => sourceY(a)-sourceY(b));
+        const middle = parent ? positions.get(parent.d).y : sourceY(cards[0]);
+        return {cards, top: middle - (cards.length-1)*0.32};
+      }).sort((a,b) => a.top-b.top);
+      let bottom = -Infinity;
+      for (const block of blocks) {
+        const top = Math.max(block.top,bottom);
+        block.cards.forEach((p,i) => positions.set(p.d,{x:column*1.35,y:top+i*0.64}));
+        bottom = top + block.cards.length*0.64 + (block.cards.length>1 ? 0.20 : 0);
+      }
     }
     // Some special tabs have no exported placement.
     experimentLayout = xs.length === 1 && onTab.every(p => sourceY(p) === 0)
@@ -310,7 +332,12 @@ function show(t, select_ = null) {
     let path = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
     if (experimental() && x2 > x1 && x2 - x1 > SX && experimentLayout.positions && !experimentLayout.algorithm) {
       // Cross intermediate columns in the whitespace beneath the source row.
-      const lane = a.py + H + 7 + (p.p.indexOf(d) % 6) * 4;
+      const obstacles = onTab.filter(q => q.px > a.px && q.px < p.px);
+      const blocked = y => obstacles.filter(q => y >= q.py-4 && y <= q.py+H+4);
+      let lane = y1;
+      while (blocked(lane).length) {
+        lane = Math.min(...blocked(lane).map(q => q.py))-6;
+      }
       const exit = x1 + 12 + (a.kids.indexOf(p.d) % 8) * 4;
       const entry = x2 - 12 - (p.p.indexOf(d) % 8) * 4;
       path = `M${x1},${y1} H${exit} V${lane} H${entry} V${y2} H${x2}`;
