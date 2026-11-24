@@ -65,6 +65,7 @@ svg { display: block; width: 100%; height: 100%; user-select: none; -webkit-user
 .noX .edge.x:not(.hi) { display: none; }
 .edge.hi { stroke: var(--edge-hi); stroke-width: 2.2; }
 .dimmed .edge:not(.hi) { opacity: .08; }
+#svg.focusEdges .edge:not(.hi) { display: none; }
 .node { cursor: pointer; }
 .node rect.box { fill: var(--surface); stroke: var(--edge); stroke-width: 1; }
 .node .bar { fill: var(--c); }
@@ -140,6 +141,7 @@ html, body { margin: 0; }
     <div class="find"><input id="q" type="search" placeholder="Find a project or mod" autocomplete="off" aria-label="Find a project or mod"><div id="results" hidden></div></div>
     <select id="mod" aria-label="Highlight a mod"><option value="">Highlight a mod…</option></select>
     <label class="chk"><input type="checkbox" id="xera" checked> Lines between eras</label>
+    <label class="chk" id="experimentalLinksLabel" hidden><input type="checkbox" id="experimentalLinks"> Show all links</label>
   </div>
   <div class="tabs" id="tabs" role="group" aria-label="Research tabs"></div>
   <div class="key" id="key"></div>
@@ -152,6 +154,7 @@ html, body { margin: 0; }
   <div id="loading">Loading the research tree…</div>
 </div>
 
+<script src="research/experimental-layout.js"></script>
 <script id="data" type="application/json"></script>
 <script>
 (async () => {
@@ -164,6 +167,9 @@ catch { document.getElementById('loading').textContent = 'The research tree coul
 document.getElementById('loading').hidden = true;
 document.getElementById('crumb').hidden = !SITE;
 const EDS = ROOT.editions || { Progression: ROOT };
+const EDITIONS = Object.keys(EDS).flatMap(e => [e, e + ' New']);
+const baseEdition = ed => ed.endsWith(' New') ? ed.slice(0, -4) : ed;
+const experimental = () => edition.endsWith(' New');
 const MODS = ROOT.mods || {};
 const SX = 190, SY = 100, W = 140, H = 50, TOP = 36;
 const LEVELS = ['Undefined', 'Animal', 'Neolithic', 'Medieval', 'Industrial', 'Spacer', 'Ultra', 'Archotech'];
@@ -172,7 +178,7 @@ const str = v => typeof v === 'string' ? v : typeof v === 'number' ? String(v) :
 let edition, META, TAB_LABELS, ALL, byDef;
 // one edition's projects, normalized once
 function load(ed) {
-  const D = EDS[ed]; edition = ed; META = D.meta || {}; TAB_LABELS = D.tabs || {};
+  const D = EDS[baseEdition(ed)]; edition = ed; META = D.meta || {}; TAB_LABELS = D.tabs || {};
   if (!D.ready) {
     D.all = D.projects.filter(p => !p.na && p.ot);
     for (const p of D.all) {
@@ -198,11 +204,13 @@ const source = p => p.k === 'vanilla' ? (p.s === 'Core' ? 'Vanilla' : p.s + ' (D
 
 // ---- state ----
 let mode = 'one', tab = null, sel = null, modFilter = '';
+let experimentLayout = null;
+const experimentCache = new Map();
 const $ = id => document.getElementById(id);
 const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
 const T = p => mode === 'one' ? p.ct : p.ot;
-const X = p => (mode === 'one' ? +p.cx : +p.ox) || 0;
-const Y = p => (mode === 'one' ? +p.cy : +p.oy) || 0;
+const X = p => experimentLayout?.positions.get(p.d)?.x ?? ((mode === 'one' ? +p.cx : +p.ox) || 0);
+const Y = p => experimentLayout?.positions.get(p.d)?.y ?? ((mode === 'one' ? +p.cy : +p.oy) || 0);
 const HUB = p => mode === 'one' ? p.chub : p.hub;
 function tabsOf() {
   const order = META.tabOrder || [];
@@ -214,15 +222,15 @@ function tabsOf() {
 // ---- header ----
 const PARAMS = new URLSearchParams(SITE ? location.search : '');
 let booted = false;
-load(EDS[PARAMS.get('ed')] ? PARAMS.get('ed') : EDS[store.get('pt-edition')] ? store.get('pt-edition') : Object.keys(EDS)[0]);
+load(EDITIONS.includes(PARAMS.get('ed')) ? PARAMS.get('ed') : EDITIONS.includes(store.get('pt-edition')) ? store.get('pt-edition') : EDITIONS[0]);
 function renderHeader() {
   const mods = new Map(); for (const p of ALL) mods.set(source(p), (mods.get(source(p)) || 0) + 1);
   if (!mods.has(modFilter)) modFilter = '';
   $('mod').innerHTML = '<option value="">Highlight a mod…</option>' + [...mods].sort((a, b) => a[0].localeCompare(b[0])).map(([m, n]) => `<option value="${esc(m)}">${esc(m)} (${n})</option>`).join('');
   $('mod').value = modFilter;
-  $('meta').textContent = `${ALL.length} projects from ${META.mods || '?'} mods · built ${META.generated || ''}`;
+  $('meta').textContent = `${ALL.length} projects from ${META.mods || '?'} mods · built ${META.generated || ''}${experimental() ? ' · NEW layout (test)' : ''}`;
   $('h1').textContent = edition + ' research tree';
-  $('eds').innerHTML = Object.keys(EDS).map(e => `<button data-ed="${esc(e)}" aria-pressed="${e === edition}">${esc(e)}</button>`).join('');
+  $('eds').innerHTML = EDITIONS.map(e => `<button data-ed="${esc(e)}" aria-pressed="${e === edition}">${esc(e)}</button>`).join('');
   $('eds').hidden = Object.keys(EDS).length < 2;
 }
 $('eds').addEventListener('click', e => {
@@ -248,6 +256,7 @@ function setMode(m) {
 }
 $('vOne').onclick = () => setMode('one'); $('vTabs').onclick = () => setMode('tabs');
 $('xera').onchange = () => $('svg').classList.toggle('noX', !$('xera').checked);
+$('experimentalLinks').onchange = () => $('svg').classList.toggle('focusEdges', experimental() && !$('experimentalLinks').checked);
 $('mod').onchange = () => { modFilter = $('mod').value; applyFilter(); renderTabs(); syncUrl(); };
 
 // ---- drawing one tab ----
@@ -261,6 +270,17 @@ function show(t, select_ = null) {
   for (const g of ['bands', 'edges', 'nodes']) $(g).textContent = '';
   nodeEls = new Map(); edgeEls = [];
   onTab = ALL.filter(p => T(p) === t);
+  $('experimentalLinksLabel').hidden = !experimental();
+  $('svg').classList.toggle('focusEdges', experimental() && !$('experimentalLinks').checked);
+  if (experimental()) {
+    const cacheKey = baseEdition(edition) + '|' + mode + '|' + t;
+    if (!experimentCache.has(cacheKey)) {
+      experimentCache.set(cacheKey, window.ProgressionExperimentalLayout.compute(onTab, mode));
+    }
+    experimentLayout = experimentCache.get(cacheKey);
+  } else {
+    experimentLayout = null;
+  }
   const minX = Math.min(...onTab.map(X)), minY = Math.min(...onTab.map(Y));
   for (const p of onTab) { p.px = (X(p) - minX) * SX + 20; p.py = (Y(p) - minY) * SY + TOP + 10; }
   WORLD_W = Math.max(...onTab.map(p => p.px)) + W + 20; WORLD_H = Math.max(...onTab.map(p => p.py)) + H + 20;
@@ -364,7 +384,7 @@ function select(d) {
   info.hidden = !p;
   syncUrl();
   if (!p) return;
-  const up = chain(d, 'p'), down = chain(d, 'kids'), on = new Set([d, ...up, ...down]);
+  const up = chain(d, 'p'), down = experimental() ? new Set(p.kids) : chain(d, 'kids'), on = new Set([d, ...up, ...down]);
   for (const x of on) nodeEls.get(x)?.classList.add('on');
   nodeEls.get(d)?.classList.add('sel');
   for (const e of edgeEls) if (on.has(e.from) && on.has(e.to) && ((up.has(e.from) || e.from === d) && (up.has(e.to) || e.to === d) || (down.has(e.to) && (down.has(e.from) || e.from === d)))) { e.e.classList.add('hi'); e.e.parentNode.appendChild(e.e); }
