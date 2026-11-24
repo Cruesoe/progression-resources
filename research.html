@@ -141,7 +141,7 @@ html, body { margin: 0; }
     <div class="find"><input id="q" type="search" placeholder="Find a project or mod" autocomplete="off" aria-label="Find a project or mod"><div id="results" hidden></div></div>
     <select id="mod" aria-label="Highlight a mod"><option value="">Highlight a mod…</option></select>
     <label class="chk"><input type="checkbox" id="xera" checked> Lines between eras</label>
-    <label class="chk" id="experimentalLinksLabel" hidden><input type="checkbox" id="experimentalLinks"> Show all links</label>
+    <label class="chk" id="experimentalLinksLabel" hidden><input type="checkbox" id="experimentalLinks" checked> Show all links</label>
   </div>
   <div class="tabs" id="tabs" role="group" aria-label="Research tabs"></div>
   <div class="key" id="key"></div>
@@ -272,14 +272,23 @@ function show(t, select_ = null) {
   onTab = ALL.filter(p => T(p) === t);
   $('experimentalLinksLabel').hidden = !experimental();
   $('svg').classList.toggle('focusEdges', experimental() && !$('experimentalLinks').checked);
+  experimentLayout = null;
   if (experimental()) {
-    const cacheKey = baseEdition(edition) + '|' + mode + '|' + t;
-    if (!experimentCache.has(cacheKey)) {
-      experimentCache.set(cacheKey, window.ProgressionExperimentalLayout.compute(onTab, mode));
+    const combined = mode === 'one';
+    const sourceX = p => Number(combined ? p.cx : p.ox) || 0;
+    const sourceY = p => Number(combined ? p.cy : p.oy) || 0;
+    // Reserve a consistent routing gutter beside each exported column.
+    const xs = [...new Set(onTab.map(sourceX))].sort((a,b) => a-b);
+    const positions = new Map(), occupied = new Map();
+    for (const p of [...onTab].sort((a,b) => sourceY(a)-sourceY(b))) {
+      const x = xs.indexOf(sourceX(p)) * 1.35;
+      const row = Math.max(Math.round(sourceY(p) / 0.63), occupied.get(x) || 0);
+      occupied.set(x, row + 1);
+      positions.set(p.d, {x, y:row * 0.92});
     }
-    experimentLayout = experimentCache.get(cacheKey);
-  } else {
-    experimentLayout = null;
+    // Some special tabs have no exported placement.
+    experimentLayout = xs.length === 1 && onTab.every(p => sourceY(p) === 0)
+      ? window.ProgressionExperimentalLayout.compute(onTab, mode) : {positions};
   }
   const minX = Math.min(...onTab.map(X)), minY = Math.min(...onTab.map(Y));
   for (const p of onTab) { p.px = (X(p) - minX) * SX + 20; p.py = (Y(p) - minY) * SY + TOP + 10; }
@@ -298,7 +307,15 @@ function show(t, select_ = null) {
   for (const p of onTab) for (const d of p.p) {
     const a = byDef.get(d); if (!a || T(a) !== t || p.hp.includes(d)) continue;
     const x1 = a.px + W, y1 = a.py + H / 2, x2 = p.px, y2 = p.py + H / 2, dx = Math.max(30, Math.abs(x2 - x1) / 2);
-    edgeEls.push({ from: d, to: p.d, e: el('path', { d: `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`, class: 'edge' + (a.lv !== p.lv ? ' x' : '') }, $('edges')) });
+    let path = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
+    if (experimental() && x2 > x1 && x2 - x1 > SX && experimentLayout.positions && !experimentLayout.algorithm) {
+      // Cross intermediate columns in the whitespace beneath the source row.
+      const lane = a.py + H + 7 + (p.p.indexOf(d) % 6) * 4;
+      const exit = x1 + 12 + (a.kids.indexOf(p.d) % 8) * 4;
+      const entry = x2 - 12 - (p.p.indexOf(d) % 8) * 4;
+      path = `M${x1},${y1} H${exit} V${lane} H${entry} V${y2} H${x2}`;
+    }
+    edgeEls.push({ from: d, to: p.d, e: el('path', { d: path, class: 'edge' + (a.lv !== p.lv ? ' x' : '') }, $('edges')) });
   }
   for (const p of onTab) {
     const n = el('g', { class: 'node' + (p.cyc ? ' cyc' : ''), transform: `translate(${p.px},${p.py})`, 'data-d': p.d, style: `--c:${eraColor(p)}` }, $('nodes'));
