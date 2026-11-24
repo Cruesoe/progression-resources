@@ -326,21 +326,45 @@ function show(t, select_ = null) {
   if (overlapping) bands = [{ name: tabName(t), x0: 20, x1: WORLD_W - 20, n: onTab.length }];
   bands.forEach((b, i) => { if (i % 2 === 0 && bands.length > 1) el('rect', { class: 'band', x: b.x0 - 20, y: 0, width: b.x1 - b.x0 + 40, height: WORLD_H }, $('bands')); });
   $('eras').innerHTML = bands.map(b => `<div>${esc(b.name)}<b>${b.n}</b></div>`).join('');
+  const routingColumns = new Map();
+  if (experimental()) for (const p of onTab) {
+    if (!routingColumns.has(p.px)) routingColumns.set(p.px, []);
+    routingColumns.get(p.px).push(p.py);
+  }
+  const corridors = [...routingColumns].sort(([a],[b]) => a-b).map(([x, rows]) => {
+    const bands = [];
+    for (const y of rows.sort((a,b) => a-b)) {
+      const last = bands[bands.length-1];
+      if (last && y-3 <= last.bottom) last.bottom = Math.max(last.bottom,y+H+3);
+      else bands.push({top:y-3,bottom:y+H+3});
+    }
+    return {x,bands};
+  });
   for (const p of onTab) for (const d of p.p) {
     const a = byDef.get(d); if (!a || T(a) !== t || p.hp.includes(d)) continue;
     const x1 = a.px + W, y1 = a.py + H / 2, x2 = p.px, y2 = p.py + H / 2, dx = Math.max(30, Math.abs(x2 - x1) / 2);
     let path = `M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}`;
-    if (experimental() && x2 > x1 && x2 - x1 > SX && experimentLayout.positions && !experimentLayout.algorithm) {
-      // Cross intermediate columns in the whitespace beneath the source row.
-      const obstacles = onTab.filter(q => q.px > a.px && q.px < p.px);
-      const blocked = y => obstacles.filter(q => y >= q.py-4 && y <= q.py+H+4);
-      let lane = y1;
-      while (blocked(lane).length) {
-        lane = Math.min(...blocked(lane).map(q => q.py))-6;
+    if (experimental() && x2-x1 > SX) {
+      // Follow the parent-to-child slope. Choose clearance locally at each
+      // crossed column so one obstacle cannot send the entire link upwards.
+      let x = x1, y = y1;
+      path = `M${x},${y}`;
+      function connect(toX,toY) {
+        const mid = (x+toX)/2;
+        path += ` C${mid},${y} ${mid},${toY} ${toX},${toY}`;
+        x = toX; y = toY;
       }
-      const exit = x1 + 12 + (a.kids.indexOf(p.d) % 8) * 4;
-      const entry = x2 - 12 - (p.p.indexOf(d) % 8) * 4;
-      path = `M${x1},${y1} H${exit} V${lane} H${entry} V${y2} H${x2}`;
+      for (const column of corridors) {
+        if (column.x <= x1 || column.x >= x2) continue;
+        const fraction = (column.x+W/2-x1)/(x2-x1);
+        let target = y1 + fraction*(y2-y1);
+        const band = column.bands.find(b => target > b.top && target < b.bottom);
+        if (band) target = target-band.top < band.bottom-target ? band.top : band.bottom;
+        connect(column.x,target);
+        x = column.x+W;
+        path += ` H${x}`;
+      }
+      connect(x2,y2);
     }
     edgeEls.push({ from: d, to: p.d, e: el('path', { d: path, class: 'edge' + (a.lv !== p.lv ? ' x' : '') }, $('edges')) });
   }
