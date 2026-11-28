@@ -4,8 +4,8 @@
     "researchMods":  140,
     "projects":  {
                      "Progression":  2241,
-                     "ProgressionLESS":  1100,
-                     "Genesis":  523
+                     "ProgressionLESS":  1098,
+                     "Genesis":  520
                  },
     "mods":  {
                  "1880253632":  {
@@ -564,7 +564,7 @@
                                     "name":  "Progression: Bionics",
                                     "p":  531,
                                     "less":  "ProgressionLESS Bionics",
-                                    "l":  73
+                                    "l":  71
                                 },
                  "3590516685":  {
                                     "name":  "Vanilla Cooking Expanded - Bakery",
