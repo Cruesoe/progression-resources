@@ -4,8 +4,8 @@
     "researchMods":  140,
     "projects":  {
                      "Progression":  2241,
-                     "ProgressionLESS":  1103,
-                     "Genesis":  526
+                     "ProgressionLESS":  1100,
+                     "Genesis":  523
                  },
     "mods":  {
                  "1880253632":  {
@@ -228,7 +228,7 @@
                                     "name":  "Progression: Furniture",
                                     "p":  97,
                                     "less":  "ProgressionLESS Furniture",
-                                    "l":  24
+                                    "l":  21
                                 },
                  "3270214529":  {
                                     "name":  "Progression: Warrants",

@@ -79,7 +79,9 @@ svg { display: block; width: 100%; height: 100%; user-select: none; -webkit-user
 .node .sub { font-size: 10px; fill: var(--muted); font-family: var(--f-mono); }
 .node .hub { fill: var(--c); }
 .node .sep { stroke: var(--line); stroke-width: 1; }
-.node .cost { font-family: var(--f-mono); font-size: 13px; font-weight: 500; text-anchor: end; }
+.node .cost { font-family: var(--f-mono); font-size: 13px; font-weight: 500; text-anchor: middle; }
+.node .icon { fill: var(--c); fill-opacity: .28; stroke: var(--c); stroke-width: 1; }
+.node .hub { text-anchor: middle; font-size: 13px; }
 .node .pip { stroke: var(--c); stroke-width: 1.4; fill: none; }
 .node .pip.on { fill: var(--c); }
 .key .pips { font-size: 9px; letter-spacing: 1px; color: var(--fg); }
@@ -185,7 +187,21 @@ const MODS = ROOT.mods || {};
 const SX = 190, SY = 100, TOP = 36;
 // card size: the one Research: Organized lays the edition out for (meta.card), else vanilla's
 let W = 140, H = 50;
-const COST_W = 64, PIP = 7, PIP_GAP = 3;
+// Research: Organized's card geometry (CardMetrics): icon box and separator, title area, cost column
+let COST_W = 64;
+const IN = 4, ICON = 32, SEP1 = IN + ICON + 2 * IN, NAME_X = SEP1 + 1 + 12, PIP = 7, PIP_GAP = 3;
+const measureCtx = document.createElement('canvas').getContext('2d');
+const textW = s => { measureCtx.font = '600 13px "Barlow Semi Condensed", "Arial Narrow", sans-serif'; return measureCtx.measureText(s).width; };
+// the title in up to two lines of `width`, as the card wraps it; the second line is clipped if it still doesn't fit
+function wrap2(s, width) {
+  if (textW(s) <= width) return [s];
+  const words = s.split(' '); let a = '';
+  while (words.length && textW((a ? a + ' ' : '') + words[0]) <= width) a += (a ? ' ' : '') + words.shift();
+  if (!a) a = words.shift() || '';
+  let b = words.join(' ');
+  if (b && textW(b) > width) { while (b.length > 1 && textW(b + '…') > width) b = b.slice(0, -1); b += '…'; }
+  return b ? [a, b] : [a];
+}
 const LEVELS = ['Undefined', 'Animal', 'Neolithic', 'Medieval', 'Industrial', 'Spacer', 'Ultra', 'Archotech'];
 const ERA_NAMES = { Undefined: 'No era', Animal: 'Animal' };
 const str = v => typeof v === 'string' ? v : typeof v === 'number' ? String(v) : '';
@@ -193,7 +209,7 @@ let edition, META, TAB_LABELS, ALL, byDef;
 // one edition's projects, normalized once
 function load(ed) {
   const D = EDS[ed]; edition = ed; META = D.meta || {}; TAB_LABELS = D.tabs || {};
-  W = +META.card?.width || 140; H = +META.card?.height || 50;
+  W = +META.card?.width || 140; H = +META.card?.height || 50; COST_W = +META.card?.costColumn || 64;
   if (!D.ready) {
     D.all = D.projects.filter(p => !p.na && p.ot);
     for (const p of D.all) {
@@ -247,7 +263,7 @@ function renderHeader() {
   $('mod').value = modFilter;
   $('meta').textContent = META.pending ? 'Research data awaiting verification' : `${ALL.length} projects from ${META.mods || '?'} mods · built ${META.generated || ''}`;
   $('h1').textContent = edition + ' research tree';
-  $('edition-note').textContent = (edition === 'Genesis' ? 'Published Genesis Steam collection.' : edition === 'ProgressionLESS' ? 'Progression collections with published ProgressionLESS replacements.' : 'The three published Progression collections.') + ' Offline XML snapshot for RimWorld 1.7; runtime-generated research and custom patch operations may differ. Costs and cost levels are from Research: Costs. Layout follows Research: Organized\'s full screen view.';
+  $('edition-note').textContent = (edition === 'Genesis' ? 'Published Genesis Steam collection.' : edition === 'ProgressionLESS' ? 'Progression collections with published ProgressionLESS replacements.' : 'The three published Progression collections.') + ' Offline XML snapshot for RimWorld 1.7; runtime-generated research and custom patch operations may differ. Cruesoe\'s mods include changes not yet released on the Workshop. Costs and cost levels are from Research: Costs. Layout follows Research: Organized\'s full screen view.';
   if (META.unavailableItems?.length) $('edition-note').textContent += ` ${META.unavailableItems.length} collection items could not be read.`;
   $('eds').innerHTML = Object.keys(EDS).map(e => `<button data-ed="${esc(e)}" aria-pressed="${e === edition}">${esc(e)}</button>`).join('');
   $('eds').hidden = Object.keys(EDS).length < 2;
@@ -345,18 +361,21 @@ function show(t, select_ = null) {
   for (const p of onTab) {
     const n = el('g', { class: 'node' + (p.cyc ? ' cyc' : ''), transform: `translate(${p.px},${p.py})`, 'data-d': p.d, style: `--c:${eraColor(p)}` }, $('nodes'));
     el('rect', { class: 'box', width: W, height: H, rx: 3 }, n);
-    el('rect', { class: 'bar', width: W, height: 4, rx: 1 }, n);
-    // title and mod on the left; level pips, then the cost column, on the right (as Research: Organized's card)
-    const sepX = W - COST_W, pipsW = p.levels ? p.levels * PIP + (p.levels - 1) * PIP_GAP : 0;
-    const h = HUB(p), hubW = h === 'major' || h === 'minor' ? 16 : 0;
-    const textW = sepX - 8 - (pipsW ? pipsW + 8 : 0) - hubW - 7, chars = Math.max(8, Math.floor(textW / 7));
-    el('text', { x: 7, y: 22, class: 'lbl' }, n).textContent = clip(cap(p.l || p.d), chars);
-    el('text', { x: 7, y: 39, class: 'sub' }, n).textContent = clip(source(p).replace(/^Progression: /, 'P: ').replace(/^ProgressionLESS /, 'PL: '), Math.floor(textW / 6));
-    el('line', { class: 'sep', x1: sepX, y1: 4, x2: sepX, y2: H }, n);
-    el('text', { x: W - 7, y: H / 2 + 6, class: 'cost' }, n).textContent = costText(p) || '—';
-    for (let i = 0; i < p.levels; i++)
-      el('circle', { class: 'pip' + (i < p.level ? ' on' : ''), cx: sepX - 8 - pipsW + i * (PIP + PIP_GAP) + PIP / 2, cy: H / 2 + 2, r: PIP / 2 - 0.7 }, n);
-    if (hubW) el('text', { x: sepX - 8 - (pipsW ? pipsW + 8 : 0) - 12, y: 21, class: 'hub' }, n).textContent = h === 'major' ? '▲' : '△';
+    // as Research: Organized's card: icon box (era color here, hub mark), title wrapping onto two lines, level pips, cost column
+    el('rect', { class: 'icon', x: IN, y: (H - ICON) / 2, width: ICON, height: ICON, rx: 3 }, n);
+    const h = HUB(p); if (h === 'major' || h === 'minor') el('text', { x: IN + ICON / 2, y: H / 2 + 5, class: 'hub' }, n).textContent = h === 'major' ? '▲' : '△';
+    const sep2 = W - IN - COST_W - 4 - 1; let right = sep2 - 8;
+    el('line', { class: 'sep', x1: SEP1, y1: 0, x2: SEP1, y2: H }, n);
+    el('line', { class: 'sep', x1: sep2, y1: 0, x2: sep2, y2: H }, n);
+    if (p.levels) {
+      const pipsW = p.levels * PIP + (p.levels - 1) * PIP_GAP;
+      for (let i = 0; i < p.levels; i++)
+        el('circle', { class: 'pip' + (i < p.level ? ' on' : ''), cx: right - pipsW + i * (PIP + PIP_GAP) + PIP / 2, cy: H / 2, r: PIP / 2 - 0.7 }, n);
+      right -= pipsW + 8;
+    }
+    const lines = wrap2(cap(p.l || p.d), Math.max(20, right - NAME_X));
+    lines.forEach((s, i) => { el('text', { x: NAME_X, y: H / 2 + 4.5 + (lines.length === 2 ? (i ? 7.5 : -7.5) : 0), class: 'lbl' }, n).textContent = s; });
+    el('text', { x: W - IN - COST_W / 2, y: H / 2 + 4.5, class: 'cost' }, n).textContent = costText(p) || '—';
     nodeEls.set(p.d, n);
   }
   applyFilter();
